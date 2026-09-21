@@ -3,17 +3,17 @@
 [ext_resource type="Script" uid="uid://d28kf51v0ojnb" path="res://Scripts/Entities/Bee.gd" id="1_7u0a5"]
 [ext_resource type="PackedScene" uid="uid://ck7e0oila0doj" path="res://Scenes/Bees/Sprites/basic_bee_sprite.tscn" id="2_201f0"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1fhm7"]
-radius = 66.068146
+[sub_resource type="CircleShape2D" id="CircleShape2D_ucr06"]
+radius = 73.061615
 
-[node name="Bee" type="Node2D" unique_id=963782406 node_paths=PackedStringArray("sprite_handler", "collider")]
+[node name="Bee" type="RigidBody2D" unique_id=769899236 node_paths=PackedStringArray("sprite_handler", "collider")]
+gravity_scale = 0.0
+linear_damp = 2.0
 script = ExtResource("1_7u0a5")
 sprite_handler = NodePath("Basic_Bee_Sprite")
-collider = NodePath("Collider")
+collider = NodePath("")
 
 [node name="Basic_Bee_Sprite" parent="." unique_id=379692132 instance=ExtResource("2_201f0")]
 
-[node name="Collider" type="Area2D" parent="." unique_id=731168673]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider" unique_id=2109921224]
-shape = SubResource("CircleShape2D_1fhm7")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1563849834]
+shape = SubResource("CircleShape2D_ucr06")

@@ -20,7 +20,6 @@ func _ready() -> void:
 	
 
 func _physics_process(dt : float) -> void:
-	super._physics_process(dt)
 	
 	if state == states.IDLE:
 		if (position - target_position).length() > target_margin:
@@ -28,7 +27,8 @@ func _physics_process(dt : float) -> void:
 	
 	elif state == states.MOVING:
 		var dif = position - target_position
-		position += -dif.normalized() * speed
+		#velocity += -dif.normalized() * speed
+		apply_force(-dif.normalized() * speed)
 		
 		if dif.length() < target_margin:
 			state = states.IDLE

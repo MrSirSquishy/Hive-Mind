@@ -1,24 +1,24 @@
-@abstract class_name Entity extends Node2D
+@abstract class_name Entity extends RigidBody2D
 #Made as parent for Bee and Enemy classes
 
-#For soft collisions
-@export var mass : float = 1.0;
+#How strong the repel force is between colliding objects
+@export var repelForce : float = 10
+#The area2D to use as the collider
 @export var collider : Area2D
 
-@onready var colliding_areas : Array[Area2D]
-
+#damping. Higher values slow it down faster, 0 is frictonless
+@export var damping : float = 0.1
 #movement speed
-@export var speed : float = 10.0
+@export var speed : float = 1000.0
+
+@onready var colliding_areas : Array[Area2D]
+@onready var velocity : Vector2 = Vector2(0, 0)
+
+
 
 
 @abstract func _ready() -> void
 
 @abstract func _process(dt: float) -> void
 
-func _physics_process(dt: float) -> void:
-	var overlapping_areas : Array[Area2D] = collider.get_overlapping_areas()
-	for area in overlapping_areas:
-		soft_collision(area, dt)
-
-func soft_collision(colliding_area : Area2D, dt : float) -> void:
-	pass
+@abstract func _physics_process(dt: float) -> void
