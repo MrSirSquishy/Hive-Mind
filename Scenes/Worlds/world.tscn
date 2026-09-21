@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b4olyb7syewbi"]
+
+[ext_resource type="PackedScene" uid="uid://deai2dvakqpab" path="res://Scenes/Bees/bee.tscn" id="1_w0ae3"]
+
+[node name="World" type="Node2D" unique_id=1622916593]
+
+[node name="Bee" parent="." unique_id=963782406 instance=ExtResource("1_w0ae3")]
+position = Vector2(385, 149)
+
+[node name="Bee2" parent="." unique_id=1938065690 instance=ExtResource("1_w0ae3")]
+position = Vector2(132, 208)

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ck7e0oila0doj"]
+
+[ext_resource type="Texture2D" uid="uid://ijrgeo6pc3qb" path="res://icon.svg" id="1_l2mao"]
+[ext_resource type="Script" uid="uid://bx1k6rtdmwpg2" path="res://Scripts/Bee_Sprite_Handler/Bee_Sprite_Handler.gd" id="2_ufvk2"]
+
+[node name="Basic_Bee_Sprite" type="Sprite2D" unique_id=379692132]
+texture = ExtResource("1_l2mao")
+script = ExtResource("2_ufvk2")
