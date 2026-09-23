@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://b4olyb7syewbi"]
 
 [ext_resource type="PackedScene" uid="uid://deai2dvakqpab" path="res://Scenes/Bees/bee.tscn" id="1_w0ae3"]
+[ext_resource type="Script" uid="uid://c26vs5hxqu5kr" path="res://Scripts/Player/GameCamera.gd" id="2_0hgqg"]
 
 [node name="World" type="Node2D" unique_id=1622916593]
 
-[node name="Bee5" parent="." unique_id=1467989974 instance=ExtResource("1_w0ae3")]
-position = Vector2(164, 152)
+[node name="Bee" parent="." unique_id=963782406 instance=ExtResource("1_w0ae3")]
+position = Vector2(385, 149)
+
+[node name="Bee2" parent="." unique_id=1938065690 instance=ExtResource("1_w0ae3")]
+position = Vector2(132, 208)
+
+[node name="GameCamera" type="Camera2D" parent="." unique_id=211195106]
+script = ExtResource("2_0hgqg")
