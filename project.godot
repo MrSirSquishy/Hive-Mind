@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*uid://bsg2d32oddsrx"
-SignalBus="*uid://bvw32m78n053a"
+Signal_Bus="*uid://bvw32m78n053a"
 
 [debug]
 

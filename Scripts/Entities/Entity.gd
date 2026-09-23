@@ -3,7 +3,7 @@
 
 
 #movement speed
-@export var speed : float = 1000.0
+@export var speed : float = 10000.0
 
 
 
@@ -12,5 +12,3 @@
 @abstract func _process(dt: float) -> void
 
 @abstract func _physics_process(dt: float) -> void
-
-

@@ -8,8 +8,14 @@
 [node name="Bee" parent="." unique_id=963782406 instance=ExtResource("1_w0ae3")]
 position = Vector2(385, 149)
 
+[node name="Bee3" parent="." unique_id=769899236 instance=ExtResource("1_w0ae3")]
+position = Vector2(737, 301)
+
+[node name="Bee4" parent="." unique_id=1641275165 instance=ExtResource("1_w0ae3")]
+position = Vector2(371, 494)
+
 [node name="Bee2" parent="." unique_id=1938065690 instance=ExtResource("1_w0ae3")]
-position = Vector2(132, 208)
+position = Vector2(-247, 218)
 
 [node name="GameCamera" type="Camera2D" parent="." unique_id=211195106]
 script = ExtResource("2_0hgqg")

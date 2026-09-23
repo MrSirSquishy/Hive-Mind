@@ -9,7 +9,7 @@ class_name GameCamera extends Camera2D
 @export var pan_speed: float = 600.0
 @export var drag_speed: float = 1.0
 @export var zoom_step: float = 0.1
-@export var min_zoom: float = 0.4
+@export var min_zoom: float = 0.2
 @export var max_zoom: float = 2.5
 
 
@@ -77,7 +77,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			# Convert screen pixels to world coordinates using camera pos + zoom.
 			var world_pos := get_global_mouse_position()
 			# Announce the click. Bee / Wave code listens for this later.
-			# SignalBus.world_clicked.emit(world_pos)
+			Signal_Bus.world_clicked.emit(world_pos)
 
 
 # Helper that changes zoom by amount, clamped to [min_zoom, max_zoom].
