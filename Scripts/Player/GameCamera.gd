@@ -77,7 +77,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			# Convert screen pixels to world coordinates using camera pos + zoom.
 			var world_pos := get_global_mouse_position()
 			# Announce the click. Bee / Wave code listens for this later.
-			SignalBus.world_clicked.emit(world_pos)
+			# SignalBus.world_clicked.emit(world_pos)
 
 
 # Helper that changes zoom by amount, clamped to [min_zoom, max_zoom].

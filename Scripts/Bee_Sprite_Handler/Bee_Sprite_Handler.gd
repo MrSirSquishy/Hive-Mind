@@ -14,4 +14,5 @@ class_name Bee_Sprite_Handler extends Sprite2D
 
 
 func _physics_process(dt : float) -> void:
-	left_pupil.position = Vector2(0, 0)
+	pass
+	#left_pupil.position = Vector2(0, 0)
