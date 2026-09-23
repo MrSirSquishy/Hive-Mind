@@ -56,11 +56,9 @@ func _physics_process(dt : float) -> void:
 			-dif.normalized().rotated(-rotation)
 		)
 		
-		
 		# State Changing
 		if dif.length() < target_margin:
 			state = states.IDLE
-			print(1)
 		
 		
 
