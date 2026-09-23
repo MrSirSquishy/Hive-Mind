@@ -4,14 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://ck7e0oila0doj" path="res://Scenes/Bees/Sprites/basic_bee_sprite.tscn" id="2_201f0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ucr06"]
-radius = 73.061615
+radius = 61.073727
 
-[node name="Bee" type="RigidBody2D" unique_id=769899236 node_paths=PackedStringArray("sprite_handler", "collider")]
+[node name="Bee" type="RigidBody2D" unique_id=769899236 node_paths=PackedStringArray("sprite_handler")]
 gravity_scale = 0.0
 linear_damp = 2.0
+angular_damp = 10.0
 script = ExtResource("1_7u0a5")
 sprite_handler = NodePath("Basic_Bee_Sprite")
-collider = NodePath("")
 
 [node name="Basic_Bee_Sprite" parent="." unique_id=379692132 instance=ExtResource("2_201f0")]
 

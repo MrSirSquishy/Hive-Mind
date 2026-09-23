@@ -1,8 +1,50 @@
 [gd_scene format=3 uid="uid://ck7e0oila0doj"]
 
-[ext_resource type="Texture2D" uid="uid://ijrgeo6pc3qb" path="res://icon.svg" id="1_l2mao"]
+[ext_resource type="Texture2D" uid="uid://cwl0dq26xqcmh" path="res://Assets/Bees/Basic_Bee.png" id="1_ufvk2"]
 [ext_resource type="Script" uid="uid://bx1k6rtdmwpg2" path="res://Scripts/Bee_Sprite_Handler/Bee_Sprite_Handler.gd" id="2_ufvk2"]
 
 [node name="Basic_Bee_Sprite" type="Sprite2D" unique_id=379692132]
-texture = ExtResource("1_l2mao")
+texture = ExtResource("1_ufvk2")
+region_enabled = true
+region_rect = Rect2(0, 0, 172, 336)
 script = ExtResource("2_ufvk2")
+
+[node name="left_eye" type="Sprite2D" parent="." unique_id=823597589]
+position = Vector2(-40, -120)
+texture = ExtResource("1_ufvk2")
+region_enabled = true
+region_rect = Rect2(353, 0, 47, 48)
+
+[node name="left_pupil" type="Sprite2D" parent="left_eye" unique_id=1843237224]
+position = Vector2(4, -9)
+texture = ExtResource("1_ufvk2")
+region_enabled = true
+region_rect = Rect2(321, 0, 25, 24)
+
+[node name="right_eye" type="Sprite2D" parent="." unique_id=121537318]
+position = Vector2(40, -120)
+texture = ExtResource("1_ufvk2")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(353, 0, 47, 48)
+
+[node name="right_pupil" type="Sprite2D" parent="right_eye" unique_id=492471314]
+position = Vector2(-4, -9)
+texture = ExtResource("1_ufvk2")
+region_enabled = true
+region_rect = Rect2(321, 0, 25, 24)
+
+[node name="left_wing" type="Sprite2D" parent="." unique_id=1399902159]
+position = Vector2(-50, -65)
+texture = ExtResource("1_ufvk2")
+offset = Vector2(-40, 80)
+region_enabled = true
+region_rect = Rect2(200, 0, 93, 175)
+
+[node name="right_wing" type="Sprite2D" parent="." unique_id=794431611]
+position = Vector2(50, -65)
+texture = ExtResource("1_ufvk2")
+offset = Vector2(40, 80)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(200, 0, 93, 175)

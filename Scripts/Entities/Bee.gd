@@ -2,6 +2,8 @@ class_name Bee extends Entity
 
 @export var sprite_handler : Bee_Sprite_Handler
 
+@export var turn_speed : float = 5000000.0
+
 @export_group("Bee AI")
 
 #How close it should be to the target_position to be considered reached
@@ -22,14 +24,20 @@ func _ready() -> void:
 func _physics_process(dt : float) -> void:
 	
 	if state == states.IDLE:
+		#State Changing
 		if (position - target_position).length() > target_margin:
 			state = states.MOVING
 	
 	elif state == states.MOVING:
-		var dif = position - target_position
-		#velocity += -dif.normalized() * speed
+		# Moves toward target position
+		var dif : Vector2 = position - target_position
 		apply_force(-dif.normalized() * speed)
+
+		# Turns to face direction of it's velocity
+		var angleDif : float = wrapf(rotation - (linear_velocity).angle() - PI/2, -PI, PI)
+		apply_torque(-clamp(angleDif, -1, 1)*dt * turn_speed)
 		
+		# State Changing
 		if dif.length() < target_margin:
 			state = states.IDLE
 		
