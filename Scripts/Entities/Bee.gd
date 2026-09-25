@@ -55,6 +55,8 @@ func _physics_process(dt : float) -> void:
 		sprite_handler.set_eye_dir(
 			-dif.normalized().rotated(-rotation)
 		)
+
+		sprite_handler.play_flap_animation()
 		
 		# State Changing
 		if dif.length() < target_margin:
