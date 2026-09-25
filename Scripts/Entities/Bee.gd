@@ -1,30 +1,9 @@
 class_name Bee extends Entity
 
-@export var sprite_handler : Bee_Sprite_Handler
+@export var sprite_handler : Bee_Sprite_Handler = get_node_or_null("Sprite")
 
-@export var turn_speed : float = 50000000.0
 
-@export_group("Bee AI")
-#How close it should be to the target_position to be considered reached
-@export var target_margin : float = 200
-#How close it should be to the target_position to begin slowing down
-@export var target_slowdown_margin : float = 500
-#The Area2D that defines what the bee is aware of/can see
-@export var awareness_area : Area2D
 
-#State Machine
-enum states {
-	IDLE,
-	MOVING
-}
-@onready var state : states	= states.IDLE
-@onready var target_position : Vector2 = position
-
-@onready var upgrades : Dictionary = {
-	"HEAD" : null,
-	"BODY" : null,
-	"EQUIPMENT" : null
-}
 
 func _ready() -> void:
 	#Initializes Upgrades
@@ -37,12 +16,12 @@ func _ready() -> void:
 
 func _physics_process(dt : float) -> void:
 	
-	if state == states.IDLE:
+	if state == "IDLE":
 		#State Changing
 		if (position - target_position).length() > target_margin:
-			state = states.MOVING
+			state = "MOVING"
 	
-	elif state == states.MOVING:
+	elif state == "MOVING":
 		## Moves toward target position
 		var dif : Vector2 = position - target_position
 		#Reduces the force applied as it approaches within the slowdown margin
@@ -65,12 +44,11 @@ func _physics_process(dt : float) -> void:
 		sprite_handler.set_eye_dir(
 			-dif.normalized().rotated(-rotation)
 		)
-
 		sprite_handler.play_flap_animation()
 		
 		# State Changing
 		if dif.length() < target_margin:
-			state = states.IDLE
+			state = "IDLE"
 		
 		
 
@@ -79,7 +57,7 @@ func _process(_dt: float) -> void:
 
 
 ## Signals
-func _enter_tree() -> void:
+func _init() -> void:
 	Signal_Bus.world_clicked.connect(set_target_position)
 
 func set_target_position(new_target_position : Vector2) -> void:

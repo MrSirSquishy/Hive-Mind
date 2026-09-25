@@ -16,7 +16,7 @@ linear_damp = 5.0
 angular_damp = 10.0
 script = ExtResource("1_7u0a5")
 sprite_handler = NodePath("Basic_Bee_Sprite")
-awareness_area = NodePath("Awareness Area")
+awareness_area = NodePath("Awareness_Area")
 
 [node name="Basic_Bee_Sprite" parent="." unique_id=379692132 instance=ExtResource("2_201f0")]
 position = Vector2(0, 30)
@@ -25,8 +25,8 @@ position = Vector2(0, 30)
 position = Vector2(0, 20)
 shape = SubResource("CapsuleShape2D_tqty4")
 
-[node name="Awareness Area" type="Area2D" parent="." unique_id=1617921935]
+[node name="Awareness_Area" type="Area2D" parent="." unique_id=1617921935]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Awareness Area" unique_id=1613177572]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Awareness_Area" unique_id=1613177572]
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_1fhm7")

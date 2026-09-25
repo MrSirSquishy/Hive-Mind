@@ -4,8 +4,7 @@ class_name GameCamera extends Camera2D
 # Controls: WASD / arrows = pan, middle- or right-mouse drag = pan,
 # mouse wheel = zoom, left-click = emit SignalBus.world_clicked.
 
-# @export exposes a variable in the Inspector so you can tweak
-# it without editing code. Current value is the default.
+@export_group("Camera Movement")
 @export var pan_speed: float = 600.0
 @export var drag_speed: float = 1.0
 @export var zoom_step: float = 0.1
@@ -13,6 +12,9 @@ class_name GameCamera extends Camera2D
 @export var max_zoom: float = 2.5
 @export var select_radius: float = 24.0
 @export var click_drag_limit_px: float=8
+
+@onready var click_area : Area2D = get_node("Click_Area")
+@onready var selected_entity : Entity = null
 
 var _left_down: bool = false
 var _left_press_px: Vector2 = Vector2.ZERO
@@ -27,8 +29,12 @@ func _ready() -> void:
 	position_smoothing_speed = 8.0
 
 
-# _process runs EVERY FRAME. delta is seconds since last frame.
 func _process(delta: float) -> void:
+		
+	#Adjusts the position and scale of the click area to the camera and mouse
+	click_area.position = get_global_mouse_position()
+	click_area.scale = Vector2.ONE * clamp(0.01 , 1 / zoom.x, 10000)
+	
 	# Start with no movement; we add direction below based on keys held.
 	var move_dir := Vector2.ZERO
 	# In Godot 2D, -y is UP and +y is DOWN, -x is LEFT and +x is RIGHT.
@@ -90,25 +96,25 @@ func _apply_zoom(amount: float) -> void:
 	# Zoom is a Vector2(x, y). Keep x and y equal or the image stretches.
 	zoom = Vector2(new_zoom_val, new_zoom_val)
 
+#this feature is a forgiveness mechanic for clicking near but not directly under the cursor
 func _scan_at_cursor() -> void:
-	var world_pos: Vector2 = get_global_mouse_position()
-	var space: PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
-	var shape: CircleShape2D = CircleShape2D.new()
-	shape.radius = select_radius
-	var params: PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
-	params.shape = shape
-	params.transform = Transform2D(0.0, world_pos)
-	params.collide_with_areas = false
-	params.collide_with_bodies = true
-	var hits: Array[Dictionary] = space.intersect_shape(params, 8)
-	var best: Node2D = null
-	var best_d: float = INF
-	for h: Dictionary in hits:
-		var c: Object = h.get("collider")
-		if c is Node2D:
-			var n: Node2D = c as Node2D
-			var d: float = n.global_position.distance_squared_to(world_pos)
-			if d < best_d:
-				best_d = d
-				best = n
-	Signal_Bus.area_scanned.emit(best, world_pos)
+	#gets all the bodies within a margin of the cursor
+	var bodies : Array[Node2D] = click_area.get_overlapping_bodies()
+	var mouse_pos : Vector2 = get_global_mouse_position()
+	
+	#Gets the closest body to the cursor within the selection if there are more than one
+	var closest_body : PhysicsBody2D
+	var closest_distance : float = -1
+	for body : PhysicsBody2D in bodies:
+		if body is Entity:
+			var distance : float = (body.position - mouse_pos).length()
+			if closest_body == null or distance < closest_distance:
+				closest_body = body
+	
+	#Updates selected_entity, will be null if no bodies were within click range
+	selected_entity = closest_body
+	
+	#If no bodies selected, then just emit the default click signal
+	if closest_body == null:
+		Signal_Bus.world_clicked.emit(mouse_pos)
+	

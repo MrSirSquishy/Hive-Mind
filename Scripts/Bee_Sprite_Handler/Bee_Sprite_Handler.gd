@@ -9,9 +9,6 @@ class_name Bee_Sprite_Handler extends Sprite2D
 @onready var left_wing : Sprite2D = get_node_or_null("left_wing")
 @onready var right_wing : Sprite2D = get_node_or_null("right_wing")
 
-
-
-
 @export_group("Eye Movement")
 @export var eye_movement_factor : float = 10.0
 @export var eye_movement_speed : float = 10.0
