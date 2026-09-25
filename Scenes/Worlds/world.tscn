@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://deai2dvakqpab" path="res://Scenes/Bees/bee.tscn" id="1_w0ae3"]
 [ext_resource type="Script" uid="uid://c26vs5hxqu5kr" path="res://Scripts/Player/GameCamera.gd" id="2_0hgqg"]
+[ext_resource type="PackedScene" uid="uid://b5ckg40dscnx" path="res://Scenes/Upgrades/gun_upgrade.tscn" id="2_y2sdx"]
 
 [node name="World" type="Node2D" unique_id=1622916593]
 
@@ -16,6 +17,8 @@ position = Vector2(371, 494)
 
 [node name="Bee2" parent="." unique_id=1938065690 instance=ExtResource("1_w0ae3")]
 position = Vector2(-247, 218)
+
+[node name="Gun_Upgrade" parent="Bee2" unique_id=136030795 instance=ExtResource("2_y2sdx")]
 
 [node name="GameCamera" type="Camera2D" parent="." unique_id=211195106]
 script = ExtResource("2_0hgqg")

@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://bx1k6rtdmwpg2" path="res://Scripts/Bee_Sprite_Handler/Bee_Sprite_Handler.gd" id="2_ufvk2"]
 
 [node name="Basic_Bee_Sprite" type="Sprite2D" unique_id=379692132]
-position = Vector2(0, 4.275)
 texture = ExtResource("1_ufvk2")
 region_enabled = true
 region_rect = Rect2(0, 0, 172, 336)

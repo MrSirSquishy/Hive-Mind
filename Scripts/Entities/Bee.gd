@@ -18,11 +18,21 @@ enum states {
 	MOVING
 }
 @onready var state : states	= states.IDLE
+@onready var target_position : Vector2 = position
 
-@onready var target_position : Vector2 
+@onready var upgrades : Dictionary = {
+	"HEAD" : null,
+	"BODY" : null,
+	"EQUIPMENT" : null
+}
 
 func _ready() -> void:
-	target_position = position
+	#Initializes Upgrades
+	#doesn't check for duplicates, so only last one of same type is stored
+	var child_upgrades : Array[Node] = find_children("", "Upgrade")
+	for upgrade : Upgrade in child_upgrades:
+		upgrades[upgrade.upgrade_type] = upgrade
+		upgrade.init()
 	
 
 func _physics_process(dt : float) -> void:
