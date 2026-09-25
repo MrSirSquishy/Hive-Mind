@@ -1,0 +1,200 @@
+[gd_scene format=3 uid="uid://b1t2umue1och7"]
+
+[ext_resource type="Script" uid="uid://bb73l4fq6mtly" path="res://Scenes/Pause Menu/pause_menu.gd" id="1_ij2wj"]
+[ext_resource type="Texture2D" uid="uid://bye53vepw8mcm" path="res://Assets/UI/basebackground.jpg" id="2_jy2a6"]
+[ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="3_hrxx6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16ygy"]
+texture = ExtResource("2_jy2a6")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kf82r"]
+bg_color = Color(0.6597464, 0.60829514, 0.2429058, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6uk5"]
+bg_color = Color(0.6597464, 0.60829514, 0.2429058, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_udqtx"]
+bg_color = Color(0.35087806, 0.32364666, 0.10557119, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gkohj"]
+
+[node name="PauseMenu" type="Control" unique_id=340816502]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ij2wj")
+
+[node name="Panel" type="Panel" parent="." unique_id=150319072]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_16ygy")
+
+[node name="Label" type="Label" parent="." unique_id=385426033]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -397.0
+offset_top = -425.0
+offset_right = 397.0
+offset_bottom = -188.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.6117647, 0.6117647, 0.6117647, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("3_hrxx6")
+theme_override_font_sizes/font_size = 265
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=914381289]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -863.0
+offset_top = -176.0
+offset_right = 863.0
+offset_bottom = 464.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="TutorialButton" type="Button" parent="HBoxContainer" unique_id=997634381]
+custom_minimum_size = Vector2(550, 185)
+custom_maximum_size = Vector2(543, 185)
+layout_mode = 2
+size_flags_vertical = 8
+offset_transform_enabled = true
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_hrxx6")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_kf82r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kf82r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n6uk5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_udqtx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gkohj")
+text = "Tutorial"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1219189395]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="ReturnToHiveButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1874188370]
+custom_minimum_size = Vector2(550, 185)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_hrxx6")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_kf82r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kf82r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n6uk5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_udqtx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gkohj")
+text = "Return to Hive"
+
+[node name="ShopButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1191933492]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_hrxx6")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_kf82r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kf82r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n6uk5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_udqtx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gkohj")
+text = "Shop
+"
+
+[node name="SettingsButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1618420250]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_hrxx6")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_kf82r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kf82r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n6uk5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_udqtx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gkohj")
+text = "Settings"
+
+[node name="ExitToMenuButton" type="Button" parent="HBoxContainer" unique_id=450765940]
+custom_minimum_size = Vector2(550, 185)
+custom_maximum_size = Vector2(543, 185)
+layout_mode = 2
+size_flags_vertical = 8
+offset_transform_enabled = true
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_hrxx6")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_kf82r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kf82r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n6uk5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_udqtx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gkohj")
+text = "Exit to Menu"
+
+[connection signal="pressed" from="HBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ReturnToHiveButton" to="." method="_on_return_to_hive_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ExitToMenuButton" to="." method="_on_exit_to_menu_button_pressed"]

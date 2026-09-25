@@ -16,10 +16,19 @@ func _on_start_pressed() -> void:
 	print("Start Pressed") #checks if button pressed
 
 
-func _on_settings_pressed() -> void:
+
+func _on_tutorial_button_pressed() -> void:
+	print("Tutorial Pressed") #checks if button pressed
+
+
+func _on_load_hive_button_pressed() -> void:
+	print("Load Hive Pressed") #checks if button pressed
+
+
+func _on_settings_button_pressed() -> void:
 	print("Settings Pressed") #checks if button pressed
 
 
-func _on_exit_pressed() -> void:
+func _on_exit_button_pressed() -> void:
 	get_tree().quit()
 	print("Exit Pressed") #checks if button pressed
