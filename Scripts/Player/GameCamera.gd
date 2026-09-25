@@ -11,7 +11,11 @@ class_name GameCamera extends Camera2D
 @export var zoom_step: float = 0.1
 @export var min_zoom: float = 0.2
 @export var max_zoom: float = 2.5
+@export var select_radius: float = 24.0
+@export var click_drag_limit_px: float=8
 
+var _left_down: bool = false
+var _left_press_px: Vector2 = Vector2.ZERO
 
 # _ready runs ONCE when this node enters the scene tree.
 func _ready() -> void:
@@ -50,35 +54,31 @@ func _process(delta: float) -> void:
 	position += move_dir * pan_speed * delta / zoom.x
 
 
-# _unhandled_input runs only when an input event happens (mouse move,
-# click, wheel). "Unhandled" means UI buttons get first dibs on clicks.
 func _unhandled_input(event: InputEvent) -> void:
-	# Case 1: the mouse moved. event.relative is how many pixels it moved.
 	if event is InputEventMouseMotion:
-		# Check if a drag button is currently held down.
-		var middle_held := Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE)
-		var right_held := Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
+		var middle_held: bool = Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE)
+		var right_held: bool = Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
 		if middle_held or right_held:
-			# Move opposite to the mouse for a grab-the-world feel.
 			position -= event.relative * drag_speed / zoom.x
-			# Stop here so this motion is not also treated as a click.
 			return
-	# Case 2: a mouse button was pressed, or the wheel was ticked.
-	if event is InputEventMouseButton and event.pressed:
-		# Wheel up zooms IN (world looks bigger).
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
 			_apply_zoom(zoom_step)
-		# Wheel down zooms OUT (world looks smaller).
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			return
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
 			_apply_zoom(-zoom_step)
-		# Left click is gameplay only. Middle/right are reserved for drag
-		# above, so the two never fight each other.
-		elif event.button_index == MOUSE_BUTTON_LEFT:
-			# Convert screen pixels to world coordinates using camera pos + zoom.
-			var world_pos := get_global_mouse_position()
-			# Announce the click. Bee / Wave code listens for this later.
-			Signal_Bus.world_clicked.emit(world_pos)
-
+			return
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				_left_down = true
+				_left_press_px = event.position
+			else:
+				if not _left_down:
+					return
+				_left_down = false
+				if event.position.distance_to(_left_press_px) > click_drag_limit_px:
+					return
+				_scan_at_cursor()
 
 # Helper that changes zoom by amount, clamped to [min_zoom, max_zoom].
 # The leading underscore is a convention meaning "private to this file".
@@ -89,3 +89,26 @@ func _apply_zoom(amount: float) -> void:
 	new_zoom_val = clamp(new_zoom_val, min_zoom, max_zoom)
 	# Zoom is a Vector2(x, y). Keep x and y equal or the image stretches.
 	zoom = Vector2(new_zoom_val, new_zoom_val)
+
+func _scan_at_cursor() -> void:
+	var world_pos: Vector2 = get_global_mouse_position()
+	var space: PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
+	var shape: CircleShape2D = CircleShape2D.new()
+	shape.radius = select_radius
+	var params: PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
+	params.shape = shape
+	params.transform = Transform2D(0.0, world_pos)
+	params.collide_with_areas = false
+	params.collide_with_bodies = true
+	var hits: Array[Dictionary] = space.intersect_shape(params, 8)
+	var best: Node2D = null
+	var best_d: float = INF
+	for h: Dictionary in hits:
+		var c: Object = h.get("collider")
+		if c is Node2D:
+			var n: Node2D = c as Node2D
+			var d: float = n.global_position.distance_squared_to(world_pos)
+			if d < best_d:
+				best_d = d
+				best = n
+	Signal_Bus.area_scanned.emit(best, world_pos)

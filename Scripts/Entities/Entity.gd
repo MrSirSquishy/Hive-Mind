@@ -4,7 +4,12 @@
 
 #movement speed
 @export var speed : float = 10000.0
-
+func get_selection_info() -> Dictionary:
+		return {
+			"type": "entity",
+			"ref": self,
+			"pos": global_position,
+		}
 
 
 @abstract func _ready() -> void
