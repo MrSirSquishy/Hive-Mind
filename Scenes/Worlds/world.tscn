@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://b4olyb7syewbi"]
 
 [ext_resource type="PackedScene" uid="uid://deai2dvakqpab" path="res://Scenes/Bees/bee.tscn" id="1_w0ae3"]
-[ext_resource type="Script" uid="uid://c26vs5hxqu5kr" path="res://Scripts/Player/GameCamera.gd" id="2_0hgqg"]
 [ext_resource type="PackedScene" uid="uid://b5ckg40dscnx" path="res://Scenes/Upgrades/gun_upgrade.tscn" id="2_y2sdx"]
+[ext_resource type="PackedScene" uid="uid://sm8ltq6jesgv" path="res://Scenes/player.tscn" id="3_y2sdx"]
 
 [node name="World" type="Node2D" unique_id=1622916593]
 
@@ -13,21 +13,11 @@ position = Vector2(385, 149)
 position = Vector2(737, 301)
 
 [node name="Bee4" parent="." unique_id=1641275165 instance=ExtResource("1_w0ae3")]
-position = Vector2(371, 494)
+position = Vector2(340, 289)
 
 [node name="Bee2" parent="." unique_id=1938065690 instance=ExtResource("1_w0ae3")]
-position = Vector2(-247, 218)
+position = Vector2(-362, 281)
 
 [node name="Gun_Upgrade" parent="Bee2" unique_id=136030795 instance=ExtResource("2_y2sdx")]
 
-[node name="GameCamera" type="Camera2D" parent="." unique_id=211195106]
-script = ExtResource("2_0hgqg")
-pan_speed = null
-drag_speed = null
-zoom_step = null
-min_zoom = null
-max_zoom = null
-select_radius = null
-click_drag_limit_px = null
-
-[node name="SelectionPanel" type="CanvasLayer" parent="." unique_id=541993879]
+[node name="GameCamera" parent="." unique_id=481572159 instance=ExtResource("3_y2sdx")]
