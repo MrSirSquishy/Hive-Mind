@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://v7vnln14bhmp"]
+
+[ext_resource type="Script" uid="uid://l57fwusmjsso" path="res://Scenes/Main Menu/main_menu.gd" id="1_7xkbd"]
+[ext_resource type="Texture2D" uid="uid://bye53vepw8mcm" path="res://Assets/UI/basebackground.jpg" id="2_y0aff"]
+[ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="3_fr3p2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wjnhd"]
+texture = ExtResource("2_y0aff")
+modulate_color = Color(0.5132329, 0.5132329, 0.5132329, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvxm8"]
+bg_color = Color(0.6597464, 0.60829514, 0.2429058, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r7gth"]
+bg_color = Color(0.6597464, 0.60829514, 0.2429058, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46knf"]
+bg_color = Color(0.35087806, 0.32364666, 0.10557119, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mecc7"]
+
+[node name="MainMenu" type="Control" unique_id=67542527]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7xkbd")
+
+[node name="Panel" type="Panel" parent="." unique_id=489200455]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wjnhd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1562890243]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -271.5
+offset_top = -95.0
+offset_right = 271.5
+offset_bottom = 366.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 45
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=271069376]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_fr3p2")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_mvxm8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mvxm8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r7gth")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_46knf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mecc7")
+text = "Enter Hive"
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=512411257]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_fr3p2")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_mvxm8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mvxm8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r7gth")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_46knf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mecc7")
+text = "Settings"
+
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=1575732092]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_fr3p2")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_mvxm8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mvxm8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r7gth")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_46knf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mecc7")
+text = "Exit"
+
+[node name="Label" type="Label" parent="." unique_id=1685653030]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -397.0
+offset_top = -425.0
+offset_right = 397.0
+offset_bottom = -188.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.6117647, 0.6117647, 0.6117647, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("3_fr3p2")
+theme_override_font_sizes/font_size = 265
+text = "Hive Mind"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]
