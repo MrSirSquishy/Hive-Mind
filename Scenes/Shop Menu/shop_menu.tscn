@@ -1,5 +1,58 @@
 [gd_scene format=3 uid="uid://dcycnd014e36e"]
 
+[ext_resource type="Texture2D" uid="uid://bye53vepw8mcm" path="res://Assets/UI/basebackground.jpg" id="1_sr1qk"]
+[ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="2_15dw4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sl732"]
+texture = ExtResource("1_sr1qk")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4wc0"]
+bg_color = Color(0.63462025, 0.58511096, 0.23065636, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnh6m"]
+bg_color = Color(0.6862745, 0.5529412, 0.14117648, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64est"]
+bg_color = Color(0.5866053, 0.4713083, 0.1156018, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2vch"]
+bg_color = Color(0.5882353, 0.47058824, 0.11372549, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lcbx5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wnoys"]
+bg_color = Color(0.63462025, 0.58511096, 0.23065636, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
 [node name="ShopMenu" type="Control" unique_id=1684821406]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +60,221 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=2125112171]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_sl732")
+
+[node name="Label" type="Label" parent="." unique_id=1851367227]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -397.0
+offset_top = -425.0
+offset_right = 397.0
+offset_bottom = -188.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.6117647, 0.6117647, 0.6117647, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("2_15dw4")
+theme_override_font_sizes/font_size = 265
+text = "Shop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1446509220]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -863.0
+offset_top = -92.5
+offset_right = 863.0
+offset_bottom = 215.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="ReturnToHiveButton" type="Button" parent="HBoxContainer2" unique_id=216052531]
+custom_minimum_size = Vector2(0, 185)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_15dw4")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pnh6m")
+theme_override_styles/hover = SubResource("StyleBoxFlat_64est")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d2vch")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
+text = "Hat"
+
+[node name="ReturnToHiveButton2" type="Button" parent="HBoxContainer2" unique_id=33233996]
+custom_minimum_size = Vector2(0, 185)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_15dw4")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pnh6m")
+theme_override_styles/hover = SubResource("StyleBoxFlat_64est")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d2vch")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
+text = "Staff"
+
+[node name="ReturnToHiveButton3" type="Button" parent="HBoxContainer2" unique_id=106939202]
+custom_minimum_size = Vector2(0, 185)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_15dw4")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pnh6m")
+theme_override_styles/hover = SubResource("StyleBoxFlat_64est")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d2vch")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
+text = "goggles"
+
+[node name="ReturnToHiveButton4" type="Button" parent="HBoxContainer2" unique_id=84692229]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_15dw4")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pnh6m")
+theme_override_styles/hover = SubResource("StyleBoxFlat_64est")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d2vch")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
+text = "backpack"
+
+[node name="ReturnToHiveButton5" type="Button" parent="HBoxContainer2" unique_id=176435803]
+custom_minimum_size = Vector2(0, 185)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_15dw4")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pnh6m")
+theme_override_styles/hover = SubResource("StyleBoxFlat_64est")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d2vch")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
+text = "Shoes"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=11850328]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -863.0
+offset_top = 278.0
+offset_right = 863.0
+offset_bottom = 464.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="TutorialButton" type="Button" parent="HBoxContainer" unique_id=1502273041]
+custom_minimum_size = Vector2(550, 185)
+custom_maximum_size = Vector2(543, 185)
+layout_mode = 2
+size_flags_vertical = 8
+offset_transform_enabled = true
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_15dw4")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pnh6m")
+theme_override_styles/hover = SubResource("StyleBoxFlat_64est")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d2vch")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
+text = "Tutorial"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1754505976]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="ReturnToHiveButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=311690369]
+custom_minimum_size = Vector2(550, 185)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_15dw4")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pnh6m")
+theme_override_styles/hover = SubResource("StyleBoxFlat_64est")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d2vch")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
+text = "Return to Hive"
+
+[node name="ExitToMenuButton" type="Button" parent="HBoxContainer" unique_id=2080896202]
+custom_minimum_size = Vector2(550, 185)
+custom_maximum_size = Vector2(543, 185)
+layout_mode = 2
+size_flags_vertical = 8
+offset_transform_enabled = true
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_15dw4")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_wnoys")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pnh6m")
+theme_override_styles/hover = SubResource("StyleBoxFlat_64est")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d2vch")
+text = "Exit to Menu"

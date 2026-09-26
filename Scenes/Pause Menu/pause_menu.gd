@@ -12,18 +12,22 @@ func _process(delta: float) -> void:
 
 
 func _on_tutorial_button_pressed() -> void:
+	#get_tree().change_scene_to_file("")
 	print("Tutorial Button Pressed") #checks if button pressed
 
 
 func _on_return_to_hive_button_pressed() -> void:
+	#get_tree().change_scene_to_file("")
 	print("Return to Hive Pressed") #checks if button pressed
 
 
 func _on_shop_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Shop Menu/shop_menu.tscn")
 	print("Shop Button Pressed") #checks if button pressed
 
 
 func _on_settings_button_pressed() -> void:
+	#get_tree().change_scene_to_file("")
 	print("Settings Button Pressed") #checks if button pressed
 
 
