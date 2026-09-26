@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cs3g61ya5mbjf"]
 
 [ext_resource type="Texture2D" uid="uid://bye53vepw8mcm" path="res://Assets/UI/basebackground.jpg" id="1_fmjrw"]
+[ext_resource type="Script" uid="uid://x336nssrhhfk" path="res://Scenes/Upgrade Menu/upgrade_menu.gd" id="1_n1hwu"]
 [ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="2_n1hwu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rl3j5"]
@@ -60,6 +61,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_n1hwu")
 
 [node name="Panel" type="Panel" parent="." unique_id=1720967923]
 layout_mode = 1
@@ -247,28 +249,8 @@ offset_bottom = 464.0
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
-theme_override_constants/separation = 45
+theme_override_constants/separation = 625
 alignment = 1
-
-[node name="TutorialButton" type="Button" parent="HBoxContainer" unique_id=1208769788]
-custom_minimum_size = Vector2(550, 185)
-custom_maximum_size = Vector2(543, 185)
-layout_mode = 2
-size_flags_vertical = 8
-offset_transform_enabled = true
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_n1hwu")
-theme_override_font_sizes/font_size = 90
-theme_override_styles/normal = SubResource("StyleBoxFlat_p8yim")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_bx2c6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qrdf8")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_v152s")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_nb41r")
-text = "Tutorial"
 
 [node name="ReturnToHiveButton" type="Button" parent="HBoxContainer" unique_id=1518319448]
 custom_minimum_size = Vector2(550, 185)
