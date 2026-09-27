@@ -25,12 +25,3 @@
 	"BODY" : null,
 	"EQUIPMENT" : null
 }
-
-
-
-
-@abstract func _ready() -> void
-
-@abstract func _process(dt: float) -> void
-
-@abstract func _physics_process(dt: float) -> void

@@ -8,7 +8,7 @@ class_name GameCamera extends Camera2D
 @export var pan_speed: float = 600.0
 @export var drag_speed: float = 1.0
 @export var zoom_step: float = 0.1
-@export var min_zoom: float = 0.2
+@export var min_zoom: float = 0.1
 @export var max_zoom: float = 2.5
 @export var select_radius: float = 24.0
 @export var click_drag_limit_px: float=8
@@ -82,8 +82,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				if not _left_down:
 					return
 				_left_down = false
-				if event.position.distance_to(_left_press_px) > click_drag_limit_px:
-					return
 				_scan_at_cursor()
 
 # Helper that changes zoom by amount, clamped to [min_zoom, max_zoom].

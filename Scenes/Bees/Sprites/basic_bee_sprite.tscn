@@ -1,13 +1,17 @@
 [gd_scene format=3 uid="uid://ck7e0oila0doj"]
 
 [ext_resource type="Texture2D" uid="uid://cwl0dq26xqcmh" path="res://Assets/Bees/Basic_Bee.png" id="1_ufvk2"]
-[ext_resource type="Script" uid="uid://bx1k6rtdmwpg2" path="res://Scripts/Bee_Sprite_Handler/Bee_Sprite_Handler.gd" id="2_ufvk2"]
+[ext_resource type="Script" uid="uid://b3kbvxanjh5cu" path="res://Scripts/Sprite_Handlers/Bee_Sprite_Handler.gd" id="2_ufvk2"]
 
-[node name="Basic_Bee_Sprite" type="Sprite2D" unique_id=379692132]
+[node name="Basic_Bee_Sprite" type="Sprite2D" unique_id=379692132 node_paths=PackedStringArray("left_eye", "left_pupil", "right_eye", "right_pupil")]
 texture = ExtResource("1_ufvk2")
 region_enabled = true
 region_rect = Rect2(0, 0, 172, 336)
 script = ExtResource("2_ufvk2")
+left_eye = NodePath("left_eye")
+left_pupil = NodePath("left_eye/left_pupil")
+right_eye = NodePath("right_eye")
+right_pupil = NodePath("right_eye/right_pupil")
 
 [node name="left_eye" type="Sprite2D" parent="." unique_id=823597589]
 position = Vector2(-40, -120)

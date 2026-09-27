@@ -1,28 +1,8 @@
-class_name Bee_Sprite_Handler extends Sprite2D
+class_name Bee_Sprite_Handler extends Sprite_Handler
 
-
-@onready var left_eye : Sprite2D = get_node_or_null("left_eye")
-@onready var left_pupil : Sprite2D = left_eye.get_node_or_null("left_pupil")
-@onready var right_eye : Sprite2D = get_node_or_null("right_eye")
-@onready var right_pupil : Sprite2D = right_eye.get_node_or_null("right_pupil")
 
 @onready var left_wing : Sprite2D = get_node_or_null("left_wing")
 @onready var right_wing : Sprite2D = get_node_or_null("right_wing")
-
-@export_group("Eye Movement")
-@export var eye_movement_factor : float = 10.0
-@export var eye_movement_speed : float = 10.0
-
-@onready var eye_dir : Vector2 = Vector2.ZERO
-@onready var target_eye_dir : Vector2 = Vector2.ZERO
-# Sets the eye positions based on a given dir. Use set_eye_dir for a smoother change.
-func update_eye_dir(dir) -> void:
-	left_pupil.position = dir * eye_movement_factor
-	right_pupil.position = left_pupil.position
-
-# Sets the target eye offset in px. This is relative to the bee, and isn't immediate.
-func set_eye_dir(dir : Vector2) -> void:
-	target_eye_dir = dir
 
 @export_group("Flap Animation")
 @export var flap_cooldown : float = 0.15
@@ -45,17 +25,15 @@ func play_flap_animation(strength : float = flap_strength) -> void:
 	wing_velocity += strength
 	flap_timer = flap_cooldown
 
-func update_wing_rotation(rotation : float = wing_rotation) -> void:
-	left_wing.rotation = rotation
-	right_wing.rotation = -rotation
-
+func update_wing_rotation(new_rotation : float = wing_rotation) -> void:
+	left_wing.rotation = new_rotation
+	right_wing.rotation = -new_rotation
 
 
 ## Active Functions
-func _ready() -> void:
-	update_eye_dir(eye_dir)
 
 func _physics_process(dt : float) -> void:
+	super._physics_process(dt)
 
 	# Spring physics to bring the wings back to rest (this is the flap animation)
 	if flap_timer > 0: flap_timer -= dt
@@ -70,9 +48,3 @@ func _physics_process(dt : float) -> void:
 	else:
 		random_flap_timer = randf_range(min_random_flap_time, max_random_flap_time)
 		play_flap_animation()
-
-	# Interplates the eyes
-	if (eye_dir - target_eye_dir).length() > 0.01:
-		eye_dir = lerp(eye_dir, target_eye_dir, dt * eye_movement_speed)
-		update_eye_dir(eye_dir)
-	

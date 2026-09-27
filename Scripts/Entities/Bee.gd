@@ -1,8 +1,6 @@
 class_name Bee extends Entity
 
-@export var sprite_handler : Bee_Sprite_Handler = get_node_or_null("Sprite")
-
-
+@onready var sprite_handler : Bee_Sprite_Handler = get_node("Sprite")
 
 
 func _ready() -> void:
@@ -40,7 +38,7 @@ func _physics_process(dt : float) -> void:
 				##apply_force(dif_to_bee * 5)
 		
 		## Sprite update
-		#the eye dir is relative, so we need to rotate the dif to be accuraet
+		#the eye dir is relative, so we need to rotate the dif to be accurate
 		sprite_handler.set_eye_dir(
 			-dif.normalized().rotated(-rotation)
 		)

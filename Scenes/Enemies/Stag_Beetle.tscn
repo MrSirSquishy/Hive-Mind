@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ch2xbnv128o8g"]
+
+[ext_resource type="Script" uid="uid://d28kf51v0ojnb" path="res://Scripts/Entities/Bee.gd" id="1_yntye"]
+[ext_resource type="PackedScene" uid="uid://3yilid712vsw" path="res://Scenes/Enemies/Stag_Beetle_Sprite.tscn" id="2_52s1y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tqty4"]
+radius = 114.0
+height = 594.0
+
+[node name="Stag_Beetle" type="RigidBody2D" unique_id=769899236]
+mass = 2.0
+gravity_scale = 0.0
+linear_damp = 5.0
+angular_damp = 10.0
+script = ExtResource("1_yntye")
+turn_speed = 80000000.0
+
+[node name="Sprite" parent="." unique_id=379692132 instance=ExtResource("2_52s1y")]
+position = Vector2(0, 80)
+
+[node name="Collider" type="CollisionShape2D" parent="." unique_id=1563849834]
+position = Vector2(0, 14)
+shape = SubResource("CapsuleShape2D_tqty4")
