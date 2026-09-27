@@ -24,18 +24,18 @@ func _physics_process(dt : float) -> void:
 		var dif : Vector2 = position - target_position
 		#Reduces the force applied as it approaches within the slowdown margin
 		var force_scale : float = clamp(0,  dif.length()/target_slowdown_margin, 1)
+
+		# The difference between the angle to the target and the current angle
+		var angleDif : float = wrapf(rotation - (-dif).angle() - PI/2, -PI, PI)
+		
+		# Reduces the force when the bee is not facing the target
+		force_scale *= clamp(0.5, 1 - abs(angleDif), 1)
+		
 		apply_force(-dif.normalized() * speed * force_scale)
 
 		## Turns to face direction of where it wants to go
-		var angleDif : float = wrapf(rotation - (-dif).angle() - PI/2, -PI, PI)
 		apply_torque(-clamp(angleDif, -1, 1)*dt * turn_speed)
 		
-		## Avoidance of other bees (not active)
-		#var nearby_entities : Array[Node2D] = awareness_area.get_overlapping_bodies()
-		#for entity in nearby_entities:
-			#if entity != self and entity is Bee:
-				#var dif_to_bee : Vector2 = position - entity.position
-				##apply_force(dif_to_bee * 5)
 		
 		## Sprite update
 		#the eye dir is relative, so we need to rotate the dif to be accurate

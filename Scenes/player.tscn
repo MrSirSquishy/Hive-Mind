@@ -6,6 +6,7 @@
 radius = 33.01515
 
 [node name="Player_Camera" type="Camera2D" unique_id=481572159]
+z_index = 100
 script = ExtResource("1_v0iea")
 
 [node name="Click_Area" type="Area2D" parent="." unique_id=549526406]

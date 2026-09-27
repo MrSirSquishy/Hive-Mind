@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://ch2xbnv128o8g"]
 
 [ext_resource type="Script" uid="uid://d28kf51v0ojnb" path="res://Scripts/Entities/Bee.gd" id="1_yntye"]
-[ext_resource type="PackedScene" uid="uid://3yilid712vsw" path="res://Scenes/Enemies/Stag_Beetle_Sprite.tscn" id="2_52s1y"]
+[ext_resource type="Texture2D" uid="uid://dr736jboxpiei" path="res://Assets/Bees/Stag_Beetle.svg" id="2_i4xi5"]
+[ext_resource type="Script" uid="uid://b3kbvxanjh5cu" path="res://Scripts/Sprite_Handlers/Bee_Sprite_Handler.gd" id="3_ugv6i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tqty4"]
 radius = 114.0
@@ -15,8 +16,78 @@ angular_damp = 10.0
 script = ExtResource("1_yntye")
 turn_speed = 80000000.0
 
-[node name="Sprite" parent="." unique_id=379692132 instance=ExtResource("2_52s1y")]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=379692132 node_paths=PackedStringArray("left_eye", "left_pupil", "right_eye", "right_pupil")]
 position = Vector2(0, 80)
+texture = ExtResource("2_i4xi5")
+region_enabled = true
+region_rect = Rect2(14, 14, 201, 362)
+script = ExtResource("3_ugv6i")
+left_eye = NodePath("head/left_eye")
+left_pupil = NodePath("head/left_eye/left_pupil")
+right_eye = NodePath("head/right_eye")
+right_pupil = NodePath("head/right_eye/right_pupil")
+
+[node name="head" type="Sprite2D" parent="Sprite" unique_id=820604328]
+position = Vector2(0, -210)
+texture = ExtResource("2_i4xi5")
+region_enabled = true
+region_rect = Rect2(14, 395, 262, 128)
+
+[node name="left_mandible" type="Sprite2D" parent="Sprite/head" unique_id=1052633021]
+z_index = -1
+position = Vector2(-50, -46)
+texture = ExtResource("2_i4xi5")
+offset = Vector2(-25, -135)
+region_enabled = true
+region_rect = Rect2(398, 8, 124, 309)
+
+[node name="left_mandible2" type="Sprite2D" parent="Sprite/head" unique_id=1641003907]
+z_index = -1
+position = Vector2(50, -46)
+texture = ExtResource("2_i4xi5")
+offset = Vector2(25, -135)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(398, 8, 124, 309)
+
+[node name="left_eye" type="Sprite2D" parent="Sprite/head" unique_id=2049014323]
+position = Vector2(-125, -10)
+texture = ExtResource("2_i4xi5")
+region_enabled = true
+region_rect = Rect2(229, 326, 49, 49)
+
+[node name="left_pupil" type="Sprite2D" parent="Sprite/head/left_eye" unique_id=1997481262]
+position = Vector2(0, -8)
+texture = ExtResource("2_i4xi5")
+region_enabled = true
+region_rect = Rect2(285, 326, 25, 24)
+
+[node name="right_eye" type="Sprite2D" parent="Sprite/head" unique_id=1945395670]
+position = Vector2(125, -10)
+texture = ExtResource("2_i4xi5")
+region_enabled = true
+region_rect = Rect2(229, 326, 49, 49)
+
+[node name="right_pupil" type="Sprite2D" parent="Sprite/head/right_eye" unique_id=69669150]
+position = Vector2(0, -8)
+texture = ExtResource("2_i4xi5")
+region_enabled = true
+region_rect = Rect2(285, 326, 25, 24)
+
+[node name="left_wing" type="Sprite2D" parent="Sprite" unique_id=1955052585]
+position = Vector2(-8, -40)
+texture = ExtResource("2_i4xi5")
+offset = Vector2(-51, 133)
+region_enabled = true
+region_rect = Rect2(242, 14, 134, 298)
+
+[node name="right_wing" type="Sprite2D" parent="Sprite" unique_id=741330546]
+position = Vector2(8, -40)
+texture = ExtResource("2_i4xi5")
+offset = Vector2(51, 133)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(242, 14, 134, 298)
 
 [node name="Collider" type="CollisionShape2D" parent="." unique_id=1563849834]
 position = Vector2(0, 14)

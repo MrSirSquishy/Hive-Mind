@@ -9,6 +9,7 @@
 
 [node name="Bee" parent="." unique_id=963782406 instance=ExtResource("1_w0ae3")]
 position = Vector2(385, 149)
+speed = 20000.0
 
 [node name="Bee3" parent="." unique_id=769899236 instance=ExtResource("1_w0ae3")]
 position = Vector2(735, 399)

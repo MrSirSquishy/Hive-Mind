@@ -12,7 +12,7 @@
 #How close it should be to the target_position to be considered reached
 @export var target_margin : float = 200
 #How close it should be to the target_position to begin slowing down
-@export var target_slowdown_margin : float = 500
+@export var target_slowdown_margin : float = 2000
 #The Area2D that defines what the bee is aware of/can see
 @export var awareness_area : Area2D = get_node_or_null("Awareness_Area")
 
