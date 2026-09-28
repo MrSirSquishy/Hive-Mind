@@ -2,9 +2,9 @@
 
 @export_enum("HEAD", "BODY", "EQUIPMENT") var upgrade_type : String = "BODY"
 
-@onready var parent : Entity = get_parent()
+@onready var entity : Entity = get_parent()
 func _ready():
-	assert(parent is Entity, "ERROR: " + str(self) + " has a parent that is not an Entity")
+	assert(entity is Entity, "ERROR: " + str(self) + " has a parent that is not an Entity")
 
 #Initializes the upgrade and it's components
 @abstract func init() -> void

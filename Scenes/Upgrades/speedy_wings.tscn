@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cxvvis1miubcl"]
+
+[ext_resource type="Script" uid="uid://cownc8l7fs3yx" path="res://Scripts/Upgrades/Speedy_Wings.gd" id="1_iwofx"]
+
+[node name="Speedy_Wings" type="Node2D" unique_id=1335170296]
+script = ExtResource("1_iwofx")

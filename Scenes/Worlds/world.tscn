@@ -1,18 +1,22 @@
 [gd_scene format=3 uid="uid://b4olyb7syewbi"]
 
 [ext_resource type="PackedScene" uid="uid://deai2dvakqpab" path="res://Scenes/Bees/bee.tscn" id="1_w0ae3"]
+[ext_resource type="PackedScene" uid="uid://cxvvis1miubcl" path="res://Scenes/Upgrades/speedy_wings.tscn" id="2_xg358"]
 [ext_resource type="PackedScene" uid="uid://b5ckg40dscnx" path="res://Scenes/Upgrades/gun_upgrade.tscn" id="2_y2sdx"]
 [ext_resource type="PackedScene" uid="uid://sm8ltq6jesgv" path="res://Scenes/player.tscn" id="3_y2sdx"]
 [ext_resource type="PackedScene" uid="uid://ch2xbnv128o8g" path="res://Scenes/Enemies/Stag_Beetle.tscn" id="4_cpkch"]
 
 [node name="World" type="Node2D" unique_id=1622916593]
 
+[node name="Player_Camera" parent="." unique_id=481572159 instance=ExtResource("3_y2sdx")]
+
 [node name="Bee" parent="." unique_id=963782406 instance=ExtResource("1_w0ae3")]
 position = Vector2(385, 149)
-speed = 20000.0
 
 [node name="Bee3" parent="." unique_id=769899236 instance=ExtResource("1_w0ae3")]
 position = Vector2(735, 399)
+
+[node name="Speedy_Wings" parent="Bee3" unique_id=1335170296 instance=ExtResource("2_xg358")]
 
 [node name="Bee4" parent="." unique_id=1641275165 instance=ExtResource("1_w0ae3")]
 position = Vector2(315, 314)
@@ -21,8 +25,6 @@ position = Vector2(315, 314)
 position = Vector2(-362, 281)
 
 [node name="Gun_Upgrade" parent="Bee2" unique_id=136030795 instance=ExtResource("2_y2sdx")]
-
-[node name="Player_Camera" parent="." unique_id=481572159 instance=ExtResource("3_y2sdx")]
 
 [node name="Stag_Beetle" parent="." unique_id=1076394322 instance=ExtResource("4_cpkch")]
 position = Vector2(-48, 531)
