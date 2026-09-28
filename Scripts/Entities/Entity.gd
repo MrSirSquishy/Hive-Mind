@@ -1,6 +1,7 @@
 @abstract class_name Entity extends RigidBody2D
 #Made as parent for Bee and Enemy classes
 
+@onready var sprite_handler : Sprite_Handler = get_node("Sprite")
 
 @export var health : float = 10.0
 

@@ -1,8 +1,5 @@
 class_name Bee extends Entity
 
-@onready var sprite_handler : Bee_Sprite_Handler = get_node("Sprite")
-
-
 func _ready() -> void:
 	#Initializes Upgrades
 	#doesn't check for duplicates, so only last one of same type is stored
@@ -49,9 +46,6 @@ func _physics_process(dt : float) -> void:
 			state = "IDLE"
 		
 		
-
-func _process(_dt: float) -> void:
-	pass
 
 
 ## Signals

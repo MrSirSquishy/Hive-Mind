@@ -25,7 +25,7 @@ class_name GameCamera extends Camera2D
 @onready var arrow_scale : float = 0
 
 @onready var click_area : Area2D = get_node("Click_Area")
-@onready var selected_entity : Entity = null
+@onready var selected_entities : Array[Entity] = []
 @onready var lock_on_selected : bool = false
 
 @onready var left_down: bool = false
@@ -60,8 +60,8 @@ func scan_at_cursor() -> void:
 			if closest_body == null or distance < closest_distance:
 				closest_body = body
 	
-	#Updates selected_entity, will be null if no bodies were within click range
-	selected_entity = closest_body
+	#Updates selected entity, will be null if no bodies were within click range
+	selected_entities = [closest_body]
 	
 	#If no bodies selected, then just emit the default click signal
 	if closest_body == null:
@@ -140,8 +140,15 @@ func _process(dt: float) -> void:
 	
 	# Scales and directs the display arrow
 	var target_scale : float = 0.0
-	if selected_entity:
-		var dif : Vector2 = get_global_mouse_position() - selected_entity.position
+	if selected_entities.size() > 0:
+		#Gets the target position, if only 1 entity then this is just the entities position
+		#If more than 1, it gets the average position(think center of mass)
+		var target_pos : Vector2 = Vector2.ZERO
+		for entity in selected_entities:
+			target_pos += entity.position
+		target_pos /= selected_entities.size()
+		
+		var dif : Vector2 = get_global_mouse_position() - target_pos
 		if dif.length() > distance_to_show_arrow:
 			#we only need to update the rotation if the arrow should be visible
 			arrow_angle = atan2(dif.y, dif.x) - PI/2
