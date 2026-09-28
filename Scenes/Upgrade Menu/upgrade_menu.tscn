@@ -159,6 +159,24 @@ text = "Hive Health"
 layout_mode = 2
 theme_override_constants/separation = 25
 
+[node name="BeeDefenseButton" type="Button" parent="HBoxContainer2/VBoxContainer2" unique_id=1620607616]
+custom_minimum_size = Vector2(0, 185)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_n1hwu")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_p8yim")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bx2c6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qrdf8")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_v152s")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nb41r")
+text = "Bee Defense"
+
 [node name="BeeDamageButton" type="Button" parent="HBoxContainer2/VBoxContainer2" unique_id=1915536602]
 custom_minimum_size = Vector2(0, 185)
 layout_mode = 2
@@ -177,45 +195,9 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_v152s")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nb41r")
 text = "Bee Damage"
 
-[node name="Bee_Upgrade_Button" type="Button" parent="HBoxContainer2/VBoxContainer2" unique_id=1620607616]
-custom_minimum_size = Vector2(0, 185)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_n1hwu")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_p8yim")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_bx2c6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qrdf8")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_v152s")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_nb41r")
-text = "Bee _upgrade_"
-
 [node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer2" unique_id=853000453]
 layout_mode = 2
 theme_override_constants/separation = 25
-
-[node name="BeeSpeedButton" type="Button" parent="HBoxContainer2/VBoxContainer3" unique_id=1579376271]
-custom_minimum_size = Vector2(0, 185)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_n1hwu")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_p8yim")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_bx2c6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qrdf8")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_v152s")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_nb41r")
-text = "Bee Speed"
 
 [node name="BeeHealthButton" type="Button" parent="HBoxContainer2/VBoxContainer3" unique_id=1635974899]
 custom_minimum_size = Vector2(0, 185)
@@ -234,6 +216,24 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_qrdf8")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_v152s")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nb41r")
 text = "Bee Health"
+
+[node name="BeeSpeedButton" type="Button" parent="HBoxContainer2/VBoxContainer3" unique_id=1579376271]
+custom_minimum_size = Vector2(0, 185)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_n1hwu")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_p8yim")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bx2c6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qrdf8")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_v152s")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nb41r")
+text = "Bee Speed"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=247387763]
 layout_mode = 1
@@ -288,3 +288,12 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_bx2c6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qrdf8")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_v152s")
 text = "Exit to Menu"
+
+[connection signal="pressed" from="HBoxContainer2/VBoxContainer/HiveDefenseButton" to="." method="_on_hive_defense_button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/VBoxContainer/HiveHealthButton" to="." method="_on_hive_health_button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/VBoxContainer2/BeeDefenseButton" to="." method="_on_bee_defense_button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/VBoxContainer2/BeeDamageButton" to="." method="_on_bee_damage_button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/VBoxContainer3/BeeHealthButton" to="." method="_on_bee_health_button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/VBoxContainer3/BeeSpeedButton" to="." method="_on_bee_speed_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ReturnToHiveButton" to="." method="_on_return_to_hive_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ExitToMenuButton" to="." method="_on_exit_to_menu_button_pressed"]

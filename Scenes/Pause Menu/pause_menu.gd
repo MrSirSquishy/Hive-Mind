@@ -28,7 +28,7 @@ func _on_shop_button_pressed() -> void:
 
 func _on_settings_button_pressed() -> void:
 	#get_tree().change_scene_to_file("")
-	print("Settings Button Pressed") #checks if button pressed
+	print("Point to Settings") #checks if button pressed
 
 
 func _on_exit_to_menu_button_pressed() -> void:
