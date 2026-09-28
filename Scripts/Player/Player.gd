@@ -111,7 +111,7 @@ func _ready() -> void:
 func _process(dt: float) -> void:
 		
 	#Adjusts the position and scale of the click area to the camera and mouse
-	click_area.position = get_global_mouse_position()
+	click_area.position = get_local_mouse_position()
 	click_area.scale = Vector2.ONE * clamp(0.01 , 1 / zoom.x, 10000)
 	
 	# Start with no movement; we add direction below based on keys held.
