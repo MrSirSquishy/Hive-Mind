@@ -61,7 +61,10 @@ func scan_at_cursor() -> void:
 				closest_body = body
 	
 	#Updates selected entity, will be null if no bodies were within click range
-	selected_entities = [closest_body]
+	if closest_body != null:
+		selected_entities = [closest_body]
+	else:
+		selected_entities = []
 	
 	#If no bodies selected, then just emit the default click signal
 	if closest_body == null:
@@ -115,7 +118,7 @@ func _process(dt: float) -> void:
 	click_area.scale = Vector2.ONE * clamp(0.01 , 1 / zoom.x, 10000)
 	
 	# Start with no movement; we add direction below based on keys held.
-	var move_dir := Vector2.ZERO
+	var move_dir : Vector2 = Vector2.ZERO
 	# In Godot 2D, -y is UP and +y is DOWN, -x is LEFT and +x is RIGHT.
 	# Input.is_key_pressed is true the whole time a key is held down.
 	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
@@ -144,7 +147,7 @@ func _process(dt: float) -> void:
 		#Gets the target position, if only 1 entity then this is just the entities position
 		#If more than 1, it gets the average position(think center of mass)
 		var target_pos : Vector2 = Vector2.ZERO
-		for entity in selected_entities:
+		for entity : Entity in selected_entities:
 			target_pos += entity.position
 		target_pos /= selected_entities.size()
 		
