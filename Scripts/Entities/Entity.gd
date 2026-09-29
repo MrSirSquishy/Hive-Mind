@@ -26,3 +26,22 @@
 	"BODY" : null,
 	"EQUIPMENT" : null
 }
+
+var is_dead : bool = false
+
+## Damage
+#anything that can hurt should go through here so it all behaves the same
+func take_damage(amount : float) -> void:
+	if is_dead:
+		return
+	health -= amount
+	if health <= 0.0:
+		die()
+
+#call this instead of queue_free, Game_Manager counts entity_died
+func die() -> void:
+	if is_dead:
+		return
+	is_dead = true
+	Signal_Bus.entity_died.emit(self)
+	queue_free()

@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://b5ckg40dscnx" path="res://Scenes/Upgrades/gun_upgrade.tscn" id="2_y2sdx"]
 [ext_resource type="PackedScene" uid="uid://sm8ltq6jesgv" path="res://Scenes/player.tscn" id="3_y2sdx"]
 [ext_resource type="PackedScene" uid="uid://ch2xbnv128o8g" path="res://Scenes/Enemies/Stag_Beetle.tscn" id="4_cpkch"]
+[ext_resource type="Script" path="res://Scripts/Waves/wave_runner.gd" id="5_wave"]
+[ext_resource type="Script" path="res://Scripts/Waves/WaveData.gd" id="6_wdat"]
+[ext_resource type="Resource" path="res://Scenes/Waves/wave_1.tres" id="7_w001"]
 
 [node name="World" type="Node2D" unique_id=1622916593]
 
@@ -28,3 +31,7 @@ position = Vector2(-362, 281)
 
 [node name="Stag_Beetle" parent="." unique_id=1076394322 instance=ExtResource("4_cpkch")]
 position = Vector2(-48, 531)
+
+[node name="WaveRunner" type="Node" parent="."]
+script = ExtResource("5_wave")
+waves = Array[ExtResource("6_wdat")]([ExtResource("7_w001")])
