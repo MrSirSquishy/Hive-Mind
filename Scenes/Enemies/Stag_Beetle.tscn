@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ch2xbnv128o8g"]
 
-[ext_resource type="Script" uid="uid://d28kf51v0ojnb" path="res://Scripts/Entities/Bee.gd" id="1_yntye"]
+[ext_resource type="Script" uid="uid://bay4tfftwmsex" path="res://Scripts/Entities/Enemy.gd" id="1_yntye"]
 [ext_resource type="Texture2D" uid="uid://dr736jboxpiei" path="res://Assets/Bees/Stag_Beetle.svg" id="2_i4xi5"]
 [ext_resource type="Script" uid="uid://b3kbvxanjh5cu" path="res://Scripts/Sprite_Handlers/Bee_Sprite_Handler.gd" id="3_ugv6i"]
 
