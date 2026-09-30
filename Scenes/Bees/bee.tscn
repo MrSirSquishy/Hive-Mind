@@ -9,13 +9,14 @@ radius = 67.0
 height = 270.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1fhm7"]
-radius = 1090.0459
+radius = 4000.0
 
 [node name="Bee" type="RigidBody2D" unique_id=769899236 node_paths=PackedStringArray("awareness_area")]
 gravity_scale = 0.0
 linear_damp = 4.0
 angular_damp = 10.0
 script = ExtResource("1_7u0a5")
+team = "BEE"
 awareness_area = NodePath("Awareness_Area")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=379692132 node_paths=PackedStringArray("left_eye", "left_pupil", "right_eye", "right_pupil")]
@@ -24,19 +25,10 @@ texture = ExtResource("2_2vuk8")
 region_enabled = true
 region_rect = Rect2(0, 0, 172, 336)
 script = ExtResource("3_cb1ku")
-flap_cooldown = null
-flap_spring_force = null
-flap_inverse_dampening = null
-flap_strength = null
-max_flap_rotation = null
-min_random_flap_time = null
-max_random_flap_time = null
 left_eye = NodePath("left_eye")
 left_pupil = NodePath("left_eye/left_pupil")
 right_eye = NodePath("right_eye")
 right_pupil = NodePath("right_eye/right_pupil")
-eye_movement_factor = null
-eye_movement_speed = null
 
 [node name="left_eye" type="Sprite2D" parent="Sprite" unique_id=823597589]
 position = Vector2(-40, -120)

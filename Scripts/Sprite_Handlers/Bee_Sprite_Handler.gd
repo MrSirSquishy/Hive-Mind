@@ -19,7 +19,7 @@ class_name Bee_Sprite_Handler extends Sprite_Handler
 @onready var flap_timer : float = 0.0
 @onready var wing_rotation : float = 0.0
 @onready var wing_velocity : float = 0.0
-#Just sets the velocity of the wing and the spring force is the animation
+## Just sets the velocity of the wing and the spring force is the animation
 func play_flap_animation(strength : float = flap_strength) -> Bee_Sprite_Handler:
 	if flap_timer > 0 or abs(wing_rotation) >= max_flap_rotation: return
 	wing_velocity += strength

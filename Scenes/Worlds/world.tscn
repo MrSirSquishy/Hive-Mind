@@ -22,9 +22,12 @@ position = Vector2(735, 399)
 position = Vector2(315, 314)
 
 [node name="Bee2" parent="." unique_id=1938065690 instance=ExtResource("1_w0ae3")]
-position = Vector2(-362, 281)
+position = Vector2(-26, 371)
 
 [node name="Gun_Upgrade" parent="Bee2" unique_id=136030795 instance=ExtResource("2_y2sdx")]
 
 [node name="Stag_Beetle" parent="." unique_id=1076394322 instance=ExtResource("4_cpkch")]
-position = Vector2(-48, 531)
+position = Vector2(-208, -5532)
+
+[node name="Stag_Beetle2" parent="." unique_id=403534108 instance=ExtResource("4_cpkch")]
+position = Vector2(-5989, -169)

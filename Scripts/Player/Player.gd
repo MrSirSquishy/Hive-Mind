@@ -57,7 +57,7 @@ func scan_at_cursor() -> void:
 	for body : PhysicsBody2D in bodies:
 		if body is Entity:
 			var distance : float = (body.position - mouse_pos).length()
-			if closest_body == null or distance < closest_distance:
+			if not closest_body or distance < closest_distance:
 				closest_body = body
 	
 	#Updates selected entity, will be null if no bodies were within click range

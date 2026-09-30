@@ -8,13 +8,18 @@
 radius = 114.0
 height = 594.0
 
-[node name="Stag_Beetle" type="RigidBody2D" unique_id=769899236]
+[sub_resource type="CircleShape2D" id="CircleShape2D_i4xi5"]
+radius = 10000.0
+
+[node name="Stag_Beetle" type="RigidBody2D" unique_id=769899236 node_paths=PackedStringArray("awareness_area")]
 mass = 2.0
 gravity_scale = 0.0
 linear_damp = 5.0
 angular_damp = 10.0
 script = ExtResource("1_yntye")
+team = "ENEMY"
 turn_speed = 80000000.0
+awareness_area = NodePath("Awareness_Area")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=379692132 node_paths=PackedStringArray("left_eye", "left_pupil", "right_eye", "right_pupil")]
 position = Vector2(0, 80)
@@ -92,3 +97,10 @@ region_rect = Rect2(242, 14, 134, 298)
 [node name="Collider" type="CollisionShape2D" parent="." unique_id=1563849834]
 position = Vector2(0, 14)
 shape = SubResource("CapsuleShape2D_tqty4")
+
+[node name="Awareness_Area" type="Area2D" parent="." unique_id=348862669]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Awareness_Area" unique_id=2002402789]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_i4xi5")

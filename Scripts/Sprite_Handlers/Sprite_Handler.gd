@@ -14,12 +14,12 @@ class_name Sprite_Handler extends Sprite2D
 
 @onready var eye_dir : Vector2 = Vector2.ZERO
 @onready var target_eye_dir : Vector2 = Vector2.ZERO
-# Sets the eye positions based on a given dir. Use set_eye_dir for a smoother change.
+## Sets the eye positions based on a given dir. Use set_eye_dir for a smoother change.
 func update_eye_dir(dir : Vector2) -> void:
 	left_pupil.position = dir * eye_movement_factor
 	right_pupil.position = left_pupil.position
 
-# Sets the target eye offset in px. This is relative to the bee, and isn't immediate.
+## Sets the target eye offset in px. This is relative to the bee, and isn't immediate.
 func set_eye_dir(dir : Vector2) -> Sprite_Handler:
 	target_eye_dir = dir
 	return self
