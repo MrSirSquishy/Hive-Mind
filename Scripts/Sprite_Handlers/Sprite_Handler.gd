@@ -20,9 +20,11 @@ func update_eye_dir(dir : Vector2) -> void:
 	right_pupil.position = left_pupil.position
 
 # Sets the target eye offset in px. This is relative to the bee, and isn't immediate.
-func set_eye_dir(dir : Vector2) -> void:
+func set_eye_dir(dir : Vector2) -> Sprite_Handler:
 	target_eye_dir = dir
+	return self
 
+	
 
 
 ## Active Functions

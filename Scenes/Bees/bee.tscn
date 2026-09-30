@@ -24,10 +24,19 @@ texture = ExtResource("2_2vuk8")
 region_enabled = true
 region_rect = Rect2(0, 0, 172, 336)
 script = ExtResource("3_cb1ku")
+flap_cooldown = null
+flap_spring_force = null
+flap_inverse_dampening = null
+flap_strength = null
+max_flap_rotation = null
+min_random_flap_time = null
+max_random_flap_time = null
 left_eye = NodePath("left_eye")
 left_pupil = NodePath("left_eye/left_pupil")
 right_eye = NodePath("right_eye")
 right_pupil = NodePath("right_eye/right_pupil")
+eye_movement_factor = null
+eye_movement_speed = null
 
 [node name="left_eye" type="Sprite2D" parent="Sprite" unique_id=823597589]
 position = Vector2(-40, -120)
