@@ -6,10 +6,15 @@ func _ready() -> void:
 	var child_upgrades : Array[Node] = find_children("", "Upgrade")
 	for upgrade : Upgrade in child_upgrades:
 		upgrades[upgrade.upgrade_type] = upgrade
-		upgrade.init()
+		upgrade.init(self)
 	
 
 func _physics_process(dt : float) -> void:
+	
+	for upgrade_type : String in upgrades:
+		var upgrade : Upgrade = upgrades[upgrade_type]
+		if upgrade:
+			upgrade.physics_process_upgrade(self, dt)
 	
 	if state == "IDLE":
 		#State Changing

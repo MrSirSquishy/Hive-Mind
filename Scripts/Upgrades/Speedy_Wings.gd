@@ -14,7 +14,7 @@ extends Upgrade
 @onready var left_wing_copy : Sprite2D
 @onready var right_wing_copy : Sprite2D
 
-func init():
+func init(entity : Entity) -> void:
 	var sprite : Sprite_Handler = entity.sprite_handler
 	entity.speed *= speed_multipler
 	left_wing_copy = sprite.left_wing.duplicate()
@@ -28,14 +28,14 @@ func init():
 	sprite.min_random_flap_time *= wing_flap_random_multipler
 	sprite.max_random_flap_time *= wing_flap_random_multipler
 
-func _physics_process(_dt : float):
+func physics_process_upgrade(entity : Entity, dt : float) -> void:
 	if not left_wing_copy: return
 	
 	left_wing_copy.rotation = -entity.sprite_handler.left_wing.rotation
 	right_wing_copy.rotation = -left_wing_copy.rotation
 	
 	
-func exit():
+func exit(entity : Entity) -> void:
 	left_wing_copy.reparent(self)
 	right_wing_copy.reparent(self)
 	entity.speed /= speed_multipler

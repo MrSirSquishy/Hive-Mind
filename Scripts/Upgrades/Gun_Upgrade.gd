@@ -2,8 +2,8 @@ extends Upgrade
 
 @onready var gun_sprite : Sprite2D = get_node_or_null("gun_sprite")
 
-func init() -> void:
+func init(entity : Entity) -> void:
 	gun_sprite.reparent(entity.sprite_handler)
 
-func exit() -> void:
+func exit(entity : Entity) -> void:
 	gun_sprite.reparent(self)
