@@ -1,6 +1,5 @@
 class_name Bee_Sprite_Handler extends Sprite_Handler
 
-
 @onready var left_wing : Sprite2D = get_node_or_null("left_wing")
 @onready var right_wing : Sprite2D = get_node_or_null("right_wing")
 

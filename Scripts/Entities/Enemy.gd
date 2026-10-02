@@ -2,7 +2,7 @@ class_name Enemy extends Entity
 
 signal died
 # tells game manager "im dead" then removes itself
-func die():
+func kill():
 	died.emit()
 	queue_free()
 

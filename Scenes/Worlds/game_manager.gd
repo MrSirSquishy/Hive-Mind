@@ -4,7 +4,7 @@ const BEE = preload("res://Scenes/Bees/bee.tscn")
 const ENEMY = preload("res://Scenes/Enemies/Stag_Beetle.tscn")
 
 const BEE_MIDDLE = Vector2(0, 0)
-const ENEMY_CORNER = Vector2(-800, -500) # corner of the starting view
+const ENEMY_CORNER = Vector2(-4500, -3000) # corner of the starting view
 
 var alive = 0
 

@@ -3,9 +3,13 @@
 
 
 @onready var sprite_handler : Sprite_Handler = get_node("Sprite")
+@onready var animations : AnimationPlayer = get_node_or_null("Animations")
 
 ##Default Bee has 10.0 health for refernce
 @export var health : float = 10.0
+
+##This determines the approximate "size" (in px) of the entity for things like distance and closeness calculations. Default Bee 150 px for reference
+@export var radius : float = 150
 
 ##The team this entity is a part of, for example, "BEES" or "ENEMIES" Entities will attack non-team members
 @export var team : String = "NONE"
@@ -24,6 +28,9 @@
 ##The Area2D that defines what the bee is aware of/can see
 @export var awareness_area : Area2D = get_node_or_null("Awareness_Area")
 
+@export_subgroup("Combat")
+##How close to be to the target entity before attacking(note it takes into account the radius of each entity)
+@export var attack_distance : float = 50
 
 @onready var target_position : Vector2 = position
 
@@ -35,6 +42,15 @@
 
 
 ## Functions
+
+func damage(damage : float):
+	health -= damage
+	if health <= 0:
+		kill()
+
+func kill():
+	queue_free()
+		
 
 ## Moves to target_position if outside of it's margin
 func move_to_target(target : Vector2, dt : float):
