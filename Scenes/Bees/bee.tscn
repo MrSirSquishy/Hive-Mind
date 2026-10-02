@@ -4,20 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cwl0dq26xqcmh" path="res://Assets/Bees/Basic_Bee.png" id="2_2vuk8"]
 [ext_resource type="Script" uid="uid://b3kbvxanjh5cu" path="res://Scripts/Sprite_Handlers/Bee_Sprite_Handler.gd" id="3_cb1ku"]
 
-[sub_resource type="Animation" id="Animation_2vuk8"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
 [sub_resource type="Animation" id="Animation_cb1ku"]
 resource_name = "Spin"
 tracks/0/type = "bezier"
@@ -27,15 +13,112 @@ tracks/0/path = NodePath("..:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Attack_Box:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.032548424, 0.1095797, 0.23434865),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, -45), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Attack_Box/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.03333334, 0.1, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Attack_Box:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.032548424, 0.1095797, 0.23434865),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(1.8, 1.8), Vector2(1, 1)]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.13333334, 2.0730274, 6.283, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.5)
 }
 
+[sub_resource type="Animation" id="Animation_2vuk8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Attack_Box:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Attack_Box/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Attack_Box:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ybg51"]
 _data = {
-&"RESET": SubResource("Animation_2vuk8"),
-&"Spin": SubResource("Animation_cb1ku")
+&"Attack": SubResource("Animation_cb1ku"),
+&"RESET": SubResource("Animation_2vuk8")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tqty4"]
@@ -45,13 +128,15 @@ height = 270.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_1fhm7"]
 radius = 4000.0
 
-[node name="Bee" type="RigidBody2D" unique_id=769899236 node_paths=PackedStringArray("awareness_area")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ucr06"]
+radius = 100.0
+
+[node name="Bee" type="RigidBody2D" unique_id=769899236]
 gravity_scale = 0.0
 linear_damp = 4.0
 angular_damp = 10.0
 script = ExtResource("1_7u0a5")
 team = "BEE"
-awareness_area = NodePath("Awareness_Area")
 
 [node name="Animations" type="AnimationPlayer" parent="." unique_id=604469912]
 root_node = NodePath("../Sprite")
@@ -118,3 +203,9 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Awareness_Area" unique_id=1613177572]
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_1fhm7")
+
+[node name="Attack_Box" type="Area2D" parent="." unique_id=1414349149]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Box" unique_id=1356078809]
+shape = SubResource("CircleShape2D_ucr06")
+disabled = true

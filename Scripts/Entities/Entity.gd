@@ -2,9 +2,6 @@
 @abstract class_name Entity extends RigidBody2D
 
 
-@onready var sprite_handler : Sprite_Handler = get_node("Sprite")
-@onready var animations : AnimationPlayer = get_node_or_null("Animations")
-
 ##Default Bee has 10.0 health for refernce
 @export var health : float = 10.0
 
@@ -25,12 +22,17 @@
 @export var target_margin : float = 200
 ##How close it should be to the target_position to begin slowing down
 @export var target_slowdown_margin : float = 2000
-##The Area2D that defines what the bee is aware of/can see
-@export var awareness_area : Area2D = get_node_or_null("Awareness_Area")
 
 @export_subgroup("Combat")
 ##How close to be to the target entity before attacking(note it takes into account the radius of each entity)
 @export var attack_distance : float = 50
+
+
+@onready var sprite_handler : Sprite_Handler = get_node("Sprite")
+@onready var animations : AnimationPlayer = get_node_or_null("Animations")
+@onready var attack_box : Area2D = get_node_or_null("Attack_Box")
+##The Area2D that defines what the bee is aware of/can see
+@onready var awareness_area : Area2D = get_node_or_null("Awareness_Area")
 
 @onready var target_position : Vector2 = position
 
@@ -101,15 +103,28 @@ func _physics_process(dt : float) -> void:
 			if not target_entity or (target_entity.position - position).length() > (entity.position - position).length():
 				target_entity = entity
 	
+	
 	if target_entity:
 		target_position = target_entity.position
+		var dif : Vector2 = position - target_position
+
+		#Attacks when in range
+		if dif.length() - radius - target_entity.radius <= attack_distance:
+			if animations and animations.has_animation("Attack"):
+				animations.play("Attack")
+		
+		if attack_box:
+			for entity : PhysicsBody2D in attack_box.get_overlapping_bodies():
+				if entity is Entity and entity.team != team:
+					entity.damage(1)
+		
 	
-	## Updates eye look direction
-	#the eye dir is relative, so we need to rotate the dif to be accurate
-	var dif : Vector2 = position - target_position
-	sprite_handler.set_eye_dir(
-		-dif.normalized().rotated(-rotation)
-	)
+		## Updates eye look direction
+		#the eye dir is relative, so we need to rotate the dif to be accurate
+		
+		sprite_handler.set_eye_dir(
+			-dif.normalized().rotated(-rotation)
+		)
 	
 	
 
