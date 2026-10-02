@@ -4,6 +4,66 @@
 [ext_resource type="Texture2D" uid="uid://dr736jboxpiei" path="res://Assets/Bees/Stag_Beetle.svg" id="2_i4xi5"]
 [ext_resource type="Script" uid="uid://b3kbvxanjh5cu" path="res://Scripts/Sprite_Handlers/Bee_Sprite_Handler.gd" id="3_ugv6i"]
 
+[sub_resource type="Animation" id="Animation_i4xi5"]
+resource_name = "Attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Attack_Box:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Attack_Box:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ugv6i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Attack_Box:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Attack_Box:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i4xi5"]
+_data = {
+&"Attack": SubResource("Animation_i4xi5"),
+&"RESET": SubResource("Animation_ugv6i")
+}
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tqty4"]
 radius = 114.0
 height = 594.0
@@ -11,15 +71,22 @@ height = 594.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_i4xi5"]
 radius = 10000.0
 
-[node name="Stag_Beetle" type="RigidBody2D" unique_id=769899236 node_paths=PackedStringArray("awareness_area")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_muhgi"]
+radius = 100.0
+
+[node name="Stag_Beetle" type="RigidBody2D" unique_id=769899236]
 mass = 2.0
 gravity_scale = 0.0
 linear_damp = 5.0
 angular_damp = 10.0
 script = ExtResource("1_yntye")
+radius = 300.0
 team = "ENEMY"
 turn_speed = 80000000.0
-awareness_area = NodePath("Awareness_Area")
+
+[node name="Animations" type="AnimationPlayer" parent="." unique_id=303797970]
+root_node = NodePath("../Sprite")
+libraries/ = SubResource("AnimationLibrary_i4xi5")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=379692132 node_paths=PackedStringArray("left_eye", "left_pupil", "right_eye", "right_pupil")]
 position = Vector2(0, 80)
@@ -46,7 +113,7 @@ offset = Vector2(-25, -135)
 region_enabled = true
 region_rect = Rect2(398, 8, 124, 309)
 
-[node name="left_mandible2" type="Sprite2D" parent="Sprite/head" unique_id=1641003907]
+[node name="right_mandible" type="Sprite2D" parent="Sprite/head" unique_id=1641003907]
 z_index = -1
 position = Vector2(50, -46)
 texture = ExtResource("2_i4xi5")
@@ -104,3 +171,9 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Awareness_Area" unique_id=2002402789]
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_i4xi5")
+
+[node name="Attack_Box" type="Area2D" parent="." unique_id=1014159259]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Box" unique_id=274986398]
+shape = SubResource("CircleShape2D_muhgi")
+disabled = true
