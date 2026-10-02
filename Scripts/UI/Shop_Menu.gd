@@ -1,9 +1,12 @@
 extends Control
 
+@onready var honey_label: Label = $HoneyLabel
+@export var cost_hat: int = 7
+@export var cost_equip1: int = 4
+@export var cost_equip2: int = 5
+@export var cost_face: int = 2
+@export var cost_shoes: int = 5
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -11,17 +14,32 @@ func _process(delta: float) -> void:
 	pass
 
 
+func _ready() -> void:
+	Honey_Manager.honey_changed.connect(_on_honey_changed)
+	_on_honey_changed(Honey_Manager.honey)
+	
+
+func _on_honey_changed(new_amount: int) -> void:
+	honey_label.text = "Honey: %d" % new_amount
+	
+
 func _on_return_to_hive_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Worlds/world.tscn")
 	print("Return to Hive Pressed") #checks if button pressed
 
 
 func _on_exit_to_menu_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Main Menu/main_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/UI/main_menu.tscn")
 	print("Exit to Main Menu Pressed") #checks if button pressed
 
 
 func _on_hat_button_pressed() -> void:
+	if Honey_Manager.spend_money(cost_hat):
+		print("Purchased, give the bee a hat")
+	else:
+		print("Not enough money, sorry!")
+	
+	
 	print("Give the Bee a Hat") #checks if button pressed
 
 

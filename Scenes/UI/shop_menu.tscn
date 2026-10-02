@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dcycnd014e36e"]
 
-[ext_resource type="Script" uid="uid://bf6qtjv6ak3x6" path="res://Scenes/Shop Menu/shop_menu.gd" id="1_15dw4"]
+[ext_resource type="Script" uid="uid://bf6qtjv6ak3x6" path="res://Scripts/UI/Shop_Menu.gd" id="1_15dw4"]
 [ext_resource type="Texture2D" uid="uid://bye53vepw8mcm" path="res://Assets/UI/basebackground.jpg" id="1_sr1qk"]
 [ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="2_15dw4"]
 
@@ -71,6 +71,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_sl732")
+
+[node name="HoneyLabel" type="Label" parent="." unique_id=291002553]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -534.0
+offset_bottom = 151.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.6117647, 0.6117647, 0.6117647, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("2_15dw4")
+theme_override_font_sizes/font_size = 100
+text = "Honey Amount"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="." unique_id=1851367227]
 layout_mode = 1

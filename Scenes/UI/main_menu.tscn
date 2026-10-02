@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://v7vnln14bhmp"]
 
-[ext_resource type="Script" uid="uid://l57fwusmjsso" path="res://Scenes/Main Menu/main_menu.gd" id="1_7xkbd"]
-[ext_resource type="Texture2D" uid="uid://bye53vepw8mcm" path="res://Assets/UI/basebackground.jpg" id="2_y0aff"]
-[ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="3_fr3p2"]
+[ext_resource type="Script" uid="uid://l57fwusmjsso" path="res://Scripts/UI/Main_Menu.gd" id="1_o14dv"]
+[ext_resource type="Texture2D" uid="uid://bye53vepw8mcm" path="res://Assets/UI/basebackground.jpg" id="2_u7lva"]
+[ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="3_mrfpk"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wjnhd"]
-texture = ExtResource("2_y0aff")
+texture = ExtResource("2_u7lva")
 modulate_color = Color(0.5132329, 0.5132329, 0.5132329, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7xkbd"]
@@ -62,7 +62,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7xkbd")
+script = ExtResource("1_o14dv")
 
 [node name="Panel" type="Panel" parent="." unique_id=489200455]
 layout_mode = 1
@@ -101,7 +101,7 @@ theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_fr3p2")
+theme_override_fonts/font = ExtResource("3_mrfpk")
 theme_override_font_sizes/font_size = 90
 theme_override_styles/normal = SubResource("StyleBoxFlat_7xkbd")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mvxm8")
@@ -123,7 +123,7 @@ theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_fr3p2")
+theme_override_fonts/font = ExtResource("3_mrfpk")
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_7xkbd")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_46knf")
@@ -141,7 +141,7 @@ theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_fr3p2")
+theme_override_fonts/font = ExtResource("3_mrfpk")
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_7xkbd")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mvxm8")
@@ -159,7 +159,7 @@ theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_fr3p2")
+theme_override_fonts/font = ExtResource("3_mrfpk")
 theme_override_font_sizes/font_size = 90
 theme_override_styles/normal = SubResource("StyleBoxFlat_7xkbd")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mvxm8")
@@ -179,7 +179,7 @@ theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_fr3p2")
+theme_override_fonts/font = ExtResource("3_mrfpk")
 theme_override_font_sizes/font_size = 90
 theme_override_styles/normal = SubResource("StyleBoxFlat_7xkbd")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mvxm8")
@@ -205,7 +205,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.6117647, 0.6117647, 0.6117647, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 4
-theme_override_fonts/font = ExtResource("3_fr3p2")
+theme_override_fonts/font = ExtResource("3_mrfpk")
 theme_override_font_sizes/font_size = 265
 text = "Hive Mind"
 horizontal_alignment = 1
