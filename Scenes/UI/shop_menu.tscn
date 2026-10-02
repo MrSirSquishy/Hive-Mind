@@ -238,34 +238,11 @@ offset_transform_enabled = true
 theme_override_constants/separation = 45
 alignment = 1
 
-[node name="TutorialButton" type="Button" parent="HBoxContainer" unique_id=1502273041]
-custom_minimum_size = Vector2(550, 185)
-custom_maximum_size = Vector2(543, 185)
-layout_mode = 2
-size_flags_vertical = 8
-offset_transform_enabled = true
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_15dw4")
-theme_override_font_sizes/font_size = 90
-theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pnh6m")
-theme_override_styles/hover = SubResource("StyleBoxFlat_64est")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d2vch")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
-text = "Tutorial"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1754505976]
-layout_mode = 2
-theme_override_constants/separation = 45
-
-[node name="ReturnToHiveButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=311690369]
+[node name="ReturnToHiveButton" type="Button" parent="HBoxContainer" unique_id=311690369]
 custom_minimum_size = Vector2(550, 185)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 2
+size_flags_vertical = 10
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -284,6 +261,7 @@ text = "Return to Hive"
 custom_minimum_size = Vector2(550, 185)
 custom_maximum_size = Vector2(543, 185)
 layout_mode = 2
+size_flags_horizontal = 8
 size_flags_vertical = 8
 offset_transform_enabled = true
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -304,6 +282,5 @@ text = "Exit to Menu"
 [connection signal="pressed" from="HBoxContainer2/EquipmentButton2" to="." method="_on_equipment_button_2_pressed"]
 [connection signal="pressed" from="HBoxContainer2/FaceButton" to="." method="_on_face_button_pressed"]
 [connection signal="pressed" from="HBoxContainer2/ShoesButton" to="." method="_on_shoes_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/ReturnToHiveButton" to="." method="_on_return_to_hive_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ReturnToHiveButton" to="." method="_on_return_to_hive_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/ExitToMenuButton" to="." method="_on_exit_to_menu_button_pressed"]

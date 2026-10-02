@@ -183,3 +183,31 @@ func _draw() -> void:
 	#Draws Arrow
 	draw_set_transform(get_global_mouse_position() - position, current_angle, Vector2.ONE * arrow_scale / zoom.x)
 	draw_polygon(arrowDimensions, [Color.WHITE])
+
+
+
+
+##User Interface Buttons taking the user to different menus
+func _on_tutorial_button_pressed() -> void:
+	#get_tree().change_scene_to_file("")
+	print("Point to Tutorial") #checks if button pressed
+
+func _on_settings_button_pressed() -> void:
+	#get_tree().change_scene_to_file("")
+	print("Point to Settings") #checks if button pressed
+
+func _on_shop_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/UI/shop_menu.tscn")
+	print("Shop Button Pressed") #checks if button pressed
+
+func _on_upgrade_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/UI/Upgrade Menu/upgrade_menu.tscn")
+	print("Upgrade Button Pressed") #checks if button pressed
+
+func _on_pause_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/UI/pause_menu.tscn")
+	print("Pause Menu Pressed") #checks if button pressed
+
+func _on_cheats_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/UI/cheat_menu.tscn")
+	print("Cheats Pressed") #checks if button pressed
