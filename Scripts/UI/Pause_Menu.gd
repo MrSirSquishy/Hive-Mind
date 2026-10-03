@@ -7,6 +7,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Honey_Manager.honey_changed.connect(_on_honey_changed)
 	_on_honey_changed(Honey_Manager.honey)
 	
