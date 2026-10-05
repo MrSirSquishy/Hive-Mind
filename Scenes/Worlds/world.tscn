@@ -52,8 +52,6 @@ zoom = Vector2(0.2, 0.2)
 [node name="UI" type="Control" parent="Player_Camera" unique_id=1142430634]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 script = ExtResource("2_xg358")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Player_Camera/UI" unique_id=1953401252]
