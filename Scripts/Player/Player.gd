@@ -79,14 +79,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		var right_held: bool = Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
 		if middle_held or right_held:
 			position -= event.relative * drag_speed / zoom.x
-			return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
 			apply_zoom(zoom_step)
-			return
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
 			apply_zoom(-zoom_step)
-			return
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				left_down = true
