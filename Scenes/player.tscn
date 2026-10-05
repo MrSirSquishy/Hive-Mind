@@ -101,8 +101,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=951966991]
-custom_maximum_size = Vector2(1920, -1)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 60
 alignment = 1
