@@ -1,9 +1,65 @@
 [gd_scene format=3 uid="uid://sm8ltq6jesgv"]
 
 [ext_resource type="Script" uid="uid://c26vs5hxqu5kr" path="res://Scripts/Player/Player.gd" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://di3wyrxcr2gat" path="res://Scripts/UI/ui.gd" id="2_6t5aa"]
+[ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="3_vgqql"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1fhm7"]
 radius = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkybt"]
+bg_color = Color(0.6862745, 0.5529412, 0.14117648, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 16.0
+expand_margin_top = 16.0
+expand_margin_right = 16.0
+expand_margin_bottom = 16.0
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3wgy"]
+bg_color = Color(0.5882353, 0.47058824, 0.11372549, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 16.0
+expand_margin_top = 16.0
+expand_margin_right = 16.0
+expand_margin_bottom = 16.0
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3smsa"]
+bg_color = Color(0.4745098, 0.3764706, 0.08627451, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 16.0
+expand_margin_top = 16.0
+expand_margin_right = 16.0
+expand_margin_bottom = 16.0
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8erm5"]
+bg_color = Color(0.5882353, 0.47058824, 0.11372549, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 16.0
+expand_margin_top = 16.0
+expand_margin_right = 16.0
+expand_margin_bottom = 16.0
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f1ek2"]
 
 [node name="Player_Camera" type="Camera2D" unique_id=481572159]
 z_index = 100
@@ -15,3 +71,148 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Click_Area" unique_id=170401929]
 shape = SubResource("CircleShape2D_1fhm7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1031975891]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=658938828]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+script = ExtResource("2_6t5aa")
+
+[node name="HoneyLabel" type="Label" parent="CanvasLayer/MarginContainer" unique_id=1678423020]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.6117647, 0.6117647, 0.6117647, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("3_vgqql")
+theme_override_font_sizes/font_size = 60
+text = "Honey Amount"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=951966991]
+custom_maximum_size = Vector2(1920, -1)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="TutorialButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=142237452]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_vgqql")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_fkybt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wgy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3smsa")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
+text = "Tutorial"
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=1815943838]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_vgqql")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_fkybt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wgy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3smsa")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ek2")
+text = "Settings"
+
+[node name="ShopButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=2121471403]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_vgqql")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_fkybt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wgy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3smsa")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ek2")
+text = "Shop
+"
+
+[node name="UpgradeButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=1041295964]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_vgqql")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_fkybt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wgy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3smsa")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ek2")
+text = "Upgrades
+"
+
+[node name="PauseButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=251437277]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_vgqql")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_fkybt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wgy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3smsa")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ek2")
+text = "Pause"
+
+[node name="CheatsButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=1948833965]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_vgqql")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_fkybt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wgy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3smsa")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ek2")
+text = "Cheats!!"
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/CheatsButton" to="." method="_on_cheats_button_pressed"]

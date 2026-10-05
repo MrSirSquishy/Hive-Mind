@@ -1,15 +1,10 @@
 [gd_scene format=3 uid="uid://b4olyb7syewbi"]
 
-[ext_resource type="PackedScene" uid="uid://u453tp0l0fg7" path="res://Scenes/UI/Game_UI.tscn" id="1_cpkch"]
 [ext_resource type="PackedScene" uid="uid://sm8ltq6jesgv" path="res://Scenes/player.tscn" id="3_y2sdx"]
 [ext_resource type="Texture2D" uid="uid://bs747eygmefwb" path="res://Assets/Hive/hive.webp" id="5_hive"]
 [ext_resource type="Script" uid="uid://caviwso8kttjp" path="res://Scenes/Worlds/game_manager.gd" id="6_ohl8q"]
 
 [node name="World" type="Node2D" unique_id=1622916593]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1737438135]
-
-[node name="UI" parent="CanvasLayer" unique_id=216048315 instance=ExtResource("1_cpkch")]
 
 [node name="Player_Camera" parent="." unique_id=481572159 instance=ExtResource("3_y2sdx")]
 zoom = Vector2(0.2, 0.2)
