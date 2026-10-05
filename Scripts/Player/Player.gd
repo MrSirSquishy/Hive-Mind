@@ -145,7 +145,10 @@ func _process(dt: float) -> void:
 		#If more than 1, it gets the average position(think center of mass)
 		var target_pos : Vector2 = Vector2.ZERO
 		for entity : Entity in selected_entities:
-			target_pos += entity.position
+			if is_instance_valid(entity):
+				target_pos += entity.position
+			else:
+				selected_entities.erase(entity)
 		target_pos /= selected_entities.size()
 		
 		var dif : Vector2 = get_global_mouse_position() - target_pos
