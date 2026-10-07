@@ -167,7 +167,7 @@ angular_damp = 10.0
 script = ExtResource("1_7u0a5")
 health = 20.0
 team = "BEE"
-attack_damage = 2.0
+attack_damage = 3.0
 
 [node name="Animations" type="AnimationPlayer" parent="." unique_id=604469912]
 root_node = NodePath("../Sprite")

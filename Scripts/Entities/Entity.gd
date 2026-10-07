@@ -22,7 +22,7 @@
 ##How close it should be to the target_position to begin slowing down
 @export var target_slowdown_margin : float = 2000
 
-@export_subgroup("Combat")
+@export_group("Combat")
 ##How close to be to the target entity before attacking(note it takes into account the radius of each entity)
 @export var attack_distance : float = 50
 @export var attack_damage : float = 1.0
@@ -69,9 +69,10 @@ func damage(damage : float, source_identifier : String, i_frames : float) -> voi
 		kill()
 		return
 	
-	
 
+signal died
 func kill():
+	died.emit()
 	queue_free()
 		
 
