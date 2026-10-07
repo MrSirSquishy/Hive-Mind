@@ -58,15 +58,16 @@ func damage(damage : float, source_identifier : String, i_frames : float) -> voi
 	#If not found, then continue with the attack and add start the i_frames
 	i_frame_dictionary.set(source_identifier, i_frames)
 	
+	#Plays a flash to indicate getting hit
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "modulate", Color.WHITE * 3, 0.05)
+	tween.tween_property(self, "modulate", Color.WHITE, 0.1)
+	
 	#The actual damage dealing
 	health -= damage
 	if health <= 0:
 		kill()
 		return
-	
-	#Damage effects/animation
-	#if animations and animations.has_animation("Damage"):
-		#animations.play("Damage")
 	
 	
 
