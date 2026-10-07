@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://sm8ltq6jesgv" path="res://Scenes/player.tscn" id="3_y2sdx"]
 [ext_resource type="Script" uid="uid://biupyo5mtjo83" path="res://Scripts/Entities/Hive.gd" id="4_cpkch"]
-[ext_resource type="Texture2D" uid="uid://bs747eygmefwb" path="res://Assets/Hive/hive.webp" id="5_hive"]
+[ext_resource type="Texture2D" uid="uid://0onwaiep0v5n" path="res://Assets/Hive/HiveLVL1.svg" id="4_xg358"]
 [ext_resource type="Script" uid="uid://caviwso8kttjp" path="res://Scenes/Worlds/game_manager.gd" id="6_ohl8q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xg358"]
@@ -20,7 +20,7 @@ script = ExtResource("6_ohl8q")
 script = ExtResource("4_cpkch")
 
 [node name="Sprite" type="Sprite2D" parent="Hive" unique_id=1663204284]
-texture = ExtResource("5_hive")
+texture = ExtResource("4_xg358")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hive" unique_id=1006990924]
 shape = SubResource("CircleShape2D_xg358")
