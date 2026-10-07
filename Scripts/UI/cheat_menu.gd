@@ -28,4 +28,4 @@ func _on_exit_to_menu_button_pressed() -> void:
 
 
 func _on_honey_button_pressed() -> void:
-	Honey_Manager.add_money(1000)
+	Honey_Manager.add_honey(1000)

@@ -35,10 +35,10 @@ func _on_exit_to_menu_button_pressed() -> void:
 
 
 func _on_hat_button_pressed() -> void:
-	if Honey_Manager.spend_money(cost_hat):
+	if Honey_Manager.spend_honey(cost_hat):
 		print("Purchased, give the bee a hat")
 	else:
-		print("Not enough money, sorry!")
+		print("Not enough honey, sorry!")
 	
 	
 	print("Give the Bee a Hat") #checks if button pressed

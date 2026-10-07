@@ -1,4 +1,7 @@
 class_name Enemy extends Entity
+@export var honey_on_kill: int = 10 #needed for honey addition 
+#(needs to be different for different enemies eventually)
+
 var is_dead = false
 signal died
 # tells game manager "im dead" then removes itself
@@ -8,6 +11,7 @@ func kill():
 	
 	is_dead = true
 	died.emit()
+	Honey_Manager.add_honey(honey_on_kill)
 	queue_free()
 
 func _ready():

@@ -8,12 +8,12 @@ var honey: int = 0:
 		honey_changed.emit(honey)
 
 
-func add_money(amount: int) -> void:
+func add_honey(amount: int) -> void:
 	if amount > 0:
 		honey += amount
 
 
-func spend_money(amount: int) -> bool:
+func spend_honey(amount: int) -> bool:
 	if honey >= amount:
 		honey -= amount
 		return true
