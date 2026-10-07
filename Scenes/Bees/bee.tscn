@@ -65,6 +65,22 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.5)
 }
 
+[sub_resource type="Animation" id="Animation_ybg51"]
+resource_name = "Damage"
+length = 0.13333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1.353256, 1.353256, 1.353256, 1), Color(4.415934, 4.415934, 4.415934, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_2vuk8"]
 length = 0.001
 tracks/0/type = "value"
@@ -114,10 +130,23 @@ tracks/3/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ybg51"]
 _data = {
 &"Attack": SubResource("Animation_cb1ku"),
+&"Damage": SubResource("Animation_ybg51"),
 &"RESET": SubResource("Animation_2vuk8")
 }
 
@@ -136,7 +165,9 @@ gravity_scale = 0.0
 linear_damp = 4.0
 angular_damp = 10.0
 script = ExtResource("1_7u0a5")
+health = 20.0
 team = "BEE"
+attack_damage = 2.0
 
 [node name="Animations" type="AnimationPlayer" parent="." unique_id=604469912]
 root_node = NodePath("../Sprite")
@@ -209,3 +240,4 @@ shape = SubResource("CircleShape2D_1fhm7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Box" unique_id=1356078809]
 shape = SubResource("CircleShape2D_ucr06")
 disabled = true
+debug_color = Color(0.9490196, 0.14117648, 0.45882353, 0.41960785)

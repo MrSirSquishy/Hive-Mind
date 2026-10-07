@@ -1,6 +1,5 @@
-## Made as parent for Bee and Enemy classes
 @abstract class_name Entity extends RigidBody2D
-
+## Made as parent for Bee and Enemy classes
 
 ##Default Bee has 10.0 health for refernce
 @export var health : float = 10.0
@@ -26,15 +25,17 @@
 @export_subgroup("Combat")
 ##How close to be to the target entity before attacking(note it takes into account the radius of each entity)
 @export var attack_distance : float = 50
-
+@export var attack_damage : float = 1.0
+@export var attack_i_frames : float = 0.2
 
 @onready var sprite_handler : Sprite_Handler = get_node("Sprite")
 @onready var animations : AnimationPlayer = get_node_or_null("Animations")
-@onready var attack_box : Area2D = get_node_or_null("Attack_Box")
 ##The Area2D that defines what the bee is aware of/can see
 @onready var awareness_area : Area2D = get_node_or_null("Awareness_Area")
+@onready var attack_box : Area2D = get_node_or_null("Attack_Box")
 
 @onready var target_position : Vector2 = position
+@onready var i_frame_dictionary : Dictionary[String, float] = {}
 
 @onready var upgrades : Dictionary = {
 	"HEAD" : null,
@@ -42,13 +43,32 @@
 	"EQUIPMENT" : null
 }
 
-
 ## Functions
 
-func damage(damage : float):
+## inflicts damage on the entity.
+## [br]
+## source_identifier and i_frames are to specify the local i_frames for an 
+## entity or attack, defined by source_identifier. If the i_frames for the
+## source_identifier aren't up, the entity does not take damage.
+func damage(damage : float, source_identifier : String, i_frames : float) -> void:
+	#checks if the i frames for the source are up, it not, no damage
+	for source in i_frame_dictionary:
+		if source == source_identifier:
+			return
+	#If not found, then continue with the attack and add start the i_frames
+	i_frame_dictionary.set(source_identifier, i_frames)
+	
+	#The actual damage dealing
 	health -= damage
 	if health <= 0:
 		kill()
+		return
+	
+	#Damage effects/animation
+	#if animations and animations.has_animation("Damage"):
+		#animations.play("Damage")
+	
+	
 
 func kill():
 	queue_free()
@@ -88,6 +108,13 @@ func _ready() -> void:
 
 func _physics_process(dt : float) -> void:
 	
+	# Updates all sets of i_frames:
+	for source in i_frame_dictionary:
+		i_frame_dictionary[source] -= dt
+		# removes the i_frames if it's up
+		if i_frame_dictionary[source] <= 0:
+			i_frame_dictionary.erase(source)
+	
 	# Runs upgrades
 	for upgrade_type : String in upgrades:
 		var upgrade : Upgrade = upgrades[upgrade_type]
@@ -116,7 +143,7 @@ func _physics_process(dt : float) -> void:
 		if attack_box:
 			for entity : PhysicsBody2D in attack_box.get_overlapping_bodies():
 				if entity is Entity and entity.team != team:
-					entity.damage(1)
+					entity.damage(attack_damage, self.to_string(), attack_i_frames)
 		
 	
 		## Updates eye look direction
