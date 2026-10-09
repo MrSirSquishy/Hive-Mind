@@ -8,5 +8,5 @@
 #Prepares to upgrade to be removed
 @abstract func exit(entity : Entity) -> void
 
-func physics_process_upgrade(entity : Entity, dt : float) -> void:
+func physics_process_upgrade(_entity : Entity, _dt : float) -> void:
 	pass

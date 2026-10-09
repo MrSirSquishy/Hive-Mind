@@ -33,7 +33,7 @@ func damage(amount: float) -> void:
 		heal(-amount)
 		return
 
-	var actual_damage := amount * (1.0 - damage_reduction)
+	var actual_damage : float =  amount * (1.0 - damage_reduction)
 	health = max(health - actual_damage, 0.0)
 	##for ui
 	damaged.emit(actual_damage)

@@ -52,12 +52,12 @@ func scan_at_cursor() -> void:
 	var mouse_pos : Vector2 = get_global_mouse_position()
 	
 	#Gets the closest body to the cursor within the selection if there are more than one
-	var closest_body : PhysicsBody2D
+	var closest_body : PhysicsBody2D = null
 	var closest_distance : float = -1
 	for body : PhysicsBody2D in bodies:
 		if body is Entity:
 			var distance : float = (body.position - mouse_pos).length()
-			if not closest_body or distance < closest_distance:
+			if closest_body == null or distance < closest_distance:
 				closest_body = body
 	
 	#Updates selected entity, will be null if no bodies were within click range

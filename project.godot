@@ -23,6 +23,7 @@ Honey_Manager="*uid://ds4lm1gwxrwvq"
 
 [debug]
 
+gdscript/warnings/unused_signal=0
 gdscript/warnings/untyped_declaration=1
 gdscript/warnings/inferred_declaration=1
 
