@@ -59,6 +59,13 @@ expand_margin_bottom = 16.0
 shadow_size = 5
 shadow_offset = Vector2(0, 4)
 
+[sub_resource type="GDScript" id="GDScript_6t5aa"]
+script/source = "extends Button
+
+func _pressed():
+	Signal_Bus.skip_wave.emit()
+"
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f1ek2"]
 
 [node name="Player_Camera" type="Camera2D" unique_id=481572159]
@@ -75,6 +82,8 @@ shape = SubResource("CircleShape2D_1fhm7")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1031975891]
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=658938828]
+z_index = 1
+z_as_relative = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -87,6 +96,7 @@ theme_override_constants/margin_bottom = 32
 script = ExtResource("2_6t5aa")
 
 [node name="HoneyLabel" type="Label" parent="CanvasLayer/MarginContainer" unique_id=1678423020]
+z_as_relative = false
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -100,7 +110,29 @@ text = "Honey Amount"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Skip_Wave" type="Button" parent="CanvasLayer/MarginContainer" unique_id=564467214]
+z_as_relative = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(-500, 0)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_vgqql")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_fkybt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wgy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3smsa")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
+text = "Skip Wave"
+script = SubResource("GDScript_6t5aa")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=951966991]
+z_as_relative = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -108,6 +140,7 @@ theme_override_constants/separation = 60
 alignment = 1
 
 [node name="TutorialButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=142237452]
+z_as_relative = false
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -124,6 +157,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
 text = "Tutorial"
 
 [node name="SettingsButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=1815943838]
+z_as_relative = false
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -141,6 +175,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ek2")
 text = "Settings"
 
 [node name="ShopButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=2121471403]
+z_as_relative = false
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -159,6 +194,7 @@ text = "Shop
 "
 
 [node name="UpgradeButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=1041295964]
+z_as_relative = false
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -177,6 +213,7 @@ text = "Upgrades
 "
 
 [node name="PauseButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=251437277]
+z_as_relative = false
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -194,6 +231,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ek2")
 text = "Pause"
 
 [node name="CheatsButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=1948833965]
+z_as_relative = false
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)

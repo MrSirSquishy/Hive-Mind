@@ -17,10 +17,12 @@ const BEE_MIDDLE = Vector2(0, 0)
 
 @export var waves_between_shops = 5
 @export var max_bees = 4
-var alive = 0
-var wave_count = 0
-var enemy_count = 2
-var bee_count = 0
+
+@onready var alive = 0
+@onready var wave_count = 0
+@onready var enemy_count = 2
+@onready var bee_count = 0
+@onready var is_wave_waiting : bool = false
 
 func _ready():
 	await get_tree().process_frame # wait for World to finish loading
@@ -38,6 +40,9 @@ func spawn_bees(amount):
 		bee_count += 1
 
 func spawn_wave():
+	is_wave_waiting = false
+	Signal_Bus.hide_skip_wave_button.emit()
+	
 	wave_count += 1
 	enemy_count += 1
 	alive = enemy_count
@@ -60,8 +65,19 @@ func on_enemy_died():
 		if missing_bees > 0:
 			spawn_bees(missing_bees)
 	
+	is_wave_waiting = true
+	Signal_Bus.show_skip_wave_button.emit()
 	await get_tree().create_timer(delay_between_waves).timeout
-	spawn_wave()
+	if is_wave_waiting:
+		spawn_wave()
 		
 func on_bee_died():
 	bee_count -= 1
+
+## Signals
+func _init():
+	Signal_Bus.skip_wave.connect(_skip_wave)
+
+func _skip_wave():
+	if is_wave_waiting:
+		spawn_wave()

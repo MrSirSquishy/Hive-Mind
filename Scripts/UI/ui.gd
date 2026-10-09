@@ -12,3 +12,20 @@ func _ready() -> void:
 
 func _on_honey_changed(new_amount: int) -> void:
 	honey_label.text = "Honey: %d" % new_amount
+
+
+@onready var skip_wave: Button = $Skip_Wave
+
+## Signals
+func _init():
+	Signal_Bus.show_skip_wave_button.connect(_show_skip_wave_button)
+	Signal_Bus.hide_skip_wave_button.connect(_hide_skip_wave_button)
+	
+func _show_skip_wave_button():
+	var tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
+	tween.tween_property(skip_wave, "offset_transform_position", Vector2(0, 0), 1)
+	
+
+func _hide_skip_wave_button():
+	var tween = get_tree().create_tween()
+	tween.tween_property(skip_wave, "offset_transform_position", Vector2(-500, 0), 0.5)
