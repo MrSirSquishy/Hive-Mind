@@ -117,6 +117,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, -200)
+offset_transform_visual_only = false
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -139,6 +140,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 offset_transform_enabled = true
 offset_transform_position = Vector2(-500, 0)
+offset_transform_visual_only = false
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -150,7 +152,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_fkybt")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wgy")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3smsa")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
-text = "Skip Wave"
+text = "Skip To Next Wave"
 script = SubResource("GDScript_6t5aa")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=951966991]

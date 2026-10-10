@@ -19,6 +19,9 @@ class_name GameCamera extends Camera2D
 @export var arrow_height : float = 32
 # How far away from the selected entity the mouse needs to be to display arrow
 @export var distance_to_show_arrow : float = 300
+# How big the circle around the selected entity should be
+@export var selection_circle_radius : float = 100
+@export var selection_circle_thickness : float = 5
 
 @onready var arrow_angle : float  = 0.0
 @onready var current_angle : float = 0.0
@@ -26,6 +29,7 @@ class_name GameCamera extends Camera2D
 
 @onready var click_area : Area2D = get_node("Click_Area")
 @onready var selected_entities : Array[Entity] = []
+@onready var target_pos : Vector2 = Vector2.ZERO
 @onready var lock_on_selected : bool = false
 
 @onready var left_down: bool = false
@@ -140,15 +144,19 @@ func _process(dt: float) -> void:
 	
 	# Scales and directs the display arrow
 	var target_scale : float = 0.0
+	target_pos = Vector2.ZERO
 	if selected_entities.size() > 0:
+		
+		#Removes any invalid entities from array(for example ones that have been freed)
+		@warning_ignore("untyped_declaration")
+		selected_entities = selected_entities.filter(
+			func(entity) -> bool: 
+				return is_instance_valid(entity)
+		)
 		#Gets the target position, if only 1 entity then this is just the entities position
 		#If more than 1, it gets the average position(think center of mass)
-		var target_pos : Vector2 = Vector2.ZERO
 		for entity : Entity in selected_entities:
-			if is_instance_valid(entity):
-				target_pos += entity.position
-			else:
-				selected_entities.erase(entity)
+			target_pos += entity.position
 		target_pos /= selected_entities.size()
 		
 		var dif : Vector2 = get_global_mouse_position() - target_pos
@@ -177,12 +185,21 @@ func _process(dt: float) -> void:
 @export var crosshairThickness : float = 4.0
 
 func _draw() -> void:
-	draw_set_transform(get_global_mouse_position() - position, current_angle, Vector2.ONE / zoom.x)
+	draw_set_transform(get_global_mouse_position() - position, 0, Vector2.ONE / zoom.x)
 	draw_circle(Vector2.ZERO, crosshairRadius, Color.WHITE, false, crosshairThickness, true)
 
 	#Draws Arrow
 	draw_set_transform(get_global_mouse_position() - position, current_angle, Vector2.ONE * arrow_scale / zoom.x)
 	draw_polygon(arrowDimensions, [Color.WHITE])
+	
+	if selected_entities.size() > 0:
+		draw_set_transform(target_pos - position, 0, Vector2.ONE)
+		draw_circle(
+			Vector2.ZERO, 
+			selection_circle_radius/zoom.x, 
+			Color.WHITE, false, 
+			selection_circle_thickness/zoom.x, true
+		)
 
 
 

@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://caviwso8kttjp" path="res://Scenes/Worlds/game_manager.gd" id="6_ohl8q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xg358"]
-radius = 150.0
+radius = 281.11386
 
 [node name="World" type="Node2D" unique_id=1622916593]
 
@@ -20,7 +20,10 @@ script = ExtResource("6_ohl8q")
 script = ExtResource("4_cpkch")
 
 [node name="Sprite" type="Sprite2D" parent="Hive" unique_id=1663204284]
+scale = Vector2(5, 5)
 texture = ExtResource("4_xg358")
+region_enabled = true
+region_rect = Rect2(216, 89, 220, 99)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hive" unique_id=1006990924]
 shape = SubResource("CircleShape2D_xg358")
