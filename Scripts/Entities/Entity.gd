@@ -50,11 +50,13 @@
 ## source_identifier and i_frames are to specify the local i_frames for an 
 ## entity or attack, defined by source_identifier. If the i_frames for the
 ## source_identifier aren't up, the entity does not take damage.
-func damage(damage_amount : float, source_identifier : String, i_frames : float) -> void:
+## [br]
+## Returns weather or not the attack managed to hit
+func damage(damage_amount : float, source_identifier : String, i_frames : float) -> bool:
 	#checks if the i frames for the source are up, it not, no damage
 	for source : String in i_frame_dictionary:
 		if source == source_identifier:
-			return
+			return false
 	#If not found, then continue with the attack and add start the i_frames
 	i_frame_dictionary.set(source_identifier, i_frames)
 	
@@ -67,7 +69,8 @@ func damage(damage_amount : float, source_identifier : String, i_frames : float)
 	health -= damage_amount
 	if health <= 0:
 		kill()
-		return
+	
+	return true
 	
 
 signal died
@@ -145,7 +148,9 @@ func _physics_process(dt : float) -> void:
 		if attack_box:
 			for entity : PhysicsBody2D in attack_box.get_overlapping_bodies():
 				if entity is Entity and entity.team != team:
-					entity.damage(attack_damage, self.to_string(), attack_i_frames)
+					if entity.damage(attack_damage, self.to_string(), attack_i_frames):
+						#Triggers cam shake at this entities position with the attack
+						Signal_Bus.trigger_cam_shake.emit(20, position)
 		
 	
 		## Updates eye look direction

@@ -35,7 +35,6 @@ class_name GameCamera extends Camera2D
 @onready var left_down: bool = false
 @onready var left_press_px: Vector2 = Vector2.ZERO
 
-
 # Helper that changes zoom by amount, clamped to [min_zoom, max_zoom].
 # The leading underscore is a convention meaning "private to this file".
 func apply_zoom(amount: float) -> void:
@@ -74,6 +73,31 @@ func scan_at_cursor() -> void:
 	if closest_body == null:
 		Signal_Bus.world_clicked.emit(mouse_pos)
 	
+	
+	
+## Camera Shaking
+
+@export var cam_shake_distance_falloff : float = 4000.0
+@export var cam_shake_fade_multiplier : float = 2.0
+
+@onready var shake_strength : float = 0.0
+
+func _trigger_cam_shake(strength : float, target_position : Vector2) -> void:
+	var distance : float = (position - target_position).length()
+	#Strength falls off with distance and zoom
+	shake_strength = strength * zoom.x * (1 - min(distance/cam_shake_distance_falloff, 1))
+
+func process_cam_shake(dt: float) -> void:
+	# Fades out
+	shake_strength = lerp(shake_strength, 0.0, cam_shake_fade_multiplier * dt)
+	# Shake by adjusting camera.offset so we can move the camera around the level via it's position
+	offset = Vector2(
+		randf_range(-shake_strength, shake_strength),
+		randf_range(-shake_strength, shake_strength)
+	)
+
+
+
 
 
 ## Input Handler
@@ -110,9 +134,13 @@ func _ready() -> void:
 	position_smoothing_enabled = false
 	# Higher number = catches up faster. 8 is a calm RTS feel.
 	position_smoothing_speed = 8.0
+	
+	Signal_Bus.trigger_cam_shake.connect(_trigger_cam_shake)
 
 
 func _process(dt: float) -> void:
+	
+	process_cam_shake(dt)
 		
 	#Adjusts the position and scale of the click area to the camera and mouse
 	click_area.position = get_local_mouse_position()

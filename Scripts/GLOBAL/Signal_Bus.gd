@@ -4,6 +4,8 @@ extends Node
 
 signal world_clicked(global_position : Vector2)
 
+signal trigger_cam_shake(strength : float, position : Vector2)
+
 #Emit to immediately trigger next wave
 signal skip_wave()
 signal show_skip_wave_button()
