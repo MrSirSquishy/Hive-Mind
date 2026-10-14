@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://bsku2web0nrvv"]
+
+[ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="2_m5n5x"]
+[ext_resource type="Texture2D" uid="uid://0khnpo75ka8h" path="res://Assets/UI/Heart.svg" id="3_tkrkt"]
+[ext_resource type="Texture2D" uid="uid://bn7jtqcte8hlu" path="res://Assets/UI/Shield.svg" id="4_s6uxk"]
+[ext_resource type="Texture2D" uid="uid://bh7v815ykvvaa" path="res://Assets/UI/Sword.svg" id="5_t2uhb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ny7u"]
+bg_color = Color(0.63462025, 0.58511096, 0.23065636, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kus7j"]
+bg_color = Color(0.6862745, 0.5529412, 0.14117648, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5sjxm"]
+bg_color = Color(0.5866053, 0.4713083, 0.1156018, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gr1qe"]
+bg_color = Color(0.5882353, 0.47058824, 0.11372549, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ayyi"]
+
+[node name="BeeSubMenu" type="Control" unique_id=448386306]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=977724173]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 28.0
+offset_right = 885.0
+offset_bottom = 1052.0
+alignment = 1
+
+[node name="BeeName" type="Label" parent="VBoxContainer" unique_id=546519135]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.6117647, 0.6117647, 0.6117647, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("2_m5n5x")
+theme_override_font_sizes/font_size = 165
+text = "Beeatirce"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthInfoContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1862364050]
+layout_mode = 2
+
+[node name="HeartIcon" type="TextureRect" parent="VBoxContainer/HealthInfoContainer" unique_id=1111013634]
+layout_mode = 2
+offset_transform_enabled = true
+texture = ExtResource("3_tkrkt")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HealthLabel" type="Label" parent="VBoxContainer/HealthInfoContainer" unique_id=917748418]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.6117647, 0.6117647, 0.6117647, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("2_m5n5x")
+theme_override_font_sizes/font_size = 165
+text = "HeathAmt"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefenseInfoContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=17198980]
+layout_mode = 2
+
+[node name="DefenseIcon" type="TextureRect" parent="VBoxContainer/DefenseInfoContainer" unique_id=192852402]
+layout_mode = 2
+offset_transform_enabled = true
+texture = ExtResource("4_s6uxk")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="DefenseLabel" type="Label" parent="VBoxContainer/DefenseInfoContainer" unique_id=1497140204]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.6117647, 0.6117647, 0.6117647, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("2_m5n5x")
+theme_override_font_sizes/font_size = 165
+text = "DefenseAmt"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackInfoContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1054053423]
+layout_mode = 2
+
+[node name="AttackIcon" type="TextureRect" parent="VBoxContainer/AttackInfoContainer" unique_id=1301179811]
+layout_mode = 2
+offset_transform_enabled = true
+texture = ExtResource("5_t2uhb")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="AttackLabel" type="Label" parent="VBoxContainer/AttackInfoContainer" unique_id=2005819466]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.6117647, 0.6117647, 0.6117647, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("2_m5n5x")
+theme_override_font_sizes/font_size = 165
+text = "AttackAmt"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=1835232704]
+layout_mode = 2
+theme_override_constants/separation = 45
+alignment = 2
+
+[node name="BeeUpgradeButton" type="Button" parent="VBoxContainer/VBoxContainer" unique_id=1371328236]
+custom_minimum_size = Vector2(0, 185)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_m5n5x")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ny7u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kus7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5sjxm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_gr1qe")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6ayyi")
+text = "Upgrade"
+
+[node name="CloseBeeMenuButton" type="Button" parent="VBoxContainer/VBoxContainer" unique_id=1849775646]
+custom_minimum_size = Vector2(0, 185)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_m5n5x")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ny7u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kus7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5sjxm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_gr1qe")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6ayyi")
+text = "Close"
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/BeeUpgradeButton" to="." method="_on_bee_upgrade_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/CloseBeeMenuButton" to="." method="_on_close_bee_menu_button_pressed"]
