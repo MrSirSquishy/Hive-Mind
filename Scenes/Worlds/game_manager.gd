@@ -63,7 +63,7 @@ func spawn_wave() -> void:
 	Signal_Bus.hide_skip_wave_button.emit()
 	
 	wave_count += 1
-	enemy_count += 10
+	enemy_count += 1
 	alive = enemy_count
 	for i : int in enemy_count:
 		var enemy : Enemy = ENEMY.instantiate()
