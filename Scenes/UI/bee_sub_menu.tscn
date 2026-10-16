@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bsku2web0nrvv"]
 
+[ext_resource type="Script" uid="uid://dedts6rg4ipts" path="res://Scripts/UI/Bee_Sub_Menu.gd" id="1_l1a1m"]
 [ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="2_m5n5x"]
 [ext_resource type="Texture2D" uid="uid://0khnpo75ka8h" path="res://Assets/UI/Heart.svg" id="3_tkrkt"]
 [ext_resource type="Texture2D" uid="uid://bn7jtqcte8hlu" path="res://Assets/UI/Shield.svg" id="4_s6uxk"]
@@ -45,14 +46,21 @@ shadow_offset = Vector2(0, 4)
 
 [node name="BeeSubMenu" type="Control" unique_id=448386306]
 layout_mode = 3
-anchors_preset = 0
+anchor_top = -0.136
+anchor_bottom = -0.136
+offset_left = 66.0
+offset_top = -590.12
+offset_right = 66.0
+offset_bottom = -576.12
+script = ExtResource("1_l1a1m")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=977724173]
 layout_mode = 0
 offset_left = 110.0
 offset_top = 28.0
 offset_right = 885.0
-offset_bottom = 1052.0
+offset_bottom = 991.0
+scale = Vector2(0.44, 0.44)
 alignment = 1
 
 [node name="BeeName" type="Label" parent="VBoxContainer" unique_id=546519135]

@@ -24,7 +24,12 @@ const ENEMY : PackedScene = preload("res://Scenes/Enemies/Stag_Beetle.tscn")
 @onready var bee_count : int = 0
 @onready var is_wave_waiting : bool = false
 
+
 var game_over: bool = false
+
+##bee submenu variables
+var bee_sub_menu: Control
+var upgrade_menu: Control
 
 func _ready() -> void:
 	await get_tree().process_frame # wait for World to finish loading
@@ -34,6 +39,17 @@ func _ready() -> void:
 		hive.destroyed.connect(on_hive_destroyed)
 	spawn_bees(max_bees)
 	spawn_wave()
+	
+	##Finds and tells the program to find the submenus
+	bee_sub_menu = get_tree().current_scene.get_node_or_null("UI/BeeSubMenu")
+	upgrade_menu = get_tree().current_scene.get_node_or_null("UI/UpgradeMenu")
+	# Connect signals
+	bee_sub_menu.upgrade_requested.connect(_on_upgrade_requested)
+	bee_sub_menu.closed.connect(func(): bee_sub_menu.hide())
+	#Makes sure submenus start hidden
+	bee_sub_menu.hide()
+	upgrade_menu.hide()
+
 
 func on_hive_destroyed() -> void:
 	if game_over:
@@ -53,6 +69,7 @@ func spawn_bees(amount : int) -> void:
 		#Random spawn pos from center
 		bee.position = bee_middle + Vector2.from_angle(randf_range(0, TAU)) * randf_range(0, bee_spawn_radius)
 		bee.died.connect(on_bee_died)
+		bee.bee_selected.connect(_on_bee_selected) ##to open sub menu
 		get_tree().current_scene.add_child(bee)
 		bee_count += 1
 
@@ -104,3 +121,15 @@ func _skip_wave() -> void:
 
 	if is_wave_waiting:
 		spawn_wave()
+
+
+
+##Bee sub Menus
+##opens bee upgrade menu
+func _on_bee_selected(bee: Node) -> void: #opens basic menu
+	if bee_sub_menu:
+		bee_sub_menu.open_for(bee)
+
+func _on_upgrade_requested(bee: Node) -> void: #opens upgrade menu
+	if upgrade_menu:
+		upgrade_menu.open_for_bee(bee)  

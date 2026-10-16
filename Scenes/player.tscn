@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://sm8ltq6jesgv"]
 
 [ext_resource type="Script" uid="uid://c26vs5hxqu5kr" path="res://Scripts/Player/Player.gd" id="1_v0iea"]
-[ext_resource type="Script" uid="uid://di3wyrxcr2gat" path="res://Scripts/UI/ui.gd" id="2_6t5aa"]
+[ext_resource type="Script" uid="uid://di3wyrxcr2gat" path="res://Scripts/UI/UI.gd" id="2_6t5aa"]
 [ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="3_vgqql"]
 [ext_resource type="PackedScene" uid="uid://cxvn8fkebhkc1" path="res://Scenes/UI/game_over.tscn" id="4_gameover"]
 
