@@ -12,15 +12,12 @@ func open_for(bee: Node) -> void:
 	show()
 
 #opens upgrade menu for selected bee
-func _on_upgrade_button_pressed() -> void:
+func _on_bee_upgrade_button_pressed() -> void:
 	upgrade_requested.emit(selected_bee)
 	hide()
 
 #closes the submenu
-func _on_close_button_pressed() -> void:
+func _on_close_bee_menu_button_pressed() -> void:
 	closed.emit()
 	hide()
-
-
-func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	pass # Replace with function body.
+	

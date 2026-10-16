@@ -130,6 +130,7 @@ func _on_bee_selected(bee: Node) -> void: #opens basic menu
 	if bee_sub_menu:
 		bee_sub_menu.open_for(bee)
 
+
 func _on_upgrade_requested(bee: Node) -> void: #opens upgrade menu
 	if upgrade_menu:
 		upgrade_menu.open_for_bee(bee)  
