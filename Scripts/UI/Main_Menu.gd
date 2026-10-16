@@ -12,6 +12,8 @@ func _process(_dt: float) -> void:
 
 
 func _on_start_pressed() -> void:
+	get_tree().paused = false
+	Global.reset_run()
 	get_tree().change_scene_to_file("res://Scenes/Worlds/world.tscn")
 	print("Start Pressed") #checks if button pressed
 
@@ -26,7 +28,7 @@ func _on_load_hive_button_pressed() -> void:
 
 
 func _on_settings_button_pressed() -> void:
-	print("Point to Settings") #checks if button pressed
+	Global.open_settings()
 
 
 func _on_exit_button_pressed() -> void:

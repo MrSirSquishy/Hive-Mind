@@ -6,23 +6,33 @@ signal damaged(amount: float)
 signal destroyed
 
 @export_group("Health")
-@export var max_health: float = 120.0
-@export var radius: float = 150.0
+@export var max_health: float = 10.0
+@export var radius: float = 280.0
+@export var team: String = "BEE"
 ## percent of damage blocked, can be used for future upgrades 
 @export_range(0.0, 0.8, 0.1)
 var damage_reduction: float = 0.0
-@export var team: String = "BEES"
-
 var health: float
 var is_destroyed: bool = false
+var i_frame_dictionary: Dictionary[String, float] = {}
+
 
 func _ready() -> void:
 	#lets ui find the hive
 	add_to_group("hive")
+	#applies upgrades
+	max_health += Global.hive_max_health_bonus
+	damage_reduction = clampf(damage_reduction + Global.hive_defense_bonus, 0.0, 0.8)
 	health = max_health
 	health_changed.emit(health, max_health)
 	
-func damage(amount: float) -> void:
+func _physics_process(dt: float) -> void:
+	for source: String in i_frame_dictionary.keys():
+		i_frame_dictionary[source] -= dt
+		if i_frame_dictionary[source] <= 0.0:
+			i_frame_dictionary.erase(source)
+
+func damage(amount: float, source_identifier: String = "", i_frames: float = 0.0) -> void:
 	#hive ignores damage when destroyed
 	#negative damage heals hive
 	if is_destroyed:
@@ -32,6 +42,10 @@ func damage(amount: float) -> void:
 	if amount < 0.0:
 		heal(-amount)
 		return
+	if i_frame_dictionary.has(source_identifier):
+		return
+	if i_frames > 0.0:
+		i_frame_dictionary[source_identifier] = i_frames
 
 	var actual_damage : float =  amount * (1.0 - damage_reduction)
 	health = max(health - actual_damage, 0.0)

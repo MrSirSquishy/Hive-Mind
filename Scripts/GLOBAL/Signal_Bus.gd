@@ -10,3 +10,5 @@ signal trigger_cam_shake(strength : float, position : Vector2)
 signal skip_wave()
 signal show_skip_wave_button()
 signal hide_skip_wave_button()
+
+signal game_over()

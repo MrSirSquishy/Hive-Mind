@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c26vs5hxqu5kr" path="res://Scripts/Player/Player.gd" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://di3wyrxcr2gat" path="res://Scripts/UI/ui.gd" id="2_6t5aa"]
 [ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="3_vgqql"]
+[ext_resource type="PackedScene" uid="uid://cxvn8fkebhkc1" path="res://Scenes/UI/game_over.tscn" id="4_gameover"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1fhm7"]
 radius = 16.0
@@ -271,6 +272,8 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_3smsa")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ek2")
 text = "Cheats!!"
+
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource("4_gameover")]
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/ShopButton2" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]

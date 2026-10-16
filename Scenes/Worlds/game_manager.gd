@@ -24,12 +24,29 @@ const ENEMY : PackedScene = preload("res://Scenes/Enemies/Stag_Beetle.tscn")
 @onready var bee_count : int = 0
 @onready var is_wave_waiting : bool = false
 
+var game_over: bool = false
+
 func _ready() -> void:
 	await get_tree().process_frame # wait for World to finish loading
+	var hives : Array[Node] = get_tree().get_nodes_in_group("hive")
+	if not hives.is_empty():
+		var hive: Hive = hives[0] as Hive
+		hive.destroyed.connect(on_hive_destroyed)
 	spawn_bees(max_bees)
 	spawn_wave()
 
+func on_hive_destroyed() -> void:
+	if game_over:
+		return
+
+	game_over = true
+	is_wave_waiting = false
+	Signal_Bus.game_over.emit()
+	get_tree().paused = true
+
 func spawn_bees(amount : int) -> void:
+	if game_over:
+		return
 	for i : int in amount:
 
 		var bee : Bee = BEE.instantiate()
@@ -40,11 +57,13 @@ func spawn_bees(amount : int) -> void:
 		bee_count += 1
 
 func spawn_wave() -> void:
+	if game_over:
+		return
 	is_wave_waiting = false
 	Signal_Bus.hide_skip_wave_button.emit()
 	
 	wave_count += 1
-	enemy_count += 1
+	enemy_count += 10
 	alive = enemy_count
 	for i : int in enemy_count:
 		var enemy : Enemy = ENEMY.instantiate()
@@ -67,8 +86,9 @@ func on_enemy_died() -> void:
 	
 	is_wave_waiting = true
 	Signal_Bus.show_skip_wave_button.emit()
-	await get_tree().create_timer(delay_between_waves).timeout
-	if is_wave_waiting:
+	var completed_wave: int = wave_count
+	await get_tree().create_timer(delay_between_waves, false).timeout
+	if is_wave_waiting and not game_over and wave_count == completed_wave:
 		spawn_wave()
 		
 func on_bee_died() -> void:
@@ -79,5 +99,8 @@ func _init() -> void:
 	Signal_Bus.skip_wave.connect(_skip_wave)
 
 func _skip_wave() -> void:
+	if game_over:
+		return
+
 	if is_wave_waiting:
 		spawn_wave()

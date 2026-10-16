@@ -7,7 +7,7 @@
 ##This determines the approximate "size" (in px) of the entity for things like distance and closeness calculations. Default Bee 150 px for reference
 @export var radius : float = 150
 
-##The team this entity is a part of, for example, "BEES" or "ENEMIES" Entities will attack non-team members
+##The team this entity is a part of, for example, "BEE" or "ENEMY" Entities will attack non-team members
 @export var team : String = "NONE"
 
 @export_group("Movement")
@@ -109,12 +109,11 @@ func _ready() -> void:
 	for upgrade : Upgrade in child_upgrades:
 		upgrades[upgrade.upgrade_type] = upgrade
 		upgrade.init(self)
-	
 
 func _physics_process(dt : float) -> void:
 	
 	# Updates all sets of i_frames:
-	for source : String in i_frame_dictionary:
+	for source : String in i_frame_dictionary.keys():
 		i_frame_dictionary[source] -= dt
 		# removes the i_frames if it's up
 		if i_frame_dictionary[source] <= 0:
@@ -129,29 +128,30 @@ func _physics_process(dt : float) -> void:
 	move_to_target(target_position, dt)
 	
 	# Finds enemy entities within it's awareness area, targets closest one
-	var target_entity : Entity = null
-	for entity : PhysicsBody2D in awareness_area.get_overlapping_bodies():
-		if entity is Entity and entity.team != team:
-			if not target_entity or (target_entity.position - position).length() > (entity.position - position).length():
-				target_entity = entity
+	var target : PhysicsBody2D = null
+	for body : PhysicsBody2D in awareness_area.get_overlapping_bodies():
+		if not is_hostile(body):
+			continue
+		if not target or (target.position - position).length() > (body.position - position).length():
+			target = body
 	
 	
-	if target_entity:
-		target_position = target_entity.position
+	if target:
+		target_position = target.position
 		var dif : Vector2 = position - target_position
 
 		#Attacks when in range
-		if dif.length() - radius - target_entity.radius <= attack_distance:
+		if dif.length() - radius - get_radius_of(target) <= attack_distance:
 			if animations and animations.has_animation("Attack"):
 				animations.play("Attack")
 		
 		if attack_box:
-			for entity : PhysicsBody2D in attack_box.get_overlapping_bodies():
-				if entity is Entity and entity.team != team:
-					if entity.damage(attack_damage, self.to_string(), attack_i_frames):
-						#Triggers cam shake at this entities position with the attack
+			for body : PhysicsBody2D in attack_box.get_overlapping_bodies():
+				if body is Entity and body.team != team:
+					if body.damage(attack_damage, self.to_string(), attack_i_frames):
 						Signal_Bus.trigger_cam_shake.emit(20, position)
-		
+				elif body is Hive and body.team != team:
+					body.damage(attack_damage, self.to_string(), attack_i_frames)
 	
 		## Updates eye look direction
 		#the eye dir is relative, so we need to rotate the dif to be accurate
@@ -167,6 +167,20 @@ func _physics_process(dt : float) -> void:
 
 func _init() -> void:
 	Signal_Bus.world_clicked.connect(set_target_position)
+
+func is_hostile(body: PhysicsBody2D) -> bool:
+	if body is Entity:
+		return body.team != team
+	if body is Hive:
+		return body.team != team
+	return false
+
+func get_radius_of(body: PhysicsBody2D) -> float:
+	if body is Entity:
+		return body.radius
+	if body is Hive:
+		return body.radius
+	return 0.0
 
 func set_target_position(new_target_position : Vector2) -> void:
 	target_position = new_target_position

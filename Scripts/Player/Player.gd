@@ -238,8 +238,7 @@ func _on_tutorial_button_pressed() -> void:
 	print("Point to Tutorial") #checks if button pressed
 
 func _on_settings_button_pressed() -> void:
-	#get_tree().change_scene_to_file("")
-	print("Point to Settings") #checks if button pressed
+	Global.open_settings()
 
 func _on_shop_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/UI/shop_menu.tscn")
