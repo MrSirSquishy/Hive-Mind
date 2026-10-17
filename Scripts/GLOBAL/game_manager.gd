@@ -36,7 +36,7 @@ func _ready() -> void:
 	var hives : Array[Node] = get_tree().get_nodes_in_group("hive")
 	if not hives.is_empty():
 		var hive: Hive = hives[0] as Hive
-		hive.destroyed.connect(on_hive_destroyed)
+		hive.died.connect(on_hive_destroyed)
 	spawn_bees(max_bees)
 	spawn_wave()
 

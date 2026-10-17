@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4olyb7syewbi"]
 
 [ext_resource type="PackedScene" uid="uid://sm8ltq6jesgv" path="res://Scenes/player.tscn" id="3_y2sdx"]
-[ext_resource type="Script" uid="uid://biupyo5mtjo83" path="res://Scripts/Entities/Hive.gd" id="4_cpkch"]
+[ext_resource type="Script" uid="uid://biupyo5mtjo83" path="res://Scripts/Bodies/Hive.gd" id="4_cpkch"]
 [ext_resource type="Texture2D" uid="uid://0onwaiep0v5n" path="res://Assets/Hive/HiveLVL1.svg" id="4_xg358"]
 [ext_resource type="PackedScene" uid="uid://bsku2web0nrvv" path="res://Scenes/UI/entity_sub_menu.tscn" id="5_ohl8q"]
 [ext_resource type="PackedScene" uid="uid://cs3g61ya5mbjf" path="res://Scenes/UI/upgrade_menu.tscn" id="6_8q0pn"]
@@ -18,8 +18,11 @@ zoom = Vector2(0.2, 0.2)
 [node name="WaveManager" type="Node2D" parent="." unique_id=1895969943]
 script = ExtResource("6_ohl8q")
 
-[node name="Hive" type="StaticBody2D" parent="." unique_id=344553624]
+[node name="Hive" type="RigidBody2D" parent="." unique_id=1174471041]
+freeze = true
 script = ExtResource("4_cpkch")
+team = "BEE"
+metadata/_custom_type_script = "uid://biupyo5mtjo83"
 
 [node name="Sprite" type="Sprite2D" parent="Hive" unique_id=1663204284]
 scale = Vector2(5, 5)

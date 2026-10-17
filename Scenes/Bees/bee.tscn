@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://deai2dvakqpab"]
 
-[ext_resource type="Script" uid="uid://d28kf51v0ojnb" path="res://Scripts/Entities/Bee.gd" id="1_7u0a5"]
+[ext_resource type="Script" uid="uid://d28kf51v0ojnb" path="res://Scripts/Bodies/Bee.gd" id="1_7u0a5"]
 [ext_resource type="Texture2D" uid="uid://cwl0dq26xqcmh" path="res://Assets/Bees/Basic_Bee.png" id="2_2vuk8"]
 [ext_resource type="Script" uid="uid://b3kbvxanjh5cu" path="res://Scripts/Sprite_Handlers/Bee_Sprite_Handler.gd" id="3_cb1ku"]
 
@@ -189,7 +189,6 @@ gravity_scale = 0.0
 linear_damp = 4.0
 angular_damp = 10.0
 script = ExtResource("1_7u0a5")
-health = 20.0
 team = "BEE"
 attack_damage = 3.0
 
