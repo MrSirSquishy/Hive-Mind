@@ -66,8 +66,14 @@ func scan_at_cursor() -> void:
 	#Updates selected entity, will be null if no bodies were within click range
 	if closest_body != null:
 		selected_entities = [closest_body]
+		
+		# Opens up menu for entity/entities
+		Signal_Bus.open_sub_menu.emit(selected_entities[0])	
 	else:
 		selected_entities = []
+		
+		#Closes sub menu
+		Signal_Bus.close_sub_menu.emit()
 	
 	#If no bodies selected, then just emit the default click signal
 	if closest_body == null:

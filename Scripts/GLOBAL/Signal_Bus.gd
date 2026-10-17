@@ -11,4 +11,8 @@ signal skip_wave()
 signal show_skip_wave_button()
 signal hide_skip_wave_button()
 
+signal open_sub_menu(target : Entity)
+signal open_sub_menu_array(target : Array[Entity])
+signal close_sub_menu()
+
 signal game_over()

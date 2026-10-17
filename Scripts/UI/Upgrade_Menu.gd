@@ -18,6 +18,7 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Honey_Manager.honey_changed.connect(_on_honey_changed)
 	_on_honey_changed(Honey_Manager.honey)
+	hide()
 	
 
 func _on_honey_changed(new_amount: int) -> void:
@@ -25,7 +26,7 @@ func _on_honey_changed(new_amount: int) -> void:
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_dt: float) -> void:
 	pass
 
 func _on_return_to_hive_button_pressed() -> void:

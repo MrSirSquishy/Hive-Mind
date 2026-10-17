@@ -79,26 +79,6 @@ func kill() -> void:
 	queue_free()
 		
 
-## Moves to target_position if outside of it's margin
-func move_to_target(target : Vector2, dt : float) -> void:
-	var dif : Vector2 = position - target
-	if dif.length() > target_margin: 
-		#Reduces the force applied as it approaches within the slowdown margin
-		var force_scale : float = clamp(0,  dif.length()/target_slowdown_margin, 1)
-
-		# The difference between the angle to the target and the current angle
-		var angleDif : float = wrapf(rotation - (-dif).angle() - PI/2, -PI, PI)
-		# Reduces the force when the bee is not facing the target
-		force_scale *= clamp(0.5, 1 - abs(angleDif), 1)
-		var force : Vector2 = -dif.normalized() * speed * force_scale
-		apply_force(force)
-
-		## Turns to face direction of where it wants to go
-		apply_torque(-clamp(angleDif, -1, 1)*dt * turn_speed)
-		
-		#Flaps wings when moving
-		sprite_handler.play_flap_animation()
-
 
 ### Active Functions
 
@@ -125,23 +105,42 @@ func _physics_process(dt : float) -> void:
 		if upgrade and upgrade.has_method("physics_process_upgrade"):
 			upgrade.physics_process_upgrade(self, dt)
 	
-	move_to_target(target_position, dt)
+	
+	# Moves to Target
+	var dif : Vector2 = position - target_position
+	if dif.length() > target_margin: 
+		#Reduces the force applied as it approaches within the slowdown margin
+		var force_scale : float = clamp(0,  dif.length()/target_slowdown_margin, 1)
+
+		# The difference between the angle to the target_position and the current angle
+		var angleDif : float = wrapf(rotation - (-dif).angle() - PI/2, -PI, PI)
+		# Reduces the force when the bee is not facing the target_position
+		force_scale *= clamp(0.5, 1 - abs(angleDif), 1)
+		var force : Vector2 = -dif.normalized() * speed * force_scale
+		apply_force(force)
+
+		## Turns to face direction of where it wants to go
+		apply_torque(-clamp(angleDif, -1, 1) * dt * turn_speed)
+		
+		#Flaps wings when moving
+		sprite_handler.play_flap_animation()
+	
+	
 	
 	# Finds enemy entities within it's awareness area, targets closest one
-	var target : PhysicsBody2D = null
-	for body : PhysicsBody2D in awareness_area.get_overlapping_bodies():
-		if not is_hostile(body):
-			continue
-		if not target or (target.position - position).length() > (body.position - position).length():
-			target = body
+	var target_entity : PhysicsBody2D = null
+	for entity : PhysicsBody2D in awareness_area.get_overlapping_bodies():
+		if entity is Entity and entity.team != team:
+			if not target_entity or (target_entity.position - position).length() > (entity.position - position).length():
+				target_entity = entity
 	
 	
-	if target:
-		target_position = target.position
-		var dif : Vector2 = position - target_position
+	if target_entity:
+		target_position = target_entity.position
+		dif = position - target_position
 
 		#Attacks when in range
-		if dif.length() - radius - get_radius_of(target) <= attack_distance:
+		if dif.length() - radius - target_entity.radius <= attack_distance:
 			if animations and animations.has_animation("Attack"):
 				animations.play("Attack")
 		
@@ -165,22 +164,9 @@ func _physics_process(dt : float) -> void:
 
 ## Signals
 
-func _init() -> void:
-	Signal_Bus.world_clicked.connect(set_target_position)
-
 func is_hostile(body: PhysicsBody2D) -> bool:
 	if body is Entity:
 		return body.team != team
 	if body is Hive:
 		return body.team != team
 	return false
-
-func get_radius_of(body: PhysicsBody2D) -> float:
-	if body is Entity:
-		return body.radius
-	if body is Hive:
-		return body.radius
-	return 0.0
-
-func set_target_position(new_target_position : Vector2) -> void:
-	target_position = new_target_position

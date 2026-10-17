@@ -184,10 +184,6 @@ radius = 4000.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ucr06"]
 radius = 100.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mvxm8"]
-radius = 108.0
-height = 344.0
-
 [node name="Bee" type="RigidBody2D" unique_id=769899236]
 gravity_scale = 0.0
 linear_damp = 4.0
@@ -268,11 +264,3 @@ shape = SubResource("CircleShape2D_1fhm7")
 shape = SubResource("CircleShape2D_ucr06")
 disabled = true
 debug_color = Color(0.9490196, 0.14117648, 0.45882353, 0.41960785)
-
-[node name="Click_Area" type="Area2D" parent="." unique_id=988464270]
-priority = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Click_Area" unique_id=2001948316]
-shape = SubResource("CapsuleShape2D_mvxm8")
-
-[connection signal="input_event" from="Click_Area" to="." method="_on_click_area_input_event"]
