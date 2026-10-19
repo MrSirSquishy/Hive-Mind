@@ -251,7 +251,7 @@ func _on_shop_button_pressed() -> void:
 	print("Shop Button Pressed") #checks if button pressed
 
 func _on_upgrade_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/UI/Upgrade Menu/upgrade_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/UI/upgrade_menu.tscn")
 	print("Upgrade Button Pressed") #checks if button pressed
 
 func _on_pause_button_pressed() -> void:

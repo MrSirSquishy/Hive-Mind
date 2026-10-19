@@ -219,6 +219,7 @@ text = "Shop
 "
 
 [node name="UpgradeButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=1041295964]
+visible = false
 z_as_relative = false
 layout_mode = 2
 size_flags_vertical = 8
@@ -273,7 +274,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ek2")
 text = "Cheats!!"
 
-[node name="GameOver" parent="CanvasLayer" instance=ExtResource("4_gameover")]
+[node name="GameOver" parent="CanvasLayer" unique_id=330332717 instance=ExtResource("4_gameover")]
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/ShopButton2" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
