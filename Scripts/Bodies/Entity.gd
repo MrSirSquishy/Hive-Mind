@@ -6,6 +6,8 @@
 @export var speed : float = 10000.0
 ##The strength of the torque when rotating
 @export var turn_speed : float = 50000000.0
+#The maximum angle before the entity can move toward target
+@export var angle_dif_before_moving : float = PI/2
 
 @export_group("AI")
 ##How close it should be to the target_position to be considered reached
@@ -80,10 +82,11 @@ func _physics_process(dt : float) -> void:
 
 		# The difference between the angle to the target_position and the current angle
 		var angleDif : float = wrapf(rotation - (-dif).angle() - PI/2, -PI, PI)
-		# Reduces the force when the bee is not facing the target_position
-		force_scale *= clamp(0.5, 1 - abs(angleDif), 1)
-		var force : Vector2 = -dif.normalized() * speed * force_scale
-		apply_force(force)
+		if angleDif < angle_dif_before_moving:
+			# Reduces the force when the bee is not facing the target_position
+			force_scale *= clamp(0.5, 1 - abs(angleDif), 1)
+			var force : Vector2 = -dif.normalized() * speed * force_scale
+			apply_force(force)
 
 		## Turns to face direction of where it wants to go
 		apply_torque(-clamp(angleDif, -1, 1) * dt * turn_speed)
@@ -101,8 +104,8 @@ func _physics_process(dt : float) -> void:
 			var hit_object : PhysicsBody2D = raycast.get_collider()
 			if hit_object is Body and hit_object != target_body:
 				var safe_radius_from_entity : float = radius + hit_object.radius
-				
-				var perpendicular_dir : Vector2 = (dif.normalized().rotated(90))
+				#Sets a a new nav point to the side of the entity in the way(randomly chooses left or right)
+				var perpendicular_dir : Vector2 = (dif.normalized().rotated(90 * ((randi() & 2) - 1)))
 				target_positions.push_back(
 					hit_object.position + perpendicular_dir * safe_radius_from_entity
 				)

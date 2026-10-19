@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bay4tfftwmsex" path="res://Scripts/Bodies/Enemy.gd" id="1_yntye"]
 [ext_resource type="Texture2D" uid="uid://dr736jboxpiei" path="res://Assets/Bees/Stag_Beetle.svg" id="2_i4xi5"]
 [ext_resource type="Script" uid="uid://b3kbvxanjh5cu" path="res://Scripts/Sprite_Handlers/Bee_Sprite_Handler.gd" id="3_ugv6i"]
-
 [ext_resource type="PackedScene" path="res://Scenes/UI/health_bar.tscn" id="health_bar"]
 
 [sub_resource type="Animation" id="Animation_i4xi5"]
@@ -278,7 +277,7 @@ shape = SubResource("CircleShape2D_muhgi")
 disabled = true
 debug_color = Color(0.94776994, 0.14227852, 0.45862746, 0.41960785)
 
-[node name="HealthBar" parent="." instance=ExtResource("health_bar")]
+[node name="HealthBar" parent="." unique_id=1583828173 instance=ExtResource("health_bar")]
 bar_size = Vector2(350, 24)
 height_above_body = 360.0
 
