@@ -189,8 +189,8 @@ gravity_scale = 0.0
 linear_damp = 4.0
 angular_damp = 10.0
 script = ExtResource("1_7u0a5")
-team = "BEE"
 attack_damage = 3.0
+team = "BEE"
 
 [node name="Animations" type="AnimationPlayer" parent="." unique_id=604469912]
 root_node = NodePath("../Sprite")
@@ -252,6 +252,7 @@ position = Vector2(0, 20)
 shape = SubResource("CapsuleShape2D_tqty4")
 
 [node name="Awareness_Area" type="Area2D" parent="." unique_id=1617921935]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Awareness_Area" unique_id=1613177572]
 position = Vector2(1, 0)
@@ -263,3 +264,5 @@ shape = SubResource("CircleShape2D_1fhm7")
 shape = SubResource("CircleShape2D_ucr06")
 disabled = true
 debug_color = Color(0.9490196, 0.14117648, 0.45882353, 0.41960785)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1572603320]

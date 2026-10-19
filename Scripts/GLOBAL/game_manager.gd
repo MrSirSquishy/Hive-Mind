@@ -73,7 +73,7 @@ func spawn_wave() -> void:
 	alive = enemy_count
 	for i : int in enemy_count:
 		var enemy : Enemy = ENEMY.instantiate()
-		enemy.target_position = bee_middle # tell enemy where to go
+		enemy.target_positions = [bee_middle] # tell enemy where to go
 		#Random starting position
 		enemy.position = Vector2.from_angle(randf_range(0, TAU)) * randf_range(wave_radius_min, wave_radius_max)
 		enemy.died.connect(on_enemy_died)

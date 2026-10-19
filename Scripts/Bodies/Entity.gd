@@ -10,8 +10,13 @@
 @export_group("AI")
 ##How close it should be to the target_position to be considered reached
 @export var target_margin : float = 200
-##How close it should be to the target_position to begin slowing down
+##How close it should be to the final target_position to begin slowing down
 @export var target_slowdown_margin : float = 2000
+##How close it should be to a non-final target_position(points on the path to target) before slowing down
+@export var sub_target_slowdown_margin : float = 500
+##The interval before the entity rechecks it's navigation path in seconds
+@export var navigation_cooldown : float = 1
+@onready var navigation_timer : float = navigation_cooldown
 
 @export_group("Combat")
 ##How close to be to the target entity before attacking(note it takes into account the radius of each entity)
@@ -24,8 +29,13 @@
 ##The Area2D that defines what the bee is aware of/can see
 @onready var awareness_area : Area2D = get_node_or_null("Awareness_Area")
 @onready var attack_box : Area2D = get_node_or_null("Attack_Box")
+@onready var raycast : RayCast2D = get_node_or_null("RayCast2D")
 
-@onready var target_position : Vector2 = position
+#First element is target position, others are points on the nav path to the target
+@onready var target_positions : Array[Vector2] = [position]
+@onready var target_body : Body
+#When the eneity doesn't have a target_position anymore, go here
+@onready var default_target_position : Vector2 = Vector2.ZERO
 
 @onready var upgrades : Dictionary = {
 	"HEAD" : null,
@@ -58,11 +68,15 @@ func _physics_process(dt : float) -> void:
 			upgrade.physics_process_upgrade(self, dt)
 	
 	
-	# Moves to Target
-	var dif : Vector2 = position - target_position
+	## Moves to Target
+	var dif : Vector2 = position - target_positions[target_positions.size() - 1]
 	if dif.length() > target_margin: 
-		#Reduces the force applied as it approaches within the slowdown margin
-		var force_scale : float = clamp(0,  dif.length()/target_slowdown_margin, 1)
+		# Reduces the force applied as it approaches within the slowdown margin
+		# Less range if it's not the final target
+		var slowdown_margin : float = target_slowdown_margin
+		if target_positions.size() > 1:
+			slowdown_margin = sub_target_slowdown_margin
+		var force_scale : float = clamp(0,  dif.length()/slowdown_margin, 1)
 
 		# The difference between the angle to the target_position and the current angle
 		var angleDif : float = wrapf(rotation - (-dif).angle() - PI/2, -PI, PI)
@@ -76,43 +90,77 @@ func _physics_process(dt : float) -> void:
 		
 		#Flaps wings when moving
 		sprite_handler.play_flap_animation()
+	else:
+		if target_positions.size() > 1:
+			target_positions.pop_back()
+	
+	## Entity Avoidance
+	if raycast:
+		raycast.target_position = dif.rotated(PI - rotation)
+		if raycast.is_colliding():
+			var hit_object : PhysicsBody2D = raycast.get_collider()
+			if hit_object is Body and hit_object != target_body:
+				var safe_radius_from_entity : float = radius + hit_object.radius
+				
+				var perpendicular_dir : Vector2 = (dif.normalized().rotated(90))
+				target_positions.push_back(
+					hit_object.position + perpendicular_dir * safe_radius_from_entity
+				)
 	
 	
 	
-	# Finds enemy entities within it's awareness area, targets closest one
-	var target_entity : PhysicsBody2D = null
+	# Finds enemy bodies within it's awareness area, targets closest one
 	for entity : PhysicsBody2D in awareness_area.get_overlapping_bodies():
-		if entity is Entity and entity.team != team:
-			if not target_entity or (target_entity.position - position).length() > (entity.position - position).length():
-				target_entity = entity
+		if entity is Body and entity.team != team:
+			#Sets the target body if it is null, or if the new target body is closer
+			if not target_body or (target_body.position - position).length() > (entity.position - position).length():
+				target_body = entity
+	
+	var current_target_position : Vector2
+	if target_body:
+		current_target_position = target_body.position
+	else:
+		current_target_position = default_target_position
+	
+	#Updates Navigation timer
+	if navigation_timer > 0:
+		navigation_timer -= dt
+		target_positions[0] = current_target_position
+	else:
+		navigation_timer = navigation_cooldown
+		#resets the pathfinding
+		target_positions = [current_target_position]
 	
 	
-	if target_entity:
-		target_position = target_entity.position
-		dif = position - target_position
+	if target_body: #if target_body exists
+		dif = position - target_positions[0]
 
 		#Attacks when in range
-		if dif.length() - radius - target_entity.radius <= attack_distance:
+		if dif.length() - radius - target_body.radius <= attack_distance:
 			if animations and animations.has_animation("Attack"):
 				animations.play("Attack")
 		
 		if attack_box:
 			for body : PhysicsBody2D in attack_box.get_overlapping_bodies():
-				if body is Entity and body.team != team:
+				if body is Body and body.team != team:
+					# damages the body, returns weather or not the hit landed
 					if body.damage(attack_damage, self.to_string(), attack_i_frames):
+						#triggers cam shake if hit landed
 						Signal_Bus.trigger_cam_shake.emit(20, position)
-				elif body is Hive and body.team != team:
-					body.damage(attack_damage, self.to_string(), attack_i_frames)
 	
 		## Updates eye look direction
 		#the eye dir is relative, so we need to rotate the dif to be accurate
-		
 		sprite_handler.set_eye_dir(
 			-dif.normalized().rotated(-rotation)
 		)
-	
-	
 
+### Debug Drawing
+	#queue_redraw()
+#
+#func _draw() -> void:
+	#draw_set_transform_matrix(global_transform.affine_inverse())
+	#if target_positions.size() > 1:
+		#draw_polyline(target_positions, Color.AQUA)
 
 ## Signals
 

@@ -22,6 +22,7 @@ script = ExtResource("6_ohl8q")
 freeze = true
 script = ExtResource("4_cpkch")
 team = "BEE"
+radius = 400.0
 metadata/_custom_type_script = "uid://biupyo5mtjo83"
 
 [node name="Sprite" type="Sprite2D" parent="Hive" unique_id=1663204284]

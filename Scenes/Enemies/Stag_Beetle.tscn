@@ -165,7 +165,7 @@ radius = 114.0
 height = 594.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i4xi5"]
-radius = 10000.0
+radius = 5000.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_muhgi"]
 radius = 100.0
@@ -176,11 +176,10 @@ gravity_scale = 0.0
 linear_damp = 5.0
 angular_damp = 10.0
 script = ExtResource("1_yntye")
-health = 6.0
-radius = 300.0
-team = "ENEMY"
 turn_speed = 80000000.0
 attack_damage = 3.0
+team = "ENEMY"
+radius = 300.0
 
 [node name="Animations" type="AnimationPlayer" parent="." unique_id=303797970]
 root_node = NodePath("../Sprite")
@@ -276,3 +275,5 @@ shape = SubResource("CircleShape2D_i4xi5")
 shape = SubResource("CircleShape2D_muhgi")
 disabled = true
 debug_color = Color(0.94776994, 0.14227852, 0.45862746, 0.41960785)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1457992332]
