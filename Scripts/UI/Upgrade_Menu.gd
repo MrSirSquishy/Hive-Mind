@@ -29,22 +29,12 @@ func _on_honey_changed(new_amount: int) -> void:
 func _process(_dt: float) -> void:
 	pass
 
-func _on_return_to_hive_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Worlds/world.tscn")
-	print("Return to Hive Pressed") #checks if button pressed
-
 
 func _on_exit_to_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/UI/main_menu.tscn")
 	print("Exit to Main Menu Pressed") #checks if button pressed
 
 
-func _on_hive_defense_button_pressed() -> void:
-	print("Increase Hive Defense") #checks if button pressed
-func _on_hive_health_button_pressed() -> void:
-	print("Increase Hive Health") #checks if button pressed
-	
-	
 func _on_bee_damage_button_pressed() -> void:
 	print("Increase Bee Damage") #checks if button pressed
 	if selected_bee == null:
@@ -61,14 +51,14 @@ func _on_bee_defense_button_pressed() -> void:
 		selected_bee.upgrade_defense(0.1)
 		open_for_bee(selected_bee)
 
-func _on_bee_speed_button_pressed() -> void:
-	print("Increase Bee Speed") #checks if button pressed
-func _on_speed_upgrade_pressed() -> void:
-	if selected_bee == null:
-		return
-	if Honey_Manager.spend_honey(30):
-		selected_bee.upgrade_attack_speed(0.1)
-		open_for_bee(selected_bee)
+#func _on_bee_speed_button_pressed() -> void:
+#	print("Increase Bee Speed") #checks if button pressed
+#func _on_speed_upgrade_pressed() -> void:
+#	if selected_bee == null:
+#		return
+#	if Honey_Manager.spend_honey(30):
+#		selected_bee.upgrade_attack_speed(0.1)
+#		open_for_bee(selected_bee)
 
 func _on_bee_health_button_pressed() -> void:
 	print("Increase Bee Health") #checks if button pressed
