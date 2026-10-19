@@ -24,7 +24,7 @@ func _init() -> void:
 #opens the submenu for the bee
 func open_menu(entity: Entity) -> void:
 	selected_entity = entity
-	global_position = get_global_mouse_position() + Vector2(5, 5)  # appears near mouse
+	#global_position = get_global_mouse_position() + Vector2(5, 5)  # appears near mouse
 	show()
 
 func close_menu() -> void:
