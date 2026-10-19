@@ -4,14 +4,21 @@ extends Control
 
 var selected_bee: Node = null
 
+func _init() -> void:
+	Signal_Bus.open_upgrade_menu.connect(open_for_bee)
+	Signal_Bus.close_upgrade_menu.connect(close_menu)
+
 func open_for_bee(bee: Node) -> void:
 	selected_bee = bee
 	# Update the UI with this bee's current stats
-	$Title.text = "Upgrading Bee"
-	$DamageLabel.text = "Damage: %s" % bee.damage
-	$SpeedLabel.text = "Speed: %s" % bee.attack_speed
+	#$Title.text = "Upgrading Bee"
+	#$DamageLabel.text = "Damage: %s" % bee.damage
+	#$SpeedLabel.text = "Speed: %s" % bee.attack_speed
 	# etc.
 	show()
+
+func close_menu() -> void:
+	hide()
 
 
 func _ready() -> void:

@@ -3,6 +3,7 @@
 [sub_resource type="GDScript" id="GDScript_hmcd0"]
 script/source = "extends Upgrade
 
+@export var damage_multiplier : float = 2.0
 @export var size_multiplier : float = 1.75
 @export var speed_multiplier : float = 2.0
 @export var health_multiplier : float = 1.5
@@ -16,6 +17,7 @@ func init(entity : Entity) -> void:
 	entity.max_health *= health_multiplier
 	entity.health = entity.max_health
 	entity.mass *= mass_multiplier
+	entity.attack_damage *= damage_multiplier
 
 func exit(entity : Entity) -> void:
 	entity.get_node(\"Collider\").scale /= size_multiplier
@@ -25,6 +27,7 @@ func exit(entity : Entity) -> void:
 	entity.max_health /= health_multiplier
 	entity.health = entity.max_health
 	entity.mass /= mass_multiplier
+	entity.attack_damage /= damage_multiplier
 "
 
 [node name="Big_Upgrade" type="Node2D" unique_id=2141293767]
