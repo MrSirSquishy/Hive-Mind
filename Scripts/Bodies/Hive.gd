@@ -1,6 +1,5 @@
 class_name Hive extends Body
 
-signal health_changed(current_health: float, max_health: float)
 signal damaged(amount: float)
 
 ## percent of damage blocked, can be used for future upgrades 

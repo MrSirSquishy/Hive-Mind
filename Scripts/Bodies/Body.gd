@@ -1,6 +1,8 @@
 class_name Body extends RigidBody2D
 #parent of Hive and Entity classes
 
+signal health_changed(current_health: float, max_health: float)
+
 ##The team this entity is a part of, for example, "BEE" or "ENEMY" Entities will attack non-team members
 @export var team : String = "NONE"
 
@@ -46,7 +48,8 @@ func damage(damage_amount : float, source_identifier : String, i_frames : float)
 	tween.tween_property(self, "modulate", Color.WHITE, 0.1)
 	
 	#The actual damage dealing
-	health -= damage_amount
+	health = clampf(health - damage_amount, 0.0, max_health)
+	health_changed.emit(health, max_health)
 	if health <= 0:
 		kill()
 	

@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cs3g61ya5mbjf" path="res://Scenes/UI/upgrade_menu.tscn" id="6_8q0pn"]
 [ext_resource type="Script" uid="uid://caviwso8kttjp" path="res://Scripts/GLOBAL/game_manager.gd" id="6_ohl8q"]
 
+[ext_resource type="PackedScene" path="res://Scenes/UI/health_bar.tscn" id="health_bar"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_xg358"]
 radius = 281.11386
 
@@ -39,3 +41,7 @@ shape = SubResource("CircleShape2D_xg358")
 [node name="EntitySubMenu" parent="UI" unique_id=448386306 instance=ExtResource("5_ohl8q")]
 
 [node name="UpgradeMenu" parent="UI" unique_id=1719785594 instance=ExtResource("6_8q0pn")]
+
+[node name="HealthBar" parent="Hive" instance=ExtResource("health_bar")]
+bar_size = Vector2(500, 32)
+height_above_body = 350.0

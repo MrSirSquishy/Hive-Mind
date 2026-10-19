@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cwl0dq26xqcmh" path="res://Assets/Bees/Basic_Bee.png" id="2_2vuk8"]
 [ext_resource type="Script" uid="uid://b3kbvxanjh5cu" path="res://Scripts/Sprite_Handlers/Bee_Sprite_Handler.gd" id="3_cb1ku"]
 
+[ext_resource type="PackedScene" path="res://Scenes/UI/health_bar.tscn" id="health_bar"]
+
 [sub_resource type="Animation" id="Animation_cb1ku"]
 resource_name = "Spin"
 tracks/0/type = "bezier"
@@ -264,5 +266,7 @@ shape = SubResource("CircleShape2D_1fhm7")
 shape = SubResource("CircleShape2D_ucr06")
 disabled = true
 debug_color = Color(0.9490196, 0.14117648, 0.45882353, 0.41960785)
+
+[node name="HealthBar" parent="." instance=ExtResource("health_bar")]
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1572603320]
