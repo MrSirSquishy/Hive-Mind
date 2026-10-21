@@ -1,4 +1,4 @@
-class_name GameCamera extends Camera2D
+class_name Player extends Camera2D
 # GameCamera is an RTS-style camera for HM-9.
 # Attach this script to a Camera2D node inside world.tscn.
 # Controls: WASD / arrows = pan, middle- or right-mouse drag = pan,
@@ -169,10 +169,11 @@ func _process(dt: float) -> void:
 	if move_dir.length() > 1.0:
 		move_dir = move_dir.normalized()
 
-	# Move the camera. Multiply by dt so speed is pixels-per-second,
-	# not pixels-per-frame. Divide by zoom so panning feels the same
-	# whether zoomed in (zoom 2.0) or out (zoom 0.5).
-	position += move_dir * pan_speed * dt / zoom.x
+	# Move the camera. Divide by zoom so panning feels the same
+	var pan_speed_multiplier : float = 1
+	if Input.is_key_pressed(KEY_SHIFT):
+		pan_speed_multiplier = 2
+	position += move_dir * pan_speed * pan_speed_multiplier * dt / zoom.x
 
 	## Drawing
 	

@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://sm8ltq6jesgv"]
 
 [ext_resource type="Script" uid="uid://c26vs5hxqu5kr" path="res://Scripts/Player/Player.gd" id="1_v0iea"]
-[ext_resource type="Script" uid="uid://di3wyrxcr2gat" path="res://Scripts/UI/UI.gd" id="2_6t5aa"]
+[ext_resource type="Script" uid="uid://di3wyrxcr2gat" path="res://Scripts/UI/ui.gd" id="2_6t5aa"]
 [ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="3_vgqql"]
 [ext_resource type="PackedScene" uid="uid://cxvn8fkebhkc1" path="res://Scenes/UI/game_over.tscn" id="4_gameover"]
+[ext_resource type="Script" uid="uid://sgom5wy6ue6v" path="res://Scripts/Player/Selection_Area.gd" id="5_fkybt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1fhm7"]
 radius = 16.0
@@ -275,6 +276,13 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ek2")
 text = "Cheats!!"
 
 [node name="GameOver" parent="CanvasLayer" unique_id=330332717 instance=ExtResource("4_gameover")]
+
+[node name="Selection_Area" type="Area2D" parent="." unique_id=824168145]
+monitoring = false
+monitorable = false
+script = ExtResource("5_fkybt")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Selection_Area" unique_id=294718893]
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/ShopButton2" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]

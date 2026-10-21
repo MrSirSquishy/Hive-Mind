@@ -28,7 +28,7 @@ func init(entity : Entity) -> void:
 	sprite.min_random_flap_time *= wing_flap_random_multipler
 	sprite.max_random_flap_time *= wing_flap_random_multipler
 
-func physics_process_upgrade(entity : Entity, dt : float) -> void:
+func physics_process_upgrade(entity : Entity, _dt : float) -> void:
 	if not left_wing_copy: return
 	
 	left_wing_copy.rotation = -entity.sprite_handler.left_wing.rotation
