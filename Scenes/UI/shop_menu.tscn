@@ -55,6 +55,7 @@ shadow_size = 5
 shadow_offset = Vector2(0, 4)
 
 [node name="ShopMenu" type="Control" unique_id=1684821406]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -255,7 +256,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_pnh6m")
 theme_override_styles/hover = SubResource("StyleBoxFlat_64est")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d2vch")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
-text = "Return to Hive"
+text = "Back to Game"
 
 [node name="ExitToMenuButton" type="Button" parent="HBoxContainer" unique_id=2080896202]
 custom_minimum_size = Vector2(550, 185)
