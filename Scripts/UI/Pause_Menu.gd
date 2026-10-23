@@ -1,6 +1,5 @@
 extends Control
 
-@onready var honey_label: Label = $HoneyLabel
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

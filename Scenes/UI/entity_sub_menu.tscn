@@ -7,12 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://bh7v815ykvvaa" path="res://Assets/UI/Sword.svg" id="5_t2uhb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yn5c"]
-bg_color = Color(6.4495207e-06, 0.67665946, 0.7520837, 1)
+bg_color = Color(0.8156863, 0.6745098, 0.8235294, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.6366947, 0.821951, 1, 1)
+border_color = Color(0.58431375, 0.39607844, 0.64705884, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20

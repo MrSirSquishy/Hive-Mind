@@ -1,7 +1,5 @@
 extends Control
 
-@onready var honey_label: Label = $HoneyLabel
-
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

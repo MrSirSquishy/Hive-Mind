@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b4olyb7syewbi"]
 
+[ext_resource type="Texture2D" uid="uid://csn7p08y2q10x" path="res://Assets/UI/Hive-Mind_PurpleFlowersBackground.png" id="2_af1hx"]
 [ext_resource type="PackedScene" uid="uid://sm8ltq6jesgv" path="res://Scenes/player.tscn" id="3_y2sdx"]
 [ext_resource type="Script" uid="uid://biupyo5mtjo83" path="res://Scripts/Bodies/Hive.gd" id="4_cpkch"]
 [ext_resource type="Texture2D" uid="uid://0onwaiep0v5n" path="res://Assets/Hive/HiveLVL1.svg" id="4_xg358"]
@@ -19,6 +20,21 @@ radius = 281.11386
 
 [node name="Player_Camera" parent="." unique_id=481572159 instance=ExtResource("3_y2sdx")]
 zoom = Vector2(0.2, 0.2)
+
+[node name="Background" type="TextureRect" parent="." unique_id=699257486]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -25347.0
+offset_top = -14548.0
+offset_right = 14484.0
+offset_bottom = 9920.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_af1hx")
+stretch_mode = 1
 
 [node name="WaveManager" type="Node2D" parent="." unique_id=1895969943]
 script = ExtResource("6_ohl8q")
@@ -45,14 +61,14 @@ height_above_body = 350.0
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=394841888]
 
-[node name="OverlayLayer" type="CanvasLayer" parent="." unique_id=394841889]
-layer = 50
-
 [node name="EntitySubMenu" parent="UI" unique_id=448386306 instance=ExtResource("5_ohl8q")]
 visible = false
 
 [node name="UpgradeMenu" parent="UI" unique_id=1719785594 instance=ExtResource("6_8q0pn")]
 visible = false
+
+[node name="OverlayLayer" type="CanvasLayer" parent="." unique_id=394841889]
+layer = 50
 
 [node name="Bee" parent="." unique_id=769899236 instance=ExtResource("8_vbdlg")]
 position = Vector2(-2314, -742)

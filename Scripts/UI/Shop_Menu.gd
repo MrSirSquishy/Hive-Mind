@@ -1,6 +1,5 @@
 extends Control
 
-@onready var honey_label: Label = $HoneyLabel
 @export var cost_hat: int = 7
 @export var cost_equip1: int = 4
 @export var cost_equip2: int = 5
