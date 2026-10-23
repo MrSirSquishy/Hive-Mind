@@ -8,12 +8,7 @@ func _process(delta: float) -> void:
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	Honey_Manager.honey_changed.connect(_on_honey_changed)
-	_on_honey_changed(Honey_Manager.honey)
-	
 
-func _on_honey_changed(new_amount: int) -> void:
-	honey_label.text = "Honey: %d" % new_amount
 
 
 func _on_tutorial_button_pressed() -> void:

@@ -75,6 +75,7 @@ grow_vertical = 2
 theme = SubResource("MenuTheme")
 
 [node name="Background" type="TextureRect" parent="Menu" unique_id=876821684]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -16,12 +16,6 @@ func _process(_dt: float) -> void:
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	Honey_Manager.honey_changed.connect(_on_honey_changed)
-	_on_honey_changed(Honey_Manager.honey)
-	
-
-func _on_honey_changed(new_amount: int) -> void:
-	honey_label.text = "Honey: %d" % new_amount
 	
 
 func _on_return_to_hive_button_pressed() -> void:
