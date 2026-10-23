@@ -1,6 +1,5 @@
 extends Control
 
-@onready var honey_label: Label = $HoneyLabel
 
 var selected_bee: Node = null
 
@@ -12,65 +11,52 @@ func open_for_bee(bee: Node) -> void:
 	selected_bee = bee
 	# Update the UI with this bee's current stats
 	#$Title.text = "Upgrading Bee"
-	#$DamageLabel.text = "Damage: %s" % bee.damage
-	#$SpeedLabel.text = "Speed: %s" % bee.attack_speed
-	# etc.
+	#$HealthLabel.text = "Health: %s" % bee.health
+	#$DefenseLabel.text = "Defense: %s" % bee.defense
+	#$AttackLabel.text = "Attack: %s" % bee.attack
 	show()
+
+
+func _on_back_button_pressed() -> void:
+	close_menu()
 
 func close_menu() -> void:
 	hide()
 
-
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	Honey_Manager.honey_changed.connect(_on_honey_changed)
-	_on_honey_changed(Honey_Manager.honey)
 	hide()
-	
-
-func _on_honey_changed(new_amount: int) -> void:
-	honey_label.text = "Honey: %d" % new_amount
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_dt: float) -> void:
 	pass
 
-
-func _on_exit_to_menu_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/UI/main_menu.tscn")
-	print("Exit to Main Menu Pressed") #checks if button pressed
-
-
-func _on_bee_damage_button_pressed() -> void:
-	print("Increase Bee Damage") #checks if button pressed
+##need to fix all of this mess
+func _on_bee_health_button_pressed() -> void:
+	print("pressed")
 	if selected_bee == null:
 		return
-	if Honey_Manager.spend_honey(50):          # your cost
-		selected_bee.upgrade_damage(5)         # only this bee
-		open_for_bee(selected_bee)             # refresh the numbers
+	if Honey_Manager.spend_honey(5):
+		print("Health+")
+		selected_bee.upgrade_health(0.1)
+		open_for_bee(selected_bee)
 
-func _on_bee_defense_button_pressed() -> void:
-	print("Increase Bee Defense") #checks if button pressed
+
+func _on_defense_upgrade_button_pressed() -> void:
+	print("pressed")
 	if selected_bee == null:
 		return
-	if Honey_Manager.spend_honey(50):
+	if Honey_Manager.spend_honey(10):
+		print("Defense+")
 		selected_bee.upgrade_defense(0.1)
 		open_for_bee(selected_bee)
 
-#func _on_bee_speed_button_pressed() -> void:
-#	print("Increase Bee Speed") #checks if button pressed
-#func _on_speed_upgrade_pressed() -> void:
-#	if selected_bee == null:
-#		return
-#	if Honey_Manager.spend_honey(30):
-#		selected_bee.upgrade_attack_speed(0.1)
-#		open_for_bee(selected_bee)
 
-func _on_bee_health_button_pressed() -> void:
-	print("Increase Bee Health") #checks if button pressed
+func _on_attack_upgrade_button_pressed() -> void:
+	print("pressed")
 	if selected_bee == null:
 		return
-	if Honey_Manager.spend_honey(50):
-		selected_bee.upgrade_health(0.1)
+	if Honey_Manager.spend_honey(10):
+		print("Attack+")
+		selected_bee.upgrade_attack(0.1)
 		open_for_bee(selected_bee)

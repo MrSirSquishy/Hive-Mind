@@ -100,6 +100,18 @@ func on_enemy_died() -> void:
 func on_bee_died() -> void:
 	bee_count -= 1
 
+
+##Bee Upgrades???
+func upgrade_health() -> void:
+	pass
+
+func upgrade_defense() -> void:
+	pass
+
+func upgrade_attack() -> void:
+	pass
+
+
 ## Signals
 func _init() -> void:
 	Signal_Bus.skip_wave.connect(_skip_wave)
