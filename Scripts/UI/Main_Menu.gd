@@ -1,10 +1,13 @@
 extends Control
 
+@onready var best_wave_label: Label = $BestWaveLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	best_wave_label.text = "Highest Wave: %d" % Global.highest_wave
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

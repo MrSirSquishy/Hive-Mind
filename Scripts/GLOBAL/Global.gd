@@ -8,6 +8,7 @@ var master_volume: float = 100.0
 var fullscreen: bool = false
 var vsync_enabled: bool = true
 
+var highest_wave: int = 0
 var _overlay: Node = null
 var _overlay_was_paused: bool = false
 var _overlay_previous_mouse_mode: Input.MouseMode = Input.MOUSE_MODE_HIDDEN
@@ -20,6 +21,27 @@ func _ready() -> void:
 		fullscreen = config.get_value("display", "fullscreen", false)
 		vsync_enabled = config.get_value("display", "vsync_enabled", true)
 	apply_settings()
+	load_highest_wave()
+func load_highest_wave() -> void:
+	var config: ConfigFile = ConfigFile.new()
+	
+	if config.load("user://progress.cfg") == OK:
+		highest_wave = int(
+			config.get_value("progress", "highest_wave", 0)
+		)
+func register_wave_reached(wave: int) -> void:
+	if wave <= highest_wave:
+		return
+		
+	highest_wave = wave
+	
+	var config: ConfigFile = ConfigFile.new()
+	config.set_value("progress", "highest_wave", highest_wave)
+	
+	var error: Error = config.save("user://progress.cfg")
+
+	if error != OK:
+		push_error("Could not save highest wave")
 
 func apply_settings() -> void:
 	AudioServer.set_bus_volume_linear(0, master_volume / 100.0)
