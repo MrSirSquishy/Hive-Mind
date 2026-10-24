@@ -205,8 +205,6 @@ func _process(dt: float) -> void:
 
 	queue_redraw()
 
-
-
 ## Draws certain visuals
 
 @onready var arrowDimensions : Array[Vector2] = [
@@ -228,13 +226,30 @@ func _draw() -> void:
 	draw_polygon(arrowDimensions, [Color.WHITE])
 	
 	if selected_entities.size() > 0:
-		draw_set_transform(target_pos - position, 0, Vector2.ONE)
-		draw_circle(
-			Vector2.ZERO, 
-			selection_circle_radius/zoom.x, 
-			Color.WHITE, false, 
-			selection_circle_thickness/zoom.x, true
-		)
+		#Bounding box if more than 1
+		if selected_entities.size() > 1:
+			draw_set_transform(-position, 0, Vector2.ONE)
+			## Generates Bounding Box
+			var bounds : Rect2 = Rect2(selected_entities[0].position, Vector2.ZERO)
+			var max_radius : float = 0
+			for entity: Entity in selected_entities:
+				bounds = bounds.expand(entity.position)
+				if entity.radius > max_radius:
+					max_radius = entity.radius
+			
+			draw_rect(bounds.grow(max_radius), Color.WHITE, false, selection_circle_radius/2)
+				
+		
+		#Circle if just one
+		else:
+			var min_radius = selected_entities[0].radius*2
+			draw_set_transform(target_pos - position, 0, Vector2.ONE)
+			draw_circle(
+				Vector2.ZERO, 
+				max(selection_circle_radius/zoom.x, min_radius), 
+				Color.WHITE, false, 
+				selection_circle_thickness/zoom.x, true
+			)
 
 
 

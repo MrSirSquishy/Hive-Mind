@@ -33,9 +33,14 @@ func finish_selection() -> void:
 			tween.tween_property(entity, "modulate", entity.modulate + Color.WHITE*4, 0.1)
 			tween.tween_property(entity, "modulate", entity.modulate, 0.2)
 	
-	var player : Player = get_parent()
-	player.selected_entities = selection
-	
+	#Make sure not to override selection if there is none selected
+	#Otherwise this breaks normal clicking on things
+	if selection.size() > 0:
+		var player : Player = get_parent()
+		#we await so the player doesn't immediately clear selection on mouse click up
+		await get_tree().physics_frame
+		player.selected_entities = selection
+		
 	## Resets things
 	monitoring = false
 	polygon = []

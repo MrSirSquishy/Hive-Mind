@@ -10,6 +10,9 @@
 @export var angle_dif_before_moving : float = PI/2
 
 @export_group("AI")
+##When it has no other target position, it will go to the hive.
+##This defines the radius that would be considered near enough to the hive
+@export var default_hive_radius : float = 800
 ##How close it should be to the target_position to be considered reached
 @export var target_margin : float = 200
 ##How close it should be to the final target_position to begin slowing down
@@ -38,6 +41,7 @@
 @onready var target_body : Body
 #When the eneity doesn't have a target_position anymore, go here
 @onready var default_target_position : Vector2 = Vector2.ZERO
+@onready var default_target_radius : float = default_hive_radius
 
 @onready var upgrades : Dictionary = {
 	"HEAD" : null,
@@ -47,7 +51,12 @@
 
 ## Functions
 		
-
+func set_default_target(
+		pos : Vector2 = Vector2.ZERO, 
+		radius : float = default_hive_radius
+		):
+		default_target_position = pos
+		default_target_radius = radius
 
 ### Active Functions
 
@@ -123,7 +132,11 @@ func _physics_process(dt : float) -> void:
 	if target_body:
 		current_target_position = target_body.position
 	else:
-		current_target_position = default_target_position
+		#Sets the current target to the edge the "default target circle"
+		#The target circle is defined at pos default_target_position with the respective radius
+		var dir_to_default : Vector2 = (position - default_target_position).normalized()
+		current_target_position = default_target_position + dir_to_default * default_target_radius
+		
 	
 	#Updates Navigation timer
 	if navigation_timer > 0:
@@ -161,15 +174,8 @@ func _physics_process(dt : float) -> void:
 	#queue_redraw()
 #
 #func _draw() -> void:
-	#draw_set_transform_matrix(global_transform.affine_inverse())
-	#if target_positions.size() > 1:
+	#var polyline : Array[Vector2] = target_positions.duplicate()
+	#polyline.push_back(position)
+	#if polyline.size() > 1:
+		#draw_set_transform_matrix(global_transform.affine_inverse())
 		#draw_polyline(target_positions, Color.AQUA)
-
-## Signals
-
-func is_hostile(body: PhysicsBody2D) -> bool:
-	if body is Entity:
-		return body.team != team
-	if body is Hive:
-		return body.team != team
-	return false

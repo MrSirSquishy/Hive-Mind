@@ -22,6 +22,7 @@ radius = 281.11386
 zoom = Vector2(0.2, 0.2)
 
 [node name="Background" type="TextureRect" parent="." unique_id=699257486]
+z_index = -100
 anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 1.0
