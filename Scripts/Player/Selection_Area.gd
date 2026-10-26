@@ -73,6 +73,8 @@ func _draw() -> void:
 		
 	
 func _unhandled_input(event: InputEvent) -> void:
+	#Doesn't trigger anything if not in the selection state
+	if get_parent().click_state != "SELECT": return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():

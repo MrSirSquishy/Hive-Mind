@@ -30,7 +30,10 @@ class_name Player extends Camera2D
 @onready var click_area : Area2D = get_node("Click_Area")
 @onready var selected_entities : Array[Entity] = []
 @onready var target_pos : Vector2 = Vector2.ZERO
+# Controls weather the camera should lock on to seleced entities
 @onready var lock_on_selected : bool = false
+# What action to preform on click
+@onready var click_state : String = "SELECT"
 
 @onready var left_down: bool = false
 @onready var left_press_px: Vector2 = Vector2.ZERO
@@ -108,16 +111,20 @@ func process_cam_shake(dt: float) -> void:
 
 ## Input Handler
 func _unhandled_input(event: InputEvent) -> void:
+	## Dragging
 	if event is InputEventMouseMotion:
 		var middle_held: bool = Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE)
 		var right_held: bool = Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
-		if middle_held or right_held:
+		if not lock_on_selected and middle_held or right_held:
 			position -= event.relative * drag_speed / zoom.x
+	
 	if event is InputEventMouseButton:
+		## Scrolling
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
 			apply_zoom(zoom_step)
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
 			apply_zoom(-zoom_step)
+		## Mouse Click
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				left_down = true
@@ -126,9 +133,32 @@ func _unhandled_input(event: InputEvent) -> void:
 				if not left_down:
 					return
 				left_down = false
-				scan_at_cursor()
-
-
+				if click_state == "SELECT":
+					scan_at_cursor()
+					# Locks on to entities if holding ctrl
+					if Input.is_key_pressed(KEY_CTRL):
+						lock_on_selected = true
+					else:
+						lock_on_selected = false
+				
+				elif click_state == "GUARD_AT":
+					var radius : float = (left_press_px - event.position).length()
+					for entity : Entity in selected_entities:
+						entity.set_default_target(get_global_mouse_position(), radius)
+				
+				elif click_state == "ATTACK":
+					pass
+	
+	if event is InputEventKey:
+		## Click State
+		if event.pressed:
+			if event.keycode == KEY_E:
+				click_state = "SELECT"
+			elif event.keycode == KEY_G:
+				click_state = "GUARD_AT"
+			elif event.keycode == KEY_F:
+				click_state = "ATTACK"
+	
 ## Active Functions
 
 # _ready runs ONCE when this node enters the scene tree.
@@ -175,7 +205,7 @@ func _process(dt: float) -> void:
 		pan_speed_multiplier = 2
 	position += move_dir * pan_speed * pan_speed_multiplier * dt / zoom.x
 
-	## Drawing
+	## Selection
 	
 	# Scales and directs the display arrow
 	var target_scale : float = 0.0
@@ -188,12 +218,20 @@ func _process(dt: float) -> void:
 			func(entity) -> bool: 
 				return is_instance_valid(entity)
 		)
+		#When the entities within the selection are freed
+		if selected_entities.size() == 0:
+			lock_on_selected = false
+		
 		#Gets the target position, if only 1 entity then this is just the entities position
 		#If more than 1, it gets the average position(think center of mass)
 		for entity : Entity in selected_entities:
 			target_pos += entity.position
 		target_pos /= selected_entities.size()
 		
+		if lock_on_selected:
+			position = target_pos
+		
+		## Arrow Drawing
 		var dif : Vector2 = get_global_mouse_position() - target_pos
 		if dif.length() > distance_to_show_arrow:
 			#we only need to update the rotation if the arrow should be visible
@@ -242,7 +280,7 @@ func _draw() -> void:
 		
 		#Circle if just one
 		else:
-			var min_radius = selected_entities[0].radius*2
+			var min_radius : float = selected_entities[0].radius*2
 			draw_set_transform(target_pos - position, 0, Vector2.ONE)
 			draw_circle(
 				Vector2.ZERO, 

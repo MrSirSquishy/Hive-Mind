@@ -51,12 +51,12 @@
 
 ## Functions
 		
-func set_default_target(
-		pos : Vector2 = Vector2.ZERO, 
-		radius : float = default_hive_radius
-		):
+func set_default_target(pos : Vector2 = Vector2.ZERO, target_radius : float = default_hive_radius) -> void:
 		default_target_position = pos
-		default_target_radius = radius
+		default_target_radius = target_radius
+
+
+
 
 ### Active Functions
 
@@ -136,7 +136,7 @@ func _physics_process(dt : float) -> void:
 		#The target circle is defined at pos default_target_position with the respective radius
 		var dir_to_default : Vector2 = (position - default_target_position).normalized()
 		current_target_position = default_target_position + dir_to_default * default_target_radius
-		
+		print(default_target_position, default_target_radius)
 	
 	#Updates Navigation timer
 	if navigation_timer > 0:
