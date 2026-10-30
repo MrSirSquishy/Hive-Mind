@@ -13,6 +13,7 @@ extends Area2D
 
 @onready var collision_polygon : CollisionPolygon2D = get_child(0)
 @onready var polygon : PackedVector2Array = []
+@onready var previous_parent_pos : Vector2 = Vector2.ONE
 
 func _ready() -> void:
 	monitoring = false
@@ -49,6 +50,13 @@ func finish_selection() -> void:
 
 func _process(_dt : float) -> void:
 	if monitoring: 
+			
+		#Corrects the polygons position if the camera moves
+		var pos_dif = get_parent().position - previous_parent_pos
+		for i in range(polygon.size()):
+			polygon[i] -= pos_dif			
+		previous_parent_pos = get_parent().position
+		
 		# Initiates selection polygon if it's empty
 		var mouse_pos : Vector2 = get_local_mouse_position()
 		if polygon.size() == 0:

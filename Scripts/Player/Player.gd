@@ -142,12 +142,14 @@ func _unhandled_input(event: InputEvent) -> void:
 						lock_on_selected = false
 				
 				elif click_state == "GUARD_AT":
+					# Click and dragging sets a circle that the bees will guard at
 					var radius : float = (left_press_px - event.position).length()
 					for entity : Entity in selected_entities:
 						entity.set_default_target(get_global_mouse_position(), radius)
 				
 				elif click_state == "ATTACK":
 					pass
+				
 	
 	if event is InputEventKey:
 		## Click State
@@ -158,6 +160,10 @@ func _unhandled_input(event: InputEvent) -> void:
 				click_state = "GUARD_AT"
 			elif event.keycode == KEY_F:
 				click_state = "ATTACK"
+			elif event.keycode== KEY_R:
+				# Bees will return to the hive
+				for entity : Entity in selected_entities:
+					entity.set_default_target()
 	
 ## Active Functions
 
@@ -199,11 +205,15 @@ func _process(dt: float) -> void:
 	if move_dir.length() > 1.0:
 		move_dir = move_dir.normalized()
 
-	# Move the camera. Divide by zoom so panning feels the same
+	
+	## Cam Movement
+	# * pan_speed_multiplier moves it faster if holding shift
+	# /zoom.x keeps the speed relative to the cameras scale(zoomed out move faster)
+	# /Engine.time_scale ignores effects of time slowdown/speedup
 	var pan_speed_multiplier : float = 1
 	if Input.is_key_pressed(KEY_SHIFT):
 		pan_speed_multiplier = 2
-	position += move_dir * pan_speed * pan_speed_multiplier * dt / zoom.x
+	position += move_dir * pan_speed * pan_speed_multiplier * dt / zoom.x / Engine.time_scale
 
 	## Selection
 	
