@@ -13,7 +13,7 @@ shadow_size = 5
 shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnh6m"]
-bg_color = Color(0.6862745, 0.5529412, 0.14117648, 1)
+bg_color = Color(0.5882353, 0.47058824, 0.11372549, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -22,7 +22,7 @@ shadow_size = 5
 shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64est"]
-bg_color = Color(0.5866053, 0.4713083, 0.1156018, 1)
+bg_color = Color(0.6862745, 0.5529412, 0.14117648, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16

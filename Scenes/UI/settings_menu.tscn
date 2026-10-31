@@ -7,33 +7,48 @@
 [sub_resource type="StyleBoxFlat" id="HoverStyle"]
 content_margin_top = 12.0
 content_margin_bottom = 12.0
-bg_color = Color(0.8, 0.66, 0.23, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
+bg_color = Color(0.6862745, 0.5529412, 0.14117648, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxFlat" id="ButtonStyle"]
 content_margin_top = 12.0
 content_margin_bottom = 12.0
-bg_color = Color(0.69, 0.55, 0.14, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
+bg_color = Color(0.63462025, 0.58511096, 0.23065636, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="PressedStyle"]
+content_margin_top = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.5882353, 0.47058824, 0.11372549, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
 
 [sub_resource type="Theme" id="MenuTheme"]
 default_font = ExtResource("3")
 default_font_size = 42
-Button/colors/font_color = Color(0.08, 0.1, 0.04, 1)
-Button/colors/font_focus_color = Color(0.08, 0.1, 0.04, 1)
-Button/colors/font_hover_color = Color(0.08, 0.1, 0.04, 1)
-Button/colors/font_hover_pressed_color = Color(0.08, 0.1, 0.04, 1)
-Button/colors/font_pressed_color = Color(0.08, 0.1, 0.04, 1)
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
 Button/styles/hover = SubResource("HoverStyle")
-Button/styles/hover_pressed = SubResource("HoverStyle")
+Button/styles/hover_pressed = SubResource("PressedStyle")
 Button/styles/normal = SubResource("ButtonStyle")
-Button/styles/pressed = SubResource("ButtonStyle")
+Button/styles/pressed = SubResource("PressedStyle")
 
 [sub_resource type="StyleBoxFlat" id="PanelStyle"]
 content_margin_left = 48.0
@@ -55,10 +70,10 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.8, 0.66, 0.23, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [node name="SettingsMenu" type="CanvasLayer" unique_id=475805839]
 process_mode = 3

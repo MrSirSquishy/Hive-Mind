@@ -21,6 +21,7 @@ signal game_over()
 
 
 ### UI signals
+signal toast_requested(message: String)
 
 signal open_sub_menu(target : Entity)
 signal open_sub_menu_array(target : Array[Entity])

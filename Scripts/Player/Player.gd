@@ -312,6 +312,7 @@ func _on_settings_button_pressed() -> void:
 
 func _on_shop_button_pressed() -> void:
 	Global.open_overlay("res://Scenes/UI/shop_menu.tscn")
+	Signal_Bus.toast_requested.emit("Spend your honey in the shop!")
 	print("Shop Button Pressed") #checks if button pressed
 
 #func _on_upgrade_button_pressed() -> void:

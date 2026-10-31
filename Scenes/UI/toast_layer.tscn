@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://88e8k4mytweh"]
+
+[ext_resource type="Script" uid="uid://v4ys1nsk0xfi" path="res://Scripts/UI/Toast_Layer.gd" id="1_31o03"]
+[ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="2_toast"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toast"]
+content_margin_left = 24.0
+content_margin_top = 16.0
+content_margin_right = 24.0
+content_margin_bottom = 16.0
+bg_color = Color(0.63462025, 0.58511096, 0.23065636, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[node name="ToastLayer" type="CanvasLayer" unique_id=454660353]
+script = ExtResource("1_31o03")
+
+[node name="Root" type="Control" parent="." unique_id=9240458]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TopRow" type="HBoxContainer" parent="Root" unique_id=952877375]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 24.0
+offset_bottom = 224.0
+grow_horizontal = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="ToastPanel" type="PanelContainer" parent="Root/TopRow" unique_id=525917381]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_toast")
+
+[node name="Message" type="Label" parent="Root/TopRow/ToastPanel" unique_id=1161103050]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_toast")
+theme_override_font_sizes/font_size = 52
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

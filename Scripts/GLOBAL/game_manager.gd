@@ -78,6 +78,7 @@ func spawn_wave() -> void:
 		enemy.position = Vector2.from_angle(randf_range(0, TAU)) * randf_range(wave_radius_min, wave_radius_max)
 		enemy.died.connect(on_enemy_died)
 		get_tree().current_scene.add_child(enemy)
+	Signal_Bus.toast_requested.emit("Wave %d begins!" % wave_count)
 
 func on_enemy_died() -> void:
 	alive -= 1
@@ -89,6 +90,8 @@ func on_enemy_died() -> void:
 		
 		if missing_bees > 0:
 			spawn_bees(missing_bees)
+
+		Signal_Bus.toast_requested.emit("Wave %d cleared! The shop is available." % wave_count)
 	
 	is_wave_waiting = true
 	Signal_Bus.show_skip_wave_button.emit()
