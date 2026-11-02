@@ -43,6 +43,8 @@
 @onready var default_target_position : Vector2 = Vector2.ZERO
 @onready var default_target_radius : float = default_hive_radius
 
+@onready var assigned_detection_area : Detection_Area
+
 @onready var upgrades : Dictionary = {
 	"HEAD" : null,
 	"BODY" : null,
@@ -55,7 +57,13 @@ func set_default_target(pos : Vector2 = Vector2.ZERO, target_radius : float = de
 		default_target_position = pos
 		default_target_radius = target_radius
 
-
+func get_target_body_from_array(body_array : Array[Node2D]) -> void:
+	# Finds enemy bodies within it's awareness area, targets closest one
+	for entity : PhysicsBody2D in body_array:
+		if entity is Body and entity.team != team:
+			#Sets the target body if it is null, or if the new target body is closer
+			if not target_body or (target_body.position - position).length() > (entity.position - position).length():
+				target_body = entity
 
 
 ### Active Functions
@@ -119,14 +127,11 @@ func _physics_process(dt : float) -> void:
 					hit_object.position + perpendicular_dir * safe_radius_from_entity
 				)
 	
-	
-	
-	# Finds enemy bodies within it's awareness area, targets closest one
-	for entity : PhysicsBody2D in awareness_area.get_overlapping_bodies():
-		if entity is Body and entity.team != team:
-			#Sets the target body if it is null, or if the new target body is closer
-			if not target_body or (target_body.position - position).length() > (entity.position - position).length():
-				target_body = entity
+
+	get_target_body_from_array(awareness_area.get_overlapping_bodies())
+	#Prioritizes bodies in the assigned detection area
+	if assigned_detection_area:
+		get_target_body_from_array(assigned_detection_area.get_overlapping_bodies())	
 	
 	var current_target_position : Vector2
 	if target_body:
@@ -168,6 +173,7 @@ func _physics_process(dt : float) -> void:
 		sprite_handler.set_eye_dir(
 			-dif.normalized().rotated(-rotation)
 		)
+
 
 ### Debug Drawing
 	#queue_redraw()

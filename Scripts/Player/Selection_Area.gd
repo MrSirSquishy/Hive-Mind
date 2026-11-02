@@ -52,8 +52,8 @@ func _process(_dt : float) -> void:
 	if monitoring: 
 			
 		#Corrects the polygons position if the camera moves
-		var pos_dif = get_parent().position - previous_parent_pos
-		for i in range(polygon.size()):
+		var pos_dif : Vector2 = get_parent().position - previous_parent_pos
+		for i : int in range(polygon.size()):
 			polygon[i] -= pos_dif			
 		previous_parent_pos = get_parent().position
 		

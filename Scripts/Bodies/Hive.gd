@@ -19,7 +19,7 @@ func _ready() -> void:
 	health_changed.emit(health, max_health)
 	
 	#init upgrades
-	var child_upgrades : Array[Node] = find_children("", "Upgrade")
+	var child_upgrades : Array[Node] = find_children("", "Hive_Upgrade")
 	for upgrade : Hive_Upgrade in child_upgrades:
 		upgrades.append(upgrade)
 		upgrade.init(self)

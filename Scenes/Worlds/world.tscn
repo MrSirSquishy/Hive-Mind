@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bsku2web0nrvv" path="res://Scenes/UI/entity_sub_menu.tscn" id="5_ohl8q"]
 [ext_resource type="PackedScene" uid="uid://cs3g61ya5mbjf" path="res://Scenes/UI/upgrade_menu.tscn" id="6_8q0pn"]
 [ext_resource type="Script" uid="uid://caviwso8kttjp" path="res://Scripts/GLOBAL/game_manager.gd" id="6_ohl8q"]
+[ext_resource type="PackedScene" uid="uid://04sl08o6em3y" path="res://Scenes/Upgrades/hive_upgrades/hive_lvl_2.tscn" id="7_1h6gp"]
+[ext_resource type="Script" uid="uid://rimc773e1bb7" path="res://Scripts/Detection_Area.gd" id="8_7glap"]
 [ext_resource type="PackedScene" uid="uid://deai2dvakqpab" path="res://Scenes/Bees/bee.tscn" id="8_vbdlg"]
 [ext_resource type="PackedScene" uid="uid://cxvvis1miubcl" path="res://Scenes/Upgrades/speedy_wings.tscn" id="9_k3jyg"]
 [ext_resource type="PackedScene" uid="uid://8oasxeglamcb" path="res://Scenes/Upgrades/big_upgrade.tscn" id="10_af1hx"]
@@ -16,6 +18,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xg358"]
 radius = 281.11386
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1fhm7"]
+radius = 1000.0
 
 [node name="World" type="Node2D" unique_id=1622916593]
 
@@ -46,9 +51,7 @@ script = ExtResource("6_ohl8q")
 [node name="Hive" type="RigidBody2D" parent="." unique_id=1174471041]
 freeze = true
 script = ExtResource("4_cpkch")
-damage_reduction = null
 team = "BEE"
-max_health = null
 radius = 600.0
 metadata/_custom_type_script = "uid://biupyo5mtjo83"
 
@@ -64,6 +67,17 @@ shape = SubResource("CircleShape2D_xg358")
 [node name="HealthBar" parent="Hive" unique_id=672759603 instance=ExtResource("health_bar")]
 bar_size = Vector2(500, 32)
 height_above_body = 350.0
+
+[node name="Hive_Lvl2" parent="Hive" unique_id=182242071 instance=ExtResource("7_1h6gp")]
+
+[node name="Detection_Area" type="Area2D" parent="Hive" unique_id=1063536436]
+z_index = -5
+script = ExtResource("8_7glap")
+persistent = true
+metadata/_custom_type_script = "uid://rimc773e1bb7"
+
+[node name="Collider" type="CollisionShape2D" parent="Hive/Detection_Area" unique_id=513036319]
+shape = SubResource("CircleShape2D_1fhm7")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=394841888]
 

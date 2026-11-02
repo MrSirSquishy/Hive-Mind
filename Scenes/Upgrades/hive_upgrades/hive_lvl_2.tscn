@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://04sl08o6em3y"]
+
+[ext_resource type="Script" uid="uid://bqnp5tcovm6en" path="res://Scripts/Upgrades/hive_upgrades/Hive_Lvl2.gd" id="1_hx46l"]
+[ext_resource type="Texture2D" uid="uid://ce0lcuoh3wpw" path="res://Assets/Hive/HiveLVL2.svg" id="2_56avw"]
+
+[node name="Hive_Lvl2" type="Node2D" unique_id=182242071]
+script = ExtResource("1_hx46l")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=828561119]
+scale = Vector2(5, 5)
+texture = ExtResource("2_56avw")
+region_enabled = true
+region_rect = Rect2(198, 90, 254, 146)
