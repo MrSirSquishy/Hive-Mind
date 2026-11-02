@@ -51,6 +51,16 @@ func apply_zoom(amount: float) -> void:
 	position +=  old_mouse_pos - get_global_mouse_position()
 
 
+func recenter_on_hive() -> void:
+	lock_on_selected = false
+	var hives : Array[Node] = get_tree().get_nodes_in_group("hive")
+	var hive_pos : Vector2 = Vector2.ZERO
+	if not hives.is_empty():
+		var hive : Node2D = hives[0] as Node2D
+		hive_pos = hive.global_position
+	position = hive_pos
+
+
 #this function is a forgiveness mechanic for clicking near but not directly under the cursor
 func scan_at_cursor() -> void:
 	#gets all the bodies within a margin of the cursor
@@ -164,6 +174,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				# Bees will return to the hive
 				for entity : Entity in selected_entities:
 					entity.set_default_target()
+			elif event.keycode == KEY_H:
+				recenter_on_hive()
 	
 ## Active Functions
 
