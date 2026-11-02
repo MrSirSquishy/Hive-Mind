@@ -136,7 +136,6 @@ func _physics_process(dt : float) -> void:
 		#The target circle is defined at pos default_target_position with the respective radius
 		var dir_to_default : Vector2 = (position - default_target_position).normalized()
 		current_target_position = default_target_position + dir_to_default * default_target_radius
-		print(default_target_position, default_target_radius)
 	
 	#Updates Navigation timer
 	if navigation_timer > 0:

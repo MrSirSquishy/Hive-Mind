@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://cxvvis1miubcl" path="res://Scenes/Upgrades/speedy_wings.tscn" id="9_k3jyg"]
 [ext_resource type="PackedScene" uid="uid://8oasxeglamcb" path="res://Scenes/Upgrades/big_upgrade.tscn" id="10_af1hx"]
 [ext_resource type="PackedScene" uid="uid://cvxa2l51320du" path="res://Scenes/Upgrades/green_upgrade.tscn" id="11_x7v1i"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/health_bar.tscn" id="health_bar"]
 [ext_resource type="PackedScene" uid="uid://88e8k4mytweh" path="res://Scenes/UI/toast_layer.tscn" id="12_toast"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/health_bar.tscn" id="health_bar"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xg358"]
 radius = 281.11386
@@ -74,7 +74,7 @@ visible = false
 [node name="OverlayLayer" type="CanvasLayer" parent="." unique_id=394841889]
 layer = 50
 
-[node name="ToastLayer" parent="." instance=ExtResource("12_toast")]
+[node name="ToastLayer" parent="." unique_id=1710021640 instance=ExtResource("12_toast")]
 
 [node name="Bee" parent="." unique_id=769899236 instance=ExtResource("8_vbdlg")]
 position = Vector2(-2314, -742)

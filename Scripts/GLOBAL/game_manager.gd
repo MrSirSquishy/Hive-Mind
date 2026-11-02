@@ -63,6 +63,7 @@ func spawn_bees(amount : int) -> void:
 		bee_count += 1
 
 func spawn_wave() -> void:
+	Engine.time_scale = 1 # makes sure the time scale is correct
 	if game_over:
 		return
 	is_wave_waiting = false
