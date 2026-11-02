@@ -6,6 +6,8 @@ signal damaged(amount: float)
 @export_range(0.0, 0.8, 0.1) var damage_reduction: float = 0.0
 var is_destroyed: bool = false
 
+@onready var upgrades : Array[Hive_Upgrade] = []
+
 
 func _ready() -> void:
 	#lets ui find the hive
@@ -15,6 +17,12 @@ func _ready() -> void:
 	damage_reduction = clampf(damage_reduction + Global.hive_defense_bonus, 0.0, 0.8)
 	health = max_health
 	health_changed.emit(health, max_health)
+	
+	#init upgrades
+	var child_upgrades : Array[Node] = find_children("", "Upgrade")
+	for upgrade : Hive_Upgrade in child_upgrades:
+		upgrades.append(upgrade)
+		upgrade.init(self)
 	
 func _physics_process(dt: float) -> void:
 	update_i_frames(dt)

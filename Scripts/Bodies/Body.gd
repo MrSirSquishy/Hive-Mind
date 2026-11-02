@@ -17,7 +17,6 @@ signal health_changed(current_health: float, max_health: float)
 @onready var i_frame_dictionary : Dictionary[String, float] = {}
 
 
-
 ## Functions
 func update_i_frames(dt : float) -> void:
 	# Updates all sets of i_frames:

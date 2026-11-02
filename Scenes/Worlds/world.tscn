@@ -46,7 +46,9 @@ script = ExtResource("6_ohl8q")
 [node name="Hive" type="RigidBody2D" parent="." unique_id=1174471041]
 freeze = true
 script = ExtResource("4_cpkch")
+damage_reduction = null
 team = "BEE"
+max_health = null
 radius = 600.0
 metadata/_custom_type_script = "uid://biupyo5mtjo83"
 
