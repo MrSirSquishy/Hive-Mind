@@ -10,5 +10,5 @@ func init(hive : Hive) -> void:
 	hive.max_health *= 2
 	hive.health = hive.max_health
 
-func exit(hive : Hive) -> void:
+func exit(_hive : Hive) -> void:
 	pass

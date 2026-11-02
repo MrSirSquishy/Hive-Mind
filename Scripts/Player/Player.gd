@@ -128,7 +128,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				left_down = true
-				left_press_px = event.position
+				left_press_px = get_global_mouse_position()
 			else:
 				if not left_down:
 					return
@@ -143,7 +143,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				
 				elif click_state == "GUARD_AT":
 					# Click and dragging sets a circle that the bees will guard at
-					var radius : float = (left_press_px - event.position).length()
+					var radius : float = (left_press_px - get_global_mouse_position()).length()
 					for entity : Entity in selected_entities:
 						entity.set_default_target(get_global_mouse_position(), radius)
 				
@@ -266,7 +266,14 @@ func _process(dt: float) -> void:
 @export var crosshairThickness : float = 4.0
 
 func _draw() -> void:
+	
+	if click_state == "GUARD_AT" and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		var radius : float = (left_press_px - get_local_mouse_position() - position).length()
+		draw_circle(left_press_px - position, radius, Color.WHITE, false, crosshairThickness/zoom.x, true)
+	
+	
 	draw_set_transform(get_global_mouse_position() - position, 0, Vector2.ONE / zoom.x)
+	#Crosshair
 	draw_circle(Vector2.ZERO, crosshairRadius, Color.WHITE, false, crosshairThickness, true)
 
 	#Draws Arrow
