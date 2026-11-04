@@ -43,6 +43,10 @@ func damage(damage_amount: float, source_identifier: String = "", i_frames: floa
 	if i_frames > 0.0:
 		i_frame_dictionary[source_identifier] = i_frames
 
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_property(self, "modulate", Color.WHITE * 3, 0.05)
+	tween.tween_property(self, "modulate", Color.WHITE, 0.1)
+
 	var actual_damage : float =  damage_amount * (1.0 - damage_reduction)
 	health = max(health - actual_damage, 0.0)
 	##for ui

@@ -25,9 +25,15 @@ func start_selection() -> void:
 
 func finish_selection() -> void:
 	var selection : Array[Entity]
+	
+	#By default selects only bees, but if in attack mode selects only NON bees
+	var should_be_bee : bool = true
+	if get_parent().click_state == "ATTACK":
+		should_be_bee = false
+		
 	for entity : PhysicsBody2D in get_overlapping_bodies():
-		#Only selects bees
-		if entity is Entity and entity.team == "BEE":
+		var is_bee : bool = entity.team == "BEE"
+		if entity is Entity and is_bee == should_be_bee:
 			selection.append(entity)
 			#Makes all entities play a short flash, should prob be replaced with smthn better
 			var tween : Tween = get_tree().create_tween()
@@ -81,8 +87,8 @@ func _draw() -> void:
 		
 	
 func _unhandled_input(event: InputEvent) -> void:
-	#Doesn't trigger anything if not in the selection state
-	if get_parent().click_state != "SELECT": return
+	#Doesn't trigger anything if not in the selection or attack state
+	if get_parent().click_state != "SELECT" and get_parent().click_state != "ATTACK": return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():

@@ -39,6 +39,8 @@
 #First element is target position, others are points on the nav path to the target
 @onready var target_positions : Array[Vector2] = [position]
 @onready var target_body : Body
+#Entity will prioritize attacking these bodies before doing anything else
+@onready var attack_bodies : Array[Body]
 #When the eneity doesn't have a target_position anymore, go here
 @onready var default_target_position : Vector2 = Vector2.ZERO
 @onready var default_target_radius : float = default_hive_radius
@@ -128,11 +130,17 @@ func _physics_process(dt : float) -> void:
 				)
 	
 
-	get_target_body_from_array(awareness_area.get_overlapping_bodies())
-	#Prioritizes bodies in the assigned detection area
-	if assigned_detection_area:
-		get_target_body_from_array(assigned_detection_area.get_overlapping_bodies())	
-	
+	#Attack it's priotized targets above all else
+	if attack_bodies.size() > 0:
+		var attack_bodies_recast : Array[Node2D]
+		attack_bodies_recast.assign(attack_bodies)
+		get_target_body_from_array(attack_bodies_recast)
+	else:
+		get_target_body_from_array(awareness_area.get_overlapping_bodies())
+		#Prioritizes bodies in the assigned detection area
+		if assigned_detection_area:
+			get_target_body_from_array(assigned_detection_area.get_overlapping_bodies())	
+		
 	var current_target_position : Vector2
 	if target_body:
 		current_target_position = target_body.position

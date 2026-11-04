@@ -15,6 +15,5 @@ func _physics_process(_dt: float) -> void:
 		await get_tree().create_timer(1.0).timeout
 		if linked_entities.size() == 0:
 			queue_free()
-
-func _on_body_entered(_body: Node2D) -> void:
-	pass
+	else:
+		pass
