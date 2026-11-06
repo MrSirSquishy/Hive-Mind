@@ -163,7 +163,6 @@ func _physics_process(dt : float) -> void:
 		if scan_near: #Don't need to scan if already found in detection area
 			get_target_body_from_array(awareness_area.get_overlapping_bodies())
 		
-	print(attack_bodies)
 	var current_target_position : Vector2
 	if target_body:
 		current_target_position = target_body.position
