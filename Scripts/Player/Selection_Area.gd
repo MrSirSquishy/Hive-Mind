@@ -27,8 +27,9 @@ func finish_selection() -> void:
 	var selection : Array[Entity]
 	
 	#By default selects only bees, but if in attack mode selects only NON bees
+	var is_attack : bool = get_parent().click_state == "ATTACK"
 	var should_be_bee : bool = true
-	if get_parent().click_state == "ATTACK":
+	if is_attack:
 		should_be_bee = false
 		
 	for entity : PhysicsBody2D in get_overlapping_bodies():
@@ -40,13 +41,18 @@ func finish_selection() -> void:
 			tween.tween_property(entity, "modulate", entity.modulate + Color.WHITE*4, 0.1)
 			tween.tween_property(entity, "modulate", entity.modulate, 0.2)
 	
-	#Make sure not to override selection if there is none selected
+	#Make sure not to override selection if there is selection area turns out empty
 	#Otherwise this breaks normal clicking on things
 	if selection.size() > 0:
 		var player : Player = get_parent()
-		#we await so the player doesn't immediately clear selection on mouse click up
-		await get_tree().physics_frame
-		player.selected_entities = selection
+		if is_attack:
+			#If in attack mode, has all selected entities attack the current selection
+			for entity : Entity in player.selected_entities:
+				entity.attack_bodies.assign(selection)
+		else:
+			#we await so the player doesn't immediately clear selection on mouse click up
+			await get_tree().physics_frame
+			player.selected_entities = selection
 		
 	## Resets things
 	monitoring = false

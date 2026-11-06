@@ -7,7 +7,7 @@ signal damaged(amount: float)
 var is_destroyed: bool = false
 
 @onready var upgrades : Array[Hive_Upgrade] = []
-
+@onready var detection_area : Detection_Area = get_node("Detection_Area")
 
 func _ready() -> void:
 	#lets ui find the hive
@@ -17,6 +17,8 @@ func _ready() -> void:
 	damage_reduction = clampf(damage_reduction + Global.hive_defense_bonus, 0.0, 0.8)
 	health = max_health
 	health_changed.emit(health, max_health)
+	#Signals
+	Signal_Bus.attach_hive_detection_area.connect(_attach_hive_detection_area)
 	
 	#init upgrades
 	var child_upgrades : Array[Node] = find_children("", "Hive_Upgrade")
@@ -24,6 +26,10 @@ func _ready() -> void:
 		upgrades.append(upgrade)
 		upgrade.init(self)
 	
+#Entities can request the hives detection area, this executes that
+func _attach_hive_detection_area(entity : Entity) -> void:
+	entity.set_detection_area(detection_area)	
+
 func _physics_process(dt: float) -> void:
 	update_i_frames(dt)
 

@@ -59,18 +59,31 @@ func set_default_target(pos : Vector2 = Vector2.ZERO, target_radius : float = de
 		default_target_position = pos
 		default_target_radius = target_radius
 
-func get_target_body_from_array(body_array : Array[Node2D]) -> void:
+func get_target_body_from_array(body_array : Array[Node2D], nearest_to_position : Vector2 = position) -> bool:
 	# Finds enemy bodies within it's awareness area, targets closest one
+	var new_target : Body = null
 	for entity : PhysicsBody2D in body_array:
 		if entity is Body and entity.team != team:
 			#Sets the target body if it is null, or if the new target body is closer
-			if not target_body or (target_body.position - position).length() > (entity.position - position).length():
-				target_body = entity
+			if not new_target or (new_target.position - nearest_to_position).length() > (entity.position - nearest_to_position).length():
+				new_target = entity
+		
+	target_body = new_target
+	return not (new_target == null)
 
+func set_detection_area(new_detection_area : Detection_Area) -> void:
+	if assigned_detection_area is Detection_Area:
+		assigned_detection_area.linked_entities.erase(self)
+	
+	assigned_detection_area = new_detection_area
+	assigned_detection_area.linked_entities.append(self)
 
 ### Active Functions
 
 func _ready() -> void:
+	#Initial detection area
+	Signal_Bus.attach_hive_detection_area.emit(self)
+	
 	#Initializes Upgrades
 	#doesn't check for duplicates, so only last one of same type is stored
 	var child_upgrades : Array[Node] = find_children("", "Upgrade")
@@ -132,15 +145,25 @@ func _physics_process(dt : float) -> void:
 
 	#Attack it's priotized targets above all else
 	if attack_bodies.size() > 0:
+		#Removes any invalid entities from array(for example ones that have been freed)
+		@warning_ignore("untyped_declaration")
+		attack_bodies = attack_bodies.filter(
+			func(entity) -> bool: 
+				return is_instance_valid(entity)
+		)
 		var attack_bodies_recast : Array[Node2D]
 		attack_bodies_recast.assign(attack_bodies)
 		get_target_body_from_array(attack_bodies_recast)
 	else:
-		get_target_body_from_array(awareness_area.get_overlapping_bodies())
-		#Prioritizes bodies in the assigned detection area
-		if assigned_detection_area:
-			get_target_body_from_array(assigned_detection_area.get_overlapping_bodies())	
+		var scan_near = true
+		if assigned_detection_area: #priortizes assigned detection area
+			#if something is found, scan_near set to false
+			scan_near = not get_target_body_from_array(assigned_detection_area.get_overlapping_bodies(), assigned_detection_area.position)	
 		
+		if scan_near: #Don't need to scan if already found in detection area
+			get_target_body_from_array(awareness_area.get_overlapping_bodies())
+		
+	print(attack_bodies)
 	var current_target_position : Vector2
 	if target_body:
 		current_target_position = target_body.position

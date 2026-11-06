@@ -20,7 +20,7 @@
 radius = 281.11386
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1fhm7"]
-radius = 1000.0
+radius = 2000.0
 
 [node name="World" type="Node2D" unique_id=1622916593]
 
@@ -74,6 +74,7 @@ height_above_body = 350.0
 z_index = -5
 script = ExtResource("8_7glap")
 persistent = true
+priortize_center = true
 metadata/_custom_type_script = "uid://rimc773e1bb7"
 
 [node name="Collider" type="CollisionShape2D" parent="Hive/Detection_Area" unique_id=513036319]
