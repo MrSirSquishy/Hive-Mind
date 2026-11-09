@@ -1,1 +1,58 @@
 class_name Bee extends Entity
+
+@export var bee_name : String = ""
+
+func _ready() -> void:
+	if bee_name == "":
+		bee_name = get_random_bee_name()
+	super._ready()
+
+
+static var bee_name_array : Array[String] = [
+	"John Bee",
+	"Grumble",
+	"Beeatrice",
+	"Mr. Bumble",
+	"Mrs. Bumble",
+	"Bumble Jr.",
+	"Charles",
+	"Beelzebub",
+	"Marty McBee",
+	"Buzz Aldrin",
+	"Barry B. Benson",
+	"Sarah",
+	"Oliver",
+	"Lilac",
+	"Toyota Corola",
+	"Stanley",
+	"Bernard",
+	"Vlad",
+	"Abigail",
+	"Hayden",
+	"Cinder Block",
+	"Daisy",
+	"Clover",
+	"Marigold",
+	"Sunny",
+	"Poppy",
+	"Cocoa",
+	"Cinnamon",
+	"Nutmeg",
+	"Yellow",
+	"Flowery",
+	"Hornet",
+	"Grace",
+	"Eva",
+	"Vanilla",
+	"Peaches",
+	"Juniper",
+	"Willow",
+	"Pickle",
+	"Madeline",
+	"Ryan",
+	"Beethoven",
+	"Ivy"
+]
+
+static func get_random_bee_name() -> String:
+	return bee_name_array[randi_range(0, bee_name_array.size() - 1)]

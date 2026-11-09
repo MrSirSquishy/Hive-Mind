@@ -83,7 +83,7 @@ func scan_at_cursor() -> void:
 		selected_entities = [closest_body]
 		
 		# Opens up menu for entity/entities
-		Signal_Bus.open_sub_menu.emit(selected_entities[0])	
+		Signal_Bus.open_sub_menu.emit(selected_entities)	
 	else:
 		selected_entities = []
 		

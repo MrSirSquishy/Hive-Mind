@@ -3,16 +3,16 @@
 [ext_resource type="Script" uid="uid://dedts6rg4ipts" path="res://Scripts/UI/Entity_Sub_Menu.gd" id="1_l1a1m"]
 [ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="2_m5n5x"]
 [ext_resource type="Texture2D" uid="uid://0khnpo75ka8h" path="res://Assets/UI/Heart.svg" id="3_tkrkt"]
-[ext_resource type="Texture2D" uid="uid://bn7jtqcte8hlu" path="res://Assets/UI/Shield.svg" id="4_s6uxk"]
 [ext_resource type="Texture2D" uid="uid://bh7v815ykvvaa" path="res://Assets/UI/Sword.svg" id="5_t2uhb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yn5c"]
 bg_color = Color(0.8156863, 0.6745098, 0.8235294, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
 border_color = Color(0.58431375, 0.39607844, 0.64705884, 1)
+border_blend = true
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -101,6 +101,7 @@ vertical_alignment = 1
 
 [node name="HealthInfoContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1862364050]
 layout_mode = 2
+theme_override_constants/separation = 32
 
 [node name="HeartIcon" type="TextureRect" parent="VBoxContainer/HealthInfoContainer" unique_id=1111013634]
 layout_mode = 2
@@ -117,34 +118,13 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 4
 theme_override_fonts/font = ExtResource("2_m5n5x")
 theme_override_font_sizes/font_size = 175
-text = "HeathAmt"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="DefenseInfoContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=17198980]
-layout_mode = 2
-
-[node name="DefenseIcon" type="TextureRect" parent="VBoxContainer/DefenseInfoContainer" unique_id=192852402]
-layout_mode = 2
-offset_transform_enabled = true
-texture = ExtResource("4_s6uxk")
-expand_mode = 3
-stretch_mode = 4
-
-[node name="DefenseLabel" type="Label" parent="VBoxContainer/DefenseInfoContainer" unique_id=1497140204]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.6117647, 0.6117647, 0.6117647, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 4
-theme_override_fonts/font = ExtResource("2_m5n5x")
-theme_override_font_sizes/font_size = 175
-text = "DefenseAmt"
+text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AttackInfoContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1054053423]
 layout_mode = 2
+theme_override_constants/separation = 32
 
 [node name="AttackIcon" type="TextureRect" parent="VBoxContainer/AttackInfoContainer" unique_id=1301179811]
 layout_mode = 2
@@ -161,7 +141,7 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 4
 theme_override_fonts/font = ExtResource("2_m5n5x")
 theme_override_font_sizes/font_size = 175
-text = "AttackAmt"
+text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -77,7 +77,6 @@ func reset_detection_area() -> void:
 	Signal_Bus.attach_default_detection_area.emit(self)
 
 ### Active Functions
-
 func _ready() -> void:
 	#Initial detection area
 	reset_detection_area()

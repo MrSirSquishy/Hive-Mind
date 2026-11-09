@@ -7,6 +7,7 @@ signal world_clicked(global_position : Vector2)
 ## entities will call this to get the default detection area of the hive
 signal attach_default_detection_area(entity : Entity)
 
+
 ### Visual Effects Signals
 
 signal trigger_cam_shake(strength : float, position : Vector2)
@@ -25,8 +26,7 @@ signal game_over()
 ### UI signals
 signal toast_requested(message: String)
 
-signal open_sub_menu(target : Entity)
-signal open_sub_menu_array(target : Array[Entity])
+signal open_sub_menu(entity_array : Array[Entity])
 signal close_sub_menu()
 
 signal open_upgrade_menu(target : Entity)

@@ -22,6 +22,7 @@ func _ready() -> void:
 		vsync_enabled = config.get_value("display", "vsync_enabled", true)
 	apply_settings()
 	load_highest_wave()
+
 func load_highest_wave() -> void:
 	var config: ConfigFile = ConfigFile.new()
 	
