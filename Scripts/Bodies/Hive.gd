@@ -18,7 +18,7 @@ func _ready() -> void:
 	health = max_health
 	health_changed.emit(health, max_health)
 	#Signals
-	Signal_Bus.attach_hive_detection_area.connect(_attach_hive_detection_area)
+	Signal_Bus.attach_default_detection_area.connect(_attach_hive_detection_area)
 	
 	#init upgrades
 	var child_upgrades : Array[Node] = find_children("", "Hive_Upgrade")

@@ -5,7 +5,7 @@ extends Node
 signal world_clicked(global_position : Vector2)
 
 ## entities will call this to get the default detection area of the hive
-signal attach_hive_detection_area(entity : Entity)
+signal attach_default_detection_area(entity : Entity)
 
 ### Visual Effects Signals
 

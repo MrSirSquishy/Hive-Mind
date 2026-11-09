@@ -41,9 +41,6 @@
 @onready var target_body : Body
 #Entity will prioritize attacking these bodies before doing anything else
 @onready var attack_bodies : Array[Body]
-#When the eneity doesn't have a target_position anymore, go here
-@onready var default_target_position : Vector2 = Vector2.ZERO
-@onready var default_target_radius : float = default_hive_radius
 
 @onready var assigned_detection_area : Detection_Area
 
@@ -54,10 +51,6 @@
 }
 
 ## Functions
-		
-func set_default_target(pos : Vector2 = Vector2.ZERO, target_radius : float = default_hive_radius) -> void:
-		default_target_position = pos
-		default_target_radius = target_radius
 
 func get_target_body_from_array(body_array : Array[Node2D], nearest_to_position : Vector2 = position) -> bool:
 	# Finds enemy bodies within it's awareness area, targets closest one
@@ -71,6 +64,7 @@ func get_target_body_from_array(body_array : Array[Node2D], nearest_to_position 
 	target_body = new_target
 	return not (new_target == null)
 
+## Frees itself from the current detection area before assigning itself to the new one
 func set_detection_area(new_detection_area : Detection_Area) -> void:
 	if assigned_detection_area is Detection_Area:
 		assigned_detection_area.linked_entities.erase(self)
@@ -78,11 +72,15 @@ func set_detection_area(new_detection_area : Detection_Area) -> void:
 	assigned_detection_area = new_detection_area
 	assigned_detection_area.linked_entities.append(self)
 
+## Resets back to the default detection area (the hive)
+func reset_detection_area() -> void:
+	Signal_Bus.attach_default_detection_area.emit(self)
+
 ### Active Functions
 
 func _ready() -> void:
 	#Initial detection area
-	Signal_Bus.attach_hive_detection_area.emit(self)
+	reset_detection_area()
 	
 	#Initializes Upgrades
 	#doesn't check for duplicates, so only last one of same type is stored
@@ -155,10 +153,13 @@ func _physics_process(dt : float) -> void:
 		attack_bodies_recast.assign(attack_bodies)
 		get_target_body_from_array(attack_bodies_recast)
 	else:
-		var scan_near = true
+		var scan_near : bool = true
 		if assigned_detection_area: #priortizes assigned detection area
 			#if something is found, scan_near set to false
 			scan_near = not get_target_body_from_array(assigned_detection_area.get_overlapping_bodies(), assigned_detection_area.position)	
+		else:
+			#If no detection area, reset to the default detection area
+			reset_detection_area()
 		
 		if scan_near: #Don't need to scan if already found in detection area
 			get_target_body_from_array(awareness_area.get_overlapping_bodies())
@@ -166,12 +167,15 @@ func _physics_process(dt : float) -> void:
 	var current_target_position : Vector2
 	if target_body:
 		current_target_position = target_body.position
-	else:
-		#Sets the current target to the edge the "default target circle"
-		#The target circle is defined at pos default_target_position with the respective radius
-		var dir_to_default : Vector2 = (position - default_target_position).normalized()
-		current_target_position = default_target_position + dir_to_default * default_target_radius
-	
+	elif assigned_detection_area:
+		#Sets the current target to the edge the assigned_detection_area
+		var dir_to_area : Vector2 = (position - assigned_detection_area.position).normalized()
+		current_target_position = assigned_detection_area.position + dir_to_area * assigned_detection_area.inner_radius
+		
+		##The target circle is defined at pos default_target_position with the respective radius
+		#var dir_to_default : Vector2 = (position - default_target_position).normalized()
+		#current_target_position = default_target_position + dir_to_default * default_target_radius
+	#
 	#Updates Navigation timer
 	if navigation_timer > 0:
 		navigation_timer -= dt

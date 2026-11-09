@@ -38,6 +38,8 @@ class_name Player extends Camera2D
 @onready var left_down: bool = false
 @onready var left_press_px: Vector2 = Vector2.ZERO
 
+@onready var detection_area_scene : PackedScene = preload("res://Scenes/Visual_Detection_Area.tscn")
+
 # Helper that changes zoom by amount, clamped to [min_zoom, max_zoom].
 # The leading underscore is a convention meaning "private to this file".
 func apply_zoom(amount: float) -> void:
@@ -153,10 +155,13 @@ func _unhandled_input(event: InputEvent) -> void:
 				
 				elif click_state == "GUARD_AT":
 					# Click and dragging sets a circle that the bees will guard at
+					
+					var detection_area : Detection_Area = detection_area_scene.instantiate()
+					get_tree().current_scene.add_child(detection_area)
+					
 					var radius : float = (left_press_px - get_global_mouse_position()).length()
-					for entity : Entity in selected_entities:
-						entity.set_default_target(get_global_mouse_position(), radius)
-				
+					detection_area.init_area(left_press_px, radius, selected_entities)
+
 				elif click_state == "ATTACK":
 					pass
 				
@@ -170,10 +175,13 @@ func _unhandled_input(event: InputEvent) -> void:
 				click_state = "GUARD_AT"
 			elif event.keycode == KEY_F:
 				click_state = "ATTACK"
-			elif event.keycode== KEY_R:
+			elif event.keycode== KEY_R: # RETURN
 				# Bees will return to the hive
 				for entity : Entity in selected_entities:
-					entity.set_default_target()
+					var detection_area : Detection_Area = entity.assigned_detection_area
+					entity.reset_detection_area()
+					#Immediately removes the detection area if it's empty
+					detection_area.remove_if_empty()
 			elif event.keycode == KEY_H:
 				recenter_on_hive()
 	
