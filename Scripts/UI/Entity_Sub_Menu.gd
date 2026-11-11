@@ -6,7 +6,12 @@ extends Control
 	"HEALTH" = $VBoxContainer/HealthInfoContainer,
 	"ATTACK" = $VBoxContainer/AttackInfoContainer
 }
-
+@onready var buttons : Dictionary = {
+	"ATTACK" = $VBoxContainer/VBoxContainer/AttackButton,
+	"DEFEND AREA" = $VBoxContainer/VBoxContainer/DefendAreaButton,
+	"DEFEND HIVE" = $VBoxContainer/VBoxContainer/DefendHiveButton,
+	"SELECTION" = $VBoxContainer/VBoxContainer/SelectionButton
+}
 var selected_entity: Node = null
 
 #opens upgrade menu for selected bee
@@ -25,9 +30,15 @@ func _on_entity_bee_menu_button_pressed() -> void:
 
 ## Signals
 
-func _init() -> void:
+func _ready() -> void:
 	Signal_Bus.open_sub_menu.connect(open_menu)
 	Signal_Bus.close_sub_menu.connect(close_menu)
+	#Connects button signals to Signal Bus
+	buttons["ATTACK"].connect("pressed", func() -> void: Signal_Bus.attack_signal.emit())
+	buttons["DEFEND AREA"].connect("pressed", func() -> void: Signal_Bus.defend_area_signal.emit())
+	buttons["DEFEND HIVE"].connect("pressed", func() -> void: Signal_Bus.defend_hive_signal.emit())
+	buttons["SELECTION"].connect("pressed", func() -> void: Signal_Bus.selection_signal.emit())
+	
 
 #opens the submenu for the bee
 func open_menu(entities : Array[Entity]) -> void:
@@ -38,9 +49,12 @@ func open_menu(entities : Array[Entity]) -> void:
 		selected_entity = entities[0]
 		if selected_entity is Bee: #Updates the entity name text
 			entity_name.text = selected_entity.bee_name
-			if entity_name.text != "":
-				entity_name.show()
+			
+		else:
+			entity_name.text = "Selection"
 		
+		if entity_name.text != "":
+				entity_name.show()
 		entity_info.HEALTH.show()
 		entity_info.ATTACK.show()
 		entity_info.HEALTH.find_children("", "Label")[0].text = str(selected_entity.health)
@@ -48,9 +62,17 @@ func open_menu(entities : Array[Entity]) -> void:
 	else:
 		entity_info.HEALTH.hide()
 		entity_info.ATTACK.hide()
+		entity_name.text = "Selection"
+		entity_name.show()
+	
+	#Shows or hides control buttons
+	var show_button : bool = entities[0] is Bee
+	for button : String in buttons:
+		buttons[button].visible = show_button
 		
 	show()
 
 func close_menu() -> void:
+	Signal_Bus.selection_signal.emit()
 	hide()
 	

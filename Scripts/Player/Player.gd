@@ -86,7 +86,7 @@ func scan_at_cursor() -> void:
 		Signal_Bus.open_sub_menu.emit(selected_entities)	
 	else:
 		selected_entities = []
-		
+		print(1)
 		#Closes sub menu
 		Signal_Bus.close_sub_menu.emit()
 	
@@ -122,6 +122,31 @@ func process_cam_shake(dt: float) -> void:
 
 
 ## Input Handler
+
+func _init() -> void:
+	Signal_Bus.attack_signal.connect(_attack_signal)
+	Signal_Bus.defend_area_signal.connect(_defend_area_signal)
+	Signal_Bus.defend_hive_signal.connect(_defend_hive_signal)
+	Signal_Bus.selection_signal.connect(_selection_signal)
+	
+	
+func _attack_signal() -> void:
+	click_state = "ATTACK"
+	
+func _defend_area_signal() -> void:
+	click_state = "GUARD_AT"
+
+func _defend_hive_signal() -> void:
+	# Bees will return to the hive
+	for entity : Entity in selected_entities:
+		var detection_area : Detection_Area = entity.assigned_detection_area
+		entity.reset_detection_area()
+		#Immediately removes the detection area if it's empty
+		detection_area.remove_if_empty()
+
+func _selection_signal() -> void:
+	click_state = "SELECT"
+
 func _unhandled_input(event: InputEvent) -> void:
 	## Dragging
 	if event is InputEventMouseMotion:
@@ -176,12 +201,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			elif event.keycode == KEY_F:
 				click_state = "ATTACK"
 			elif event.keycode== KEY_R: # RETURN
-				# Bees will return to the hive
-				for entity : Entity in selected_entities:
-					var detection_area : Detection_Area = entity.assigned_detection_area
-					entity.reset_detection_area()
-					#Immediately removes the detection area if it's empty
-					detection_area.remove_if_empty()
+				_defend_hive_signal()
 			elif event.keycode == KEY_H:
 				recenter_on_hive()
 	

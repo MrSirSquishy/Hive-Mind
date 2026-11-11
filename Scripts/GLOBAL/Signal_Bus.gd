@@ -32,3 +32,8 @@ signal close_sub_menu()
 signal open_upgrade_menu(target : Entity)
 signal open_upgrade_menu_array(target: Array[Entity])
 signal close_upgrade_menu() 
+
+signal attack_signal()
+signal defend_area_signal()
+signal defend_hive_signal()
+signal selection_signal()
