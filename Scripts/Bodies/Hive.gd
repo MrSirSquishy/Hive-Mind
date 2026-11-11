@@ -25,6 +25,10 @@ func _ready() -> void:
 	for upgrade : Hive_Upgrade in child_upgrades:
 		upgrades.append(upgrade)
 		upgrade.init(self)
+	if Global.saved_hive_health >= 0.0:
+		health = min(Global.saved_hive_health, max_health)
+		health_changed.emit(health, max_health)
+		Global.saved_hive_health = -1.0
 	
 #Entities can request the hives detection area, this executes that
 func _attach_hive_detection_area(entity : Entity) -> void:

@@ -37,6 +37,10 @@ func _ready() -> void:
 	if not hives.is_empty():
 		var hive: Hive = hives[0] as Hive
 		hive.died.connect(on_hive_destroyed)
+	if Global.continue_run:
+		Global.continue_run = false
+		wave_count = Global.saved_wave - 1
+		enemy_count = Global.saved_wave + 1
 	spawn_bees(max_bees)
 	spawn_wave()
 

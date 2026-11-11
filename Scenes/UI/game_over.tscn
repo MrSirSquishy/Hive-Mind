@@ -160,6 +160,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_gkohj")
 text = "Tutorial"
 
 [node name="SettingsButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1618420250]
+visible = false
 custom_minimum_size = Vector2(550, 185)
 custom_maximum_size = Vector2(550, 185)
 layout_mode = 2
@@ -221,5 +222,4 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/ExitToMenuButton" to="." method="_on_exit_to_menu_button_pressed"]

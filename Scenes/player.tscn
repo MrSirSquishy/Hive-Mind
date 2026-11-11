@@ -183,6 +183,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
 text = "Tutorial"
 
 [node name="SettingsButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=1815943838]
+visible = false
 z_as_relative = false
 layout_mode = 2
 size_flags_vertical = 8
@@ -286,7 +287,6 @@ script = ExtResource("5_fkybt")
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/ShopButton2" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/ShopButton" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]

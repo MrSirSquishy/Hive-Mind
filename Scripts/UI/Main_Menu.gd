@@ -28,7 +28,13 @@ func _on_tutorial_button_pressed() -> void:
 
 
 func _on_load_hive_button_pressed() -> void:
-	print("Load Hive Pressed") #checks if button pressed
+	if not Global.load_game():
+		var button: Button = get_node_or_null("HBoxContainer/VBoxContainer/LoadHiveButton") as Button
+		if button != null:
+			button.text = "No Save"
+		return
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/Worlds/world.tscn")
 
 
 func _on_settings_button_pressed() -> void:
