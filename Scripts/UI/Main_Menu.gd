@@ -18,13 +18,18 @@ func _process(_dt: float) -> void:
 func _on_start_pressed() -> void:
 	get_tree().paused = false
 	Global.reset_run()
+	# turns the tutorial off
+	Tutorial.stop()
 	get_tree().change_scene_to_file("res://Scenes/Worlds/world.tscn")
 	print("Start Pressed") #checks if button pressed
 
 
 
 func _on_tutorial_button_pressed() -> void:
-	print("Point to Tutorial") #checks if button pressed
+	get_tree().paused = false
+	Global.reset_run()
+	Tutorial.start()
+	get_tree().change_scene_to_file("res://Scenes/Worlds/world.tscn")
 
 
 func _on_load_hive_button_pressed() -> void:
@@ -34,6 +39,8 @@ func _on_load_hive_button_pressed() -> void:
 			button.text = "No Save"
 		return
 	get_tree().paused = false
+	# turns the tutorial off
+	Tutorial.stop()
 	get_tree().change_scene_to_file("res://Scenes/Worlds/world.tscn")
 
 

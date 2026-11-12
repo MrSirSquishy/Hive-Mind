@@ -53,6 +53,7 @@ func finish_selection() -> void:
 			#we await so the player doesn't immediately clear selection on mouse click up
 			await get_tree().physics_frame
 			player.selected_entities = selection
+			Tutorial.bees_selected(selection)
 			Signal_Bus.open_sub_menu.emit(selection)
 		
 	## Resets things

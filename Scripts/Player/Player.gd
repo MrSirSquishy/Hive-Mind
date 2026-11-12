@@ -51,6 +51,7 @@ func apply_zoom(amount: float) -> void:
 
 	# Zooms toward the mouse position
 	position +=  old_mouse_pos - get_global_mouse_position()
+	Tutorial.done("zoom")
 
 
 func recenter_on_hive() -> void:
@@ -81,6 +82,7 @@ func scan_at_cursor() -> void:
 	#Updates selected entity, will be null if no bodies were within click range
 	if closest_body != null:
 		selected_entities = [closest_body]
+		Tutorial.bees_selected(selected_entities)
 		
 		# Opens up menu for entity/entities
 		Signal_Bus.open_sub_menu.emit(selected_entities)	
@@ -132,9 +134,11 @@ func _init() -> void:
 	
 func _attack_signal() -> void:
 	click_state = "ATTACK"
+	Tutorial.done("command")
 	
 func _defend_area_signal() -> void:
 	click_state = "GUARD_AT"
+	Tutorial.done("command")
 
 func _defend_hive_signal() -> void:
 	# Bees will return to the hive
@@ -143,6 +147,8 @@ func _defend_hive_signal() -> void:
 		entity.reset_detection_area()
 		#Immediately removes the detection area if it's empty
 		detection_area.remove_if_empty()
+	# R finishes the step even with nothing selected
+	Tutorial.done("defend")
 
 func _selection_signal() -> void:
 	click_state = "SELECT"
@@ -154,6 +160,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var right_held: bool = Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
 		if not lock_on_selected and middle_held or right_held:
 			position -= event.relative * drag_speed / zoom.x
+			Tutorial.done("pan")
 	
 	if event is InputEventMouseButton:
 		## Scrolling
@@ -196,10 +203,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.pressed:
 			if event.keycode == KEY_E:
 				click_state = "SELECT"
+			# F and G don't emit the submenu signals
 			elif event.keycode == KEY_G:
 				click_state = "GUARD_AT"
+				Tutorial.done("command")
 			elif event.keycode == KEY_F:
 				click_state = "ATTACK"
+				Tutorial.done("command")
 			elif event.keycode== KEY_R: # RETURN
 				_defend_hive_signal()
 			elif event.keycode == KEY_H:
@@ -254,6 +264,8 @@ func _process(dt: float) -> void:
 	if Input.is_key_pressed(KEY_SHIFT):
 		pan_speed_multiplier = 2
 	position += move_dir * pan_speed * pan_speed_multiplier * dt / zoom.x / Engine.time_scale
+	if move_dir != Vector2.ZERO:
+		Tutorial.done("pan")
 
 	## Selection
 	
@@ -359,7 +371,7 @@ func _on_settings_button_pressed() -> void:
 
 func _on_shop_button_pressed() -> void:
 	Global.open_overlay("res://Scenes/UI/shop_menu.tscn")
-	Signal_Bus.toast_requested.emit("Spend your honey in the shop!")
+	Signal_Bus.toast_requested.emit("Spend your honey in the shop!", false)
 	print("Shop Button Pressed") #checks if button pressed
 
 #func _on_upgrade_button_pressed() -> void:

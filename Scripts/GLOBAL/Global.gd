@@ -99,7 +99,7 @@ func close_overlay() -> void:
 		_overlay = null
 		return
 	if save_game():
-		Signal_Bus.toast_requested.emit("Hive saved.")
+		Signal_Bus.toast_requested.emit("Hive saved.", false)
 	_overlay.queue_free()
 	_overlay = null
 	get_tree().paused = _overlay_was_paused

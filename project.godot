@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Global="*uid://bsg2d32oddsrx"
 Signal_Bus="*uid://bvw32m78n053a"
 Honey_Manager="*uid://ds4lm1gwxrwvq"
+Tutorial="*res://Scripts/GLOBAL/Tutorial.gd"
 
 [debug]
 
