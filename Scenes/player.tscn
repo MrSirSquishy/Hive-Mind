@@ -112,13 +112,13 @@ text = "Honey Amount"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ShopButton2" type="Button" parent="CanvasLayer/MarginContainer" unique_id=1845704535]
+[node name="ShopButton" type="Button" parent="CanvasLayer/MarginContainer" unique_id=1845704535]
 z_as_relative = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 offset_transform_enabled = true
-offset_transform_position = Vector2(0, -200)
+offset_transform_position = Vector2(0, -300)
 offset_transform_visual_only = false
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -201,25 +201,6 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ek2")
 text = "Settings"
 
-[node name="ShopButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=2121471403]
-z_as_relative = false
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_vgqql")
-theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_fkybt")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wgy")
-theme_override_styles/hover = SubResource("StyleBoxFlat_3smsa")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ek2")
-text = "Shop
-"
-
 [node name="UpgradeButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=1041295964]
 visible = false
 z_as_relative = false
@@ -285,9 +266,8 @@ script = ExtResource("5_fkybt")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Selection_Area" unique_id=294718893]
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer/ShopButton2" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/ShopButton" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/ShopButton" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/CheatsButton" to="." method="_on_cheats_button_pressed"]

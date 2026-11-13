@@ -15,7 +15,7 @@ const ENEMY : PackedScene = preload("res://Scenes/Enemies/Stag_Beetle.tscn")
 #The approximate radius that bees will spawn from the hive
 @export var bee_spawn_radius : float = 500
 
-@export var waves_between_shops : int = 5
+@export var waves_between_shops : int = 2
 @export var max_bees : int = 4
 
 @onready var alive : int = 0
@@ -92,10 +92,17 @@ func on_enemy_died() -> void:
 		return
 		
 	if wave_count % waves_between_shops == 0:
+		# respawns bees
 		var missing_bees : int = max_bees - bee_count
-		
 		if missing_bees > 0:
 			spawn_bees(missing_bees)
+			
+		# opens shop
+		Signal_Bus.show_shop_button.emit()
+		#Global.open_overlay("res://Scenes/UI/shop_menu.tscn")
+		#Signal_Bus.toast_requested.emit("Spend your honey in the shop!", false)
+		#wait's for shop to close before going to next wave
+		await Signal_Bus.close_shop
 
 		Signal_Bus.toast_requested.emit("Wave %d cleared! The shop is available." % wave_count, false)
 	

@@ -18,6 +18,7 @@ func _ready() -> void:
 	
 
 func _on_return_to_hive_button_pressed() -> void:
+	Signal_Bus.close_shop.emit()
 	Global.close_overlay()
 
 

@@ -88,7 +88,6 @@ func scan_at_cursor() -> void:
 		Signal_Bus.open_sub_menu.emit(selected_entities)	
 	else:
 		selected_entities = []
-		print(1)
 		#Closes sub menu
 		Signal_Bus.close_sub_menu.emit()
 	
@@ -372,7 +371,6 @@ func _on_settings_button_pressed() -> void:
 func _on_shop_button_pressed() -> void:
 	Global.open_overlay("res://Scenes/UI/shop_menu.tscn")
 	Signal_Bus.toast_requested.emit("Spend your honey in the shop!", false)
-	print("Shop Button Pressed") #checks if button pressed
 
 #func _on_upgrade_button_pressed() -> void:
 #	get_tree().change_scene_to_file("res://Scenes/UI/upgrade_menu.tscn")
@@ -380,8 +378,6 @@ func _on_shop_button_pressed() -> void:
 
 func _on_pause_button_pressed() -> void:
 	Global.open_overlay("res://Scenes/UI/pause_menu.tscn")
-	print("Pause Menu Pressed") #checks if button pressed
 
 func _on_cheats_button_pressed() -> void:
 	Global.open_overlay("res://Scenes/UI/cheat_menu.tscn")
-	print("Cheats Pressed") #checks if button pressed

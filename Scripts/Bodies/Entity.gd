@@ -72,9 +72,11 @@ func set_detection_area(new_detection_area : Detection_Area) -> void:
 	assigned_detection_area = new_detection_area
 	assigned_detection_area.linked_entities.append(self)
 
-## Resets back to the default detection area (the hive)
+## Resets back to the default detection area, in this case none.(for bees it is hive)
 func reset_detection_area() -> void:
-	Signal_Bus.attach_default_detection_area.emit(self)
+	if assigned_detection_area is Detection_Area:
+		assigned_detection_area.linked_entities.erase(self)
+	assigned_detection_area = null
 
 ### Active Functions
 func _ready() -> void:
@@ -138,7 +140,6 @@ func _physics_process(dt : float) -> void:
 				target_positions.push_back(
 					hit_object.position + perpendicular_dir * safe_radius_from_entity
 				)
-	
 
 	#Attack it's priotized targets above all else
 	if attack_bodies.size() > 0:

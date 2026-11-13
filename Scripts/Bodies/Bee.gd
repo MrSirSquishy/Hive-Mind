@@ -54,5 +54,9 @@ static var bee_name_array : Array[String] = [
 	"Ivy"
 ]
 
+## Resets back to the default detection area (the hive)
+func reset_detection_area() -> void:
+	Signal_Bus.attach_default_detection_area.emit(self)
+
 static func get_random_bee_name() -> String:
 	return bee_name_array[randi_range(0, bee_name_array.size() - 1)]

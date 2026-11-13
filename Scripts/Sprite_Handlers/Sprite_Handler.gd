@@ -6,11 +6,10 @@ class_name Sprite_Handler extends Sprite2D
 @export var right_eye : Sprite2D
 @export var right_pupil : Sprite2D
 
-
-
 @export_group("Eye Movement")
 @export var eye_movement_factor : float = 10.0
 @export var eye_movement_speed : float = 10.0
+
 
 @onready var eye_dir : Vector2 = Vector2.ZERO
 @onready var target_eye_dir : Vector2 = Vector2.ZERO
@@ -24,8 +23,10 @@ func set_eye_dir(dir : Vector2) -> Sprite_Handler:
 	target_eye_dir = dir
 	return self
 
-	
+## Animations
 
+func play_attack_animation() -> void:
+	pass
 
 ## Active Functions
 func _ready() -> void:

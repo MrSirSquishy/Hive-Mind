@@ -180,6 +180,7 @@ script = ExtResource("1_yntye")
 turn_speed = 80000000.0
 attack_damage = 3.0
 team = "ENEMY"
+max_health = 7.0
 radius = 300.0
 
 [node name="Animations" type="AnimationPlayer" parent="." unique_id=303797970]

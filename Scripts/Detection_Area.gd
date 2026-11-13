@@ -4,6 +4,8 @@ class_name Detection_Area extends Area2D
 
 ## This will prevent the area from freeing itself when no entities are linked
 @export var persistent : bool = false
+## If not persistent, this is how long it needs to be idle before freeing itself
+@export var time_before_freeing : float = 0.5
 
 ## If entities should focus on enemies nearest to the center of the detection
 ## area instead of nearest to them (good for the hive)
@@ -47,6 +49,6 @@ func _ready() -> void:
 func _physics_process(_dt: float) -> void:
 	if not persistent and linked_entities.size() == 0:
 		#Gives delay before freeing
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(time_before_freeing).timeout
 		if linked_entities.size() == 0:
 			remove()
