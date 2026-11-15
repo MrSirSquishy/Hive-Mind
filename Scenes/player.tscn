@@ -9,59 +9,46 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1fhm7"]
 radius = 16.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkybt"]
-bg_color = Color(0.63462025, 0.58511096, 0.23065636, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-expand_margin_left = 16.0
-expand_margin_top = 16.0
-expand_margin_right = 16.0
-expand_margin_bottom = 16.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4wc0"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 0.7058824, 0.27450982, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 shadow_size = 5
 shadow_offset = Vector2(0, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3wgy"]
-bg_color = Color(0.5882353, 0.47058824, 0.11372549, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-expand_margin_left = 16.0
-expand_margin_top = 16.0
-expand_margin_right = 16.0
-expand_margin_bottom = 16.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yw4re"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.66, 0.39820004, 0.2112, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 shadow_size = 5
-shadow_offset = Vector2(0, 4)
+shadow_offset = Vector2(0, 5)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3smsa"]
-bg_color = Color(0.6862745, 0.5529412, 0.14117648, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-expand_margin_left = 16.0
-expand_margin_top = 16.0
-expand_margin_right = 16.0
-expand_margin_bottom = 16.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2d0jm"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.79607844, 0.4862745, 0.27450982, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 shadow_size = 5
-shadow_offset = Vector2(0, 4)
+shadow_offset = Vector2(0, 5)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8erm5"]
-bg_color = Color(0.5882353, 0.47058824, 0.11372549, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-expand_margin_left = 16.0
-expand_margin_top = 16.0
-expand_margin_right = 16.0
-expand_margin_bottom = 16.0
-shadow_size = 5
-shadow_offset = Vector2(0, 4)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f1ek2"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lcbx5"]
 
 [sub_resource type="GDScript" id="GDScript_6t5aa"]
 script/source = "extends Button
@@ -126,12 +113,11 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_vgqql")
-theme_override_font_sizes/font_size = 128
-theme_override_styles/normal = SubResource("StyleBoxFlat_fkybt")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wgy")
-theme_override_styles/hover = SubResource("StyleBoxFlat_3smsa")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ek2")
+theme_override_font_sizes/font_size = 175
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
 text = "Shop
 "
 
@@ -150,10 +136,10 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_vgqql")
 theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_fkybt")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wgy")
-theme_override_styles/hover = SubResource("StyleBoxFlat_3smsa")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
 text = "Skip To Next Wave"
 script = SubResource("GDScript_6t5aa")
 
@@ -176,14 +162,13 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_vgqql")
 theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_fkybt")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wgy")
-theme_override_styles/hover = SubResource("StyleBoxFlat_3smsa")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
 text = "Tutorial"
 
 [node name="SettingsButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=1815943838]
-visible = false
 z_as_relative = false
 layout_mode = 2
 size_flags_vertical = 8
@@ -194,32 +179,11 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_vgqql")
 theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_fkybt")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wgy")
-theme_override_styles/hover = SubResource("StyleBoxFlat_3smsa")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ek2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
 text = "Settings"
-
-[node name="UpgradeButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=1041295964]
-visible = false
-z_as_relative = false
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_vgqql")
-theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_fkybt")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wgy")
-theme_override_styles/hover = SubResource("StyleBoxFlat_3smsa")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ek2")
-text = "Upgrades
-"
 
 [node name="PauseButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=251437277]
 z_as_relative = false
@@ -232,11 +196,10 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_vgqql")
 theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_fkybt")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wgy")
-theme_override_styles/hover = SubResource("StyleBoxFlat_3smsa")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ek2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
 text = "Pause"
 
 [node name="CheatsButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=1948833965]
@@ -250,11 +213,10 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_vgqql")
 theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_fkybt")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wgy")
-theme_override_styles/hover = SubResource("StyleBoxFlat_3smsa")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8erm5")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ek2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
 text = "Cheats!!"
 
 [node name="GameOver" parent="CanvasLayer" unique_id=330332717 instance=ExtResource("4_gameover")]
@@ -268,6 +230,5 @@ script = ExtResource("5_fkybt")
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/ShopButton" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/CheatsButton" to="." method="_on_cheats_button_pressed"]

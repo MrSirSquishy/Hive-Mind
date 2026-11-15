@@ -3,6 +3,47 @@
 [ext_resource type="Script" uid="uid://bb73l4fq6mtly" path="res://Scripts/UI/Pause_Menu.gd" id="1_ij2wj"]
 [ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="3_hrxx6"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4wc0"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 0.7058824, 0.27450982, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yw4re"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.66, 0.39820004, 0.2112, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 5
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2d0jm"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.79607844, 0.4862745, 0.27450982, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 5
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lcbx5"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kf82r"]
 bg_color = Color(0.63462025, 0.58511096, 0.23065636, 1)
 corner_radius_top_left = 16
@@ -40,15 +81,6 @@ shadow_size = 5
 shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gkohj"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ij2wj"]
-bg_color = Color(0.63462025, 0.58511096, 0.23065636, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-shadow_offset = Vector2(0, 4)
 
 [node name="PauseMenu" type="Control" unique_id=340816502]
 process_mode = 3
@@ -111,12 +143,11 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_hrxx6")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_kf82r")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_jy2a6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hrxx6")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_n6uk5")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_gkohj")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
 text = "Resume"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1219189395]
@@ -136,12 +167,11 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_hrxx6")
-theme_override_font_sizes/font_size = 90
-theme_override_styles/normal = SubResource("StyleBoxFlat_kf82r")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_jy2a6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hrxx6")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_n6uk5")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_gkohj")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
 text = "Tutorial"
 
 [node name="SettingsButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1618420250]
@@ -176,11 +206,11 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_hrxx6")
-theme_override_font_sizes/font_size = 90
-theme_override_styles/normal = SubResource("StyleBoxFlat_ij2wj")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_jy2a6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hrxx6")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_n6uk5")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
 text = "Exit to Menu"
 
 [connection signal="pressed" from="HBoxContainer/ReturnToHiveButton" to="." method="_on_return_to_hive_button_pressed"]
