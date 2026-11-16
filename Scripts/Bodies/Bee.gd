@@ -7,6 +7,11 @@ func _ready() -> void:
 		bee_name = get_random_bee_name()
 	super._ready()
 
+func upgrade_health(amount: float) -> void:
+	max_health += amount
+	health += amount
+	health_changed.emit(health, max_health)
+
 
 static var bee_name_array : Array[String] = [
 	"John Bee",
