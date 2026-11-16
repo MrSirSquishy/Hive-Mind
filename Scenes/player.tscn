@@ -230,5 +230,6 @@ script = ExtResource("5_fkybt")
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/ShopButton" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/CheatsButton" to="." method="_on_cheats_button_pressed"]

@@ -3,6 +3,18 @@
 [ext_resource type="Script" uid="uid://bb73l4fq6mtly" path="res://Scripts/UI/Pause_Menu.gd" id="1_ij2wj"]
 [ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="3_hrxx6"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rf44"]
+content_margin_left = 48.0
+content_margin_top = 32.0
+content_margin_right = 48.0
+content_margin_bottom = 40.0
+bg_color = Color(0.16078432, 0.23137255, 0.09019608, 0.7294118)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4wc0"]
 content_margin_left = 10.0
 content_margin_top = 10.0
@@ -92,19 +104,27 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ij2wj")
 
-[node name="PausedLabel" type="Label" parent="." unique_id=385426033]
+[node name="Panel" type="PanelContainer" parent="." unique_id=1935479420]
+custom_minimum_size = Vector2(760, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -397.0
-offset_top = -425.0
-offset_right = 397.0
-offset_bottom = -188.0
+offset_left = -380.0
+offset_top = -36.0
+offset_right = 380.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8rf44")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=892889018]
+layout_mode = 2
+
+[node name="PausedLabel" type="Label" parent="Panel/VBoxContainer" unique_id=385426033]
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.6117647, 0.6117647, 0.6117647, 1)
 theme_override_constants/shadow_offset_x = 2
@@ -115,25 +135,14 @@ text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=914381289]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -866.5
-offset_top = 37.0
-offset_right = 866.5
-offset_bottom = 464.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=914381289]
+layout_mode = 2
 offset_transform_enabled = true
 theme_override_constants/separation = 45
 alignment = 1
 
-[node name="ReturnToHiveButton" type="Button" parent="HBoxContainer" unique_id=1874188370]
-custom_minimum_size = Vector2(550, 185)
+[node name="ReturnToHiveButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1874188370]
+custom_minimum_size = Vector2(400, 100)
 custom_maximum_size = Vector2(550, 185)
 layout_mode = 2
 size_flags_vertical = 8
@@ -143,20 +152,20 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_hrxx6")
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
 text = "Resume"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1219189395]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1219189395]
 layout_mode = 2
 theme_override_constants/separation = 45
 alignment = 2
 
-[node name="TutorialButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=997634381]
-custom_minimum_size = Vector2(550, 185)
+[node name="TutorialButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=997634381]
+custom_minimum_size = Vector2(400, 100)
 custom_maximum_size = Vector2(543, 185)
 layout_mode = 2
 size_flags_vertical = 8
@@ -167,14 +176,14 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_hrxx6")
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
 text = "Tutorial"
 
-[node name="SettingsButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1618420250]
+[node name="SettingsButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1618420250]
 visible = false
 custom_minimum_size = Vector2(550, 185)
 custom_maximum_size = Vector2(550, 185)
@@ -194,8 +203,8 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_n6uk5")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gkohj")
 text = "Settings"
 
-[node name="ExitToMenuButton" type="Button" parent="HBoxContainer" unique_id=450765940]
-custom_minimum_size = Vector2(550, 185)
+[node name="ExitToMenuButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer" unique_id=450765940]
+custom_minimum_size = Vector2(400, 100)
 custom_maximum_size = Vector2(543, 185)
 layout_mode = 2
 size_flags_vertical = 8
@@ -213,6 +222,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
 text = "Exit to Menu"
 
-[connection signal="pressed" from="HBoxContainer/ReturnToHiveButton" to="." method="_on_return_to_hive_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/ExitToMenuButton" to="." method="_on_exit_to_menu_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/ReturnToHiveButton" to="." method="_on_return_to_hive_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/ExitToMenuButton" to="." method="_on_exit_to_menu_button_pressed"]

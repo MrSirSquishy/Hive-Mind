@@ -1,0 +1,384 @@
+[gd_scene format=3 uid="uid://d1x2n7vlhqq06"]
+
+[ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="1_gmt6d"]
+[ext_resource type="Texture2D" uid="uid://0khnpo75ka8h" path="res://Assets/UI/Heart.svg" id="2_wcw1j"]
+[ext_resource type="Texture2D" uid="uid://bn7jtqcte8hlu" path="res://Assets/UI/Shield.svg" id="3_x1wjd"]
+[ext_resource type="Texture2D" uid="uid://bh7v815ykvvaa" path="res://Assets/UI/Sword.svg" id="4_e184a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ys6qx"]
+bg_color = Color(0.8156863, 0.6745098, 0.7529412, 0.39215687)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.58431375, 0.39607844, 0.64705884, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.8156863, 0.6745098, 0.8235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6juds"]
+bg_color = Color(0.63462025, 0.58511096, 0.23065636, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwh7j"]
+bg_color = Color(0.6862745, 0.5529412, 0.14117648, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5h1yr"]
+bg_color = Color(0.5866053, 0.4713083, 0.1156018, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6v5j"]
+bg_color = Color(0.5882353, 0.47058824, 0.11372549, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wpg1v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6krms"]
+bg_color = Color(0.63462025, 0.58511096, 0.23065636, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dflo0"]
+bg_color = Color(0.6862745, 0.5529412, 0.14117648, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oexfj"]
+bg_color = Color(0.5866053, 0.4713083, 0.1156018, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.6366947, 0.821951, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_440p6"]
+bg_color = Color(0.5882353, 0.47058824, 0.11372549, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4yec5"]
+
+[node name="ItemBag" type="Control" unique_id=315880831]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel2" type="Panel" parent="." unique_id=946259658]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1461.0
+offset_top = -540.0
+offset_right = 1920.0
+offset_bottom = 540.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ys6qx")
+
+[node name="Panel" type="Panel" parent="." unique_id=2087463384]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -540.0
+offset_right = 1429.0
+offset_bottom = 540.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ys6qx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=616950475]
+layout_mode = 0
+offset_left = 1499.0
+offset_top = 49.0
+offset_right = 2380.818
+offset_bottom = 2264.9092
+scale = Vector2(0.44, 0.44)
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="EntityName" type="Label" parent="VBoxContainer" unique_id=1463829163]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.6117647, 0.6117647, 0.6117647, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 165
+text = "Beeatirce"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthInfoContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1202786962]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 25
+
+[node name="HeartIcon" type="TextureRect" parent="VBoxContainer/HealthInfoContainer" unique_id=21003279]
+layout_mode = 2
+offset_transform_enabled = true
+texture = ExtResource("2_wcw1j")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HealthLabel" type="Label" parent="VBoxContainer/HealthInfoContainer" unique_id=706285048]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.6117647, 0.6117647, 0.6117647, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 165
+text = "Amt"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthUpgradeButton" type="Button" parent="VBoxContainer/HealthInfoContainer" unique_id=2113026244]
+custom_minimum_size = Vector2(0, 185)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
+text = "50	"
+
+[node name="DefenseInfoContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1388085360]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 25
+
+[node name="DefenseIcon" type="TextureRect" parent="VBoxContainer/DefenseInfoContainer" unique_id=412840899]
+layout_mode = 2
+offset_transform_enabled = true
+texture = ExtResource("3_x1wjd")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="DefenseLabel" type="Label" parent="VBoxContainer/DefenseInfoContainer" unique_id=285136400]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.6117647, 0.6117647, 0.6117647, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 165
+text = "Amt"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefenseUpgradeButton" type="Button" parent="VBoxContainer/DefenseInfoContainer" unique_id=452931575]
+custom_minimum_size = Vector2(0, 185)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
+text = "50	"
+
+[node name="AttackInfoContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=625824222]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 25
+
+[node name="AttackIcon" type="TextureRect" parent="VBoxContainer/AttackInfoContainer" unique_id=875435862]
+layout_mode = 2
+offset_transform_enabled = true
+texture = ExtResource("4_e184a")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="AttackLabel" type="Label" parent="VBoxContainer/AttackInfoContainer" unique_id=879335703]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.6117647, 0.6117647, 0.6117647, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 165
+text = "Amt"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackUpgradeButton" type="Button" parent="VBoxContainer/AttackInfoContainer" unique_id=1540685744]
+custom_minimum_size = Vector2(0, 185)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
+text = "50	"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=184018816]
+layout_mode = 2
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="HatButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=634915050]
+custom_minimum_size = Vector2(300, 300)
+custom_maximum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
+
+[node name="ArmorButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=208704117]
+custom_minimum_size = Vector2(300, 300)
+custom_maximum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=454846913]
+layout_mode = 2
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="Weapon1Button" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=27063719]
+custom_minimum_size = Vector2(300, 300)
+custom_maximum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
+
+[node name="Weapon2Button" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=1993077068]
+custom_minimum_size = Vector2(300, 300)
+custom_maximum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=1250902383]
+layout_mode = 2
+theme_override_constants/separation = 45
+alignment = 2
+
+[node name="BackButton" type="Button" parent="VBoxContainer/VBoxContainer" unique_id=1097857978]
+custom_minimum_size = Vector2(0, 185)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 175
+theme_override_styles/normal = SubResource("StyleBoxFlat_6krms")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dflo0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oexfj")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_440p6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4yec5")
+text = "Back"
