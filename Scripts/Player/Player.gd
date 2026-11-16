@@ -69,7 +69,7 @@ func recenter_on_hive() -> void:
 
 #this function is a forgiveness mechanic for clicking near but not directly under the cursor
 func scan_at_cursor(mouse_pos: Vector2) -> void:
-	var query := PhysicsShapeQueryParameters2D.new()
+	var query : PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
 	query.shape = click_shape
 	query.collision_mask = click_area.collision_mask
 	query.transform = Transform2D(0.0, Vector2.ONE / zoom.x, 0.0, mouse_pos)

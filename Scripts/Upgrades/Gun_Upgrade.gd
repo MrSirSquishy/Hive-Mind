@@ -5,5 +5,5 @@ extends Upgrade
 func init(entity : Entity) -> void:
 	gun_sprite.reparent(entity.sprite_handler)
 
-func exit(entity : Entity) -> void:
+func exit(_entity : Entity) -> void:
 	gun_sprite.reparent(self)
