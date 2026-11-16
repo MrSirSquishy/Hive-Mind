@@ -5,9 +5,9 @@ signal finished
 const MESSAGES: PackedStringArray = [
 	"1/5  Move the camera with WASD or the arrow keys, or drag with the right mouse button.",
 	"2/5  Zoom with the mouse wheel.",
-	"3/5  Press H to find the hive, then press E and click a bee to select it.",
-	"4/5  Press G or choose Defend Area, then left-click and drag a circle for the bee to guard.",
-	"5/5  Press E, click a bee, then press R to defend the hive.",
+	"3/5  Click a bee to select it, or click and drag to select multiple(You can press H to return to the hive).",
+	'4/5  Select "Defend Area" (or press G), then left-click and drag a circle for the bee to guard.',
+	'5/5  Select "Make Selection" (or press E), Select bees like before and select "Defend Hive" (or press R).',
 ]
 
 const NEEDS: PackedStringArray = ["pan", "zoom", "select", "command", "defend"]

@@ -128,7 +128,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
-text = "Enter Hive"
+text = "Start New Run"
 
 [node name="LoadHiveButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=512411257]
 custom_minimum_size = Vector2(550, 0)
@@ -145,7 +145,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
-text = "Load Hive"
+text = "Load Run"
 
 [node name="SettingsButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1575732092]
 custom_minimum_size = Vector2(550, 0)
