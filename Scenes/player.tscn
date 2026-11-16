@@ -74,12 +74,12 @@ shape = SubResource("CircleShape2D_1fhm7")
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=658938828]
 z_index = 1
 z_as_relative = false
-mouse_filter = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
@@ -98,6 +98,23 @@ theme_override_constants/shadow_offset_y = 4
 theme_override_fonts/font = ExtResource("3_vgqql")
 theme_override_font_sizes/font_size = 60
 text = "Honey Amount"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WaveLabel" type="Label" parent="CanvasLayer/MarginContainer" unique_id=2111017931]
+z_as_relative = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 65)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.6117647, 0.6117647, 0.6117647, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("3_vgqql")
+theme_override_font_sizes/font_size = 60
+text = "Wave Number"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -147,10 +164,10 @@ script = SubResource("GDScript_6t5aa")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=951966991]
 z_as_relative = false
-mouse_filter = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+mouse_filter = 2
 theme_override_constants/separation = 60
 alignment = 1
 

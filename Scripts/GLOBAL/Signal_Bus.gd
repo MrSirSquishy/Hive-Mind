@@ -41,3 +41,5 @@ signal attack_signal()
 signal defend_area_signal()
 signal defend_hive_signal()
 signal selection_signal()
+
+signal wave_changed(new_count: int)

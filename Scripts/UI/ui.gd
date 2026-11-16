@@ -1,6 +1,7 @@
 extends Control
 
 @onready var honey_label: Label = $HoneyLabel
+@onready var wave_label: Label = $WaveLabel
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_dt: float) -> void:
@@ -9,10 +10,15 @@ func _process(_dt: float) -> void:
 func _ready() -> void:
 	Honey_Manager.honey_changed.connect(_on_honey_changed)
 	_on_honey_changed(Honey_Manager.honey)
+	
+	Signal_Bus.wave_changed.connect(_on_wave_increment)
+	_on_wave_increment(0)
 
 func _on_honey_changed(new_amount: int) -> void:
 	honey_label.text = "Honey: %d" % new_amount
 
+func _on_wave_increment(new_count: int) -> void:
+	wave_label.text = "Wave: %d" % new_count
 
 @onready var skip_wave: Button = $Skip_Wave
 @onready var shop_button: Button = $ShopButton
