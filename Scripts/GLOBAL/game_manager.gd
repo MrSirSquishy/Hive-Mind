@@ -79,6 +79,7 @@ func spawn_wave() -> void:
 	
 	wave_count += 1
 	Global.register_wave_reached(wave_count)
+	Signal_Bus.wave_changed.emit(wave_count)
 	enemy_count += 1
 	alive = enemy_count
 	for i : int in enemy_count:
