@@ -4,7 +4,6 @@ extends CanvasLayer
 @onready var message_label: Label = $Root/TopRow/ToastPanel/Message
 
 var active_tween: Tween
-var holding: bool = false
 
 func _ready() -> void:
 	layer = 75
@@ -15,14 +14,12 @@ func _ready() -> void:
 	toast_panel.hide()
 
 func show_toast(message: String, sticky: bool) -> void:
-	# keep the tutorial toast up, skip the other toasts
-	if holding and not sticky and Tutorial.active:
+	if Tutorial.active and not sticky:
 		return
 	if is_instance_valid(active_tween):
 		active_tween.kill()
 
 	message_label.text = message
-	holding = sticky
 	toast_panel.show()
 
 	if sticky:

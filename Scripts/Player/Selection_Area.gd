@@ -15,15 +15,22 @@ extends Area2D
 @onready var polygon : PackedVector2Array = []
 @onready var previous_parent_pos : Vector2 = Vector2.ONE
 
+var previous_time_scale: float = 1.0
+
 func _ready() -> void:
 	monitoring = false
 
 
 func start_selection() -> void:
+	if monitoring:
+		return
+	previous_time_scale = Engine.time_scale
 	monitoring = true
-	Engine.time_scale /= time_slowdown_multiplier
+	Engine.time_scale = previous_time_scale / time_slowdown_multiplier
 
 func finish_selection() -> void:
+	if not monitoring:
+		return
 	var selection : Array[Entity]
 	
 	#By default selects only bees, but if in attack mode selects only NON bees
@@ -40,6 +47,8 @@ func finish_selection() -> void:
 			var tween : Tween = get_tree().create_tween()
 			tween.tween_property(entity, "modulate", entity.modulate + Color.WHITE*4, 0.1)
 			tween.tween_property(entity, "modulate", entity.modulate, 0.2)
+
+	cancel_selection()
 	
 	#Make sure not to override selection if there is selection area turns out empty
 	#Otherwise this breaks normal clicking on things
@@ -55,14 +64,27 @@ func finish_selection() -> void:
 			player.selected_entities = selection
 			Tutorial.bees_selected(selection)
 			Signal_Bus.open_sub_menu.emit(selection)
-		
-	## Resets things
+
+func cancel_selection() -> void:
+	if not monitoring:
+		return
 	monitoring = false
 	polygon = []
 	collision_polygon.set_polygon(polygon)
-	Engine.time_scale *= time_slowdown_multiplier
+	Engine.time_scale = previous_time_scale
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PAUSED or what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		cancel_selection()
+
+func _exit_tree() -> void:
+	if monitoring:
+		Engine.time_scale = previous_time_scale
 
 func _process(_dt : float) -> void:
+	# A control can consume the mouse release before it reaches unhandled input.
+	if monitoring and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		cancel_selection()
 	if monitoring: 
 			
 		#Corrects the polygons position if the camera moves
@@ -96,7 +118,9 @@ func _draw() -> void:
 	
 func _unhandled_input(event: InputEvent) -> void:
 	#Doesn't trigger anything if not in the selection or attack state
-	if get_parent().click_state != "SELECT" and get_parent().click_state != "ATTACK": return
+	if get_parent().click_state != "SELECT" and get_parent().click_state != "ATTACK":
+		cancel_selection()
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():

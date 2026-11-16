@@ -1,27 +1,17 @@
 extends Control
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	$Panel/VBoxContainer/HBoxContainer/VBoxContainer/TutorialButton.visible = Tutorial.active
 
-
-
-func _on_tutorial_button_pressed() -> void:
-	#get_tree().change_scene_to_file("")
-	print("Tutorial Button Pressed") #checks if button pressed
+func _on_restart_tutorial_button_pressed() -> void:
+	Global.close_overlay()
+	Tutorial.start()
 
 
 func _on_return_to_hive_button_pressed() -> void:
 	Global.close_overlay()
-
-
-func _on_shop_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Shop Menu/shop_menu.tscn")
-	print("Shop Button Pressed") #checks if button pressed
 
 
 func _on_settings_button_pressed() -> void:

@@ -34,6 +34,8 @@ func update_i_frames(dt : float) -> void:
 ## [br]
 ## Returns weather or not the attack managed to hit
 func damage(damage_amount : float, source_identifier : String, i_frames : float) -> bool:
+	if is_queued_for_deletion() or health <= 0.0:
+		return false
 	#checks if the i frames for the source are up, it not, no damage
 	for source : String in i_frame_dictionary:
 		if source == source_identifier:
@@ -56,5 +58,7 @@ func damage(damage_amount : float, source_identifier : String, i_frames : float)
 
 signal died
 func kill() -> void:
-	died.emit()
+	if is_queued_for_deletion():
+		return
 	queue_free()
+	died.emit()

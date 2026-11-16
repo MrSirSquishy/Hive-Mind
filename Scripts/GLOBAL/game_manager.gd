@@ -42,8 +42,11 @@ func _ready() -> void:
 		wave_count = Global.saved_wave - 1
 		enemy_count = Global.saved_wave + 1
 	spawn_bees(max_bees)
-	spawn_wave()
-	Tutorial.show_current()
+	if Tutorial.active:
+		Tutorial.finished.connect(spawn_wave, CONNECT_ONE_SHOT)
+		Tutorial.show_current()
+	else:
+		spawn_wave()
 
 
 func on_hive_destroyed() -> void:
@@ -75,6 +78,7 @@ func spawn_wave() -> void:
 	Signal_Bus.hide_skip_wave_button.emit()
 	
 	wave_count += 1
+	Global.register_wave_reached(wave_count)
 	enemy_count += 1
 	alive = enemy_count
 	for i : int in enemy_count:

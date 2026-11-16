@@ -165,6 +165,7 @@ theme_override_constants/separation = 45
 alignment = 2
 
 [node name="TutorialButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=997634381]
+visible = false
 custom_minimum_size = Vector2(400, 100)
 custom_maximum_size = Vector2(543, 185)
 layout_mode = 2
@@ -176,19 +177,18 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_hrxx6")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 76
 theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
-text = "Tutorial"
+text = "Restart Tutorial"
 
 [node name="SettingsButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1618420250]
-visible = false
 custom_minimum_size = Vector2(550, 185)
 custom_maximum_size = Vector2(550, 185)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -223,5 +223,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
 text = "Exit to Menu"
 
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/ReturnToHiveButton" to="." method="_on_return_to_hive_button_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainer/TutorialButton" to="." method="_on_restart_tutorial_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/ExitToMenuButton" to="." method="_on_exit_to_menu_button_pressed"]

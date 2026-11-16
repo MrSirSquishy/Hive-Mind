@@ -22,7 +22,8 @@ func remove() -> void:
 	var tween : Tween = get_tree().create_tween()
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_ease(Tween.EASE_IN)
-	tween.tween_property(shape, "radius", 0, 0.4)
+	# Rapier requires a positive radius until the area is freed.
+	tween.tween_property(shape, "radius", 0.01, 0.4)
 	
 	is_being_removed = true
 	await tween.finished

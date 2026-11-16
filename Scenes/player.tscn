@@ -63,6 +63,7 @@ script = ExtResource("1_v0iea")
 
 [node name="Click_Area" type="Area2D" parent="." unique_id=549526406]
 input_pickable = false
+monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Click_Area" unique_id=170401929]
@@ -73,6 +74,7 @@ shape = SubResource("CircleShape2D_1fhm7")
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=658938828]
 z_index = 1
 z_as_relative = false
+mouse_filter = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -145,28 +147,12 @@ script = SubResource("GDScript_6t5aa")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=951966991]
 z_as_relative = false
+mouse_filter = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 60
 alignment = 1
-
-[node name="TutorialButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=142237452]
-z_as_relative = false
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_vgqql")
-theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
-theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
-text = "Tutorial"
 
 [node name="SettingsButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=1815943838]
 z_as_relative = false
@@ -229,7 +215,6 @@ script = ExtResource("5_fkybt")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Selection_Area" unique_id=294718893]
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/ShopButton" to="." method="_on_shop_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/CheatsButton" to="." method="_on_cheats_button_pressed"]

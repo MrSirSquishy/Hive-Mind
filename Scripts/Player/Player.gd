@@ -27,7 +27,8 @@ class_name Player extends Camera2D
 @onready var current_angle : float = 0.0
 @onready var arrow_scale : float = 0
 
-@onready var click_area : Area2D = get_node("Click_Area")
+@onready var click_area: Area2D = $Click_Area
+@onready var click_shape: CircleShape2D = $Click_Area/CollisionShape2D.shape
 @onready var selected_entities : Array[Entity] = []
 @onready var target_pos : Vector2 = Vector2.ZERO
 # Controls weather the camera should lock on to seleced entities
@@ -47,6 +48,8 @@ func apply_zoom(amount: float) -> void:
 	var old_mouse_pos : Vector2 = get_global_mouse_position()
 
 	var new_zoom_val: float = clamp(zoom.x + amount, min_zoom, max_zoom)
+	if is_equal_approx(new_zoom_val, zoom.x):
+		return
 	zoom = Vector2(new_zoom_val, new_zoom_val)
 
 	# Zooms toward the mouse position
@@ -65,19 +68,23 @@ func recenter_on_hive() -> void:
 
 
 #this function is a forgiveness mechanic for clicking near but not directly under the cursor
-func scan_at_cursor() -> void:
-	#gets all the bodies within a margin of the cursor
-	var bodies : Array[Node2D] = click_area.get_overlapping_bodies()
-	var mouse_pos : Vector2 = get_global_mouse_position()
+func scan_at_cursor(mouse_pos: Vector2) -> void:
+	var query := PhysicsShapeQueryParameters2D.new()
+	query.shape = click_shape
+	query.collision_mask = click_area.collision_mask
+	query.transform = Transform2D(0.0, Vector2.ONE / zoom.x, 0.0, mouse_pos)
+	var hits: Array[Dictionary] = get_world_2d().direct_space_state.intersect_shape(query)
 	
 	#Gets the closest body to the cursor within the selection if there are more than one
 	var closest_body : PhysicsBody2D = null
 	var closest_distance : float = -1
-	for body : PhysicsBody2D in bodies:
+	for hit: Dictionary in hits:
+		var body: Object = hit["collider"]
 		if body is Entity:
-			var distance : float = (body.position - mouse_pos).length()
+			var distance: float = body.global_position.distance_squared_to(mouse_pos)
 			if closest_body == null or distance < closest_distance:
 				closest_body = body
+				closest_distance = distance
 	
 	#Updates selected entity, will be null if no bodies were within click range
 	if closest_body != null:
@@ -133,21 +140,27 @@ func _init() -> void:
 	
 func _attack_signal() -> void:
 	click_state = "ATTACK"
-	Tutorial.done("command")
 	
 func _defend_area_signal() -> void:
 	click_state = "GUARD_AT"
-	Tutorial.done("command")
 
 func _defend_hive_signal() -> void:
-	# Bees will return to the hive
-	for entity : Entity in selected_entities:
+	var bees: Array[Entity] = _selected_bees()
+	if bees.is_empty():
+		return
+	for entity: Entity in bees:
 		var detection_area : Detection_Area = entity.assigned_detection_area
 		entity.reset_detection_area()
-		#Immediately removes the detection area if it's empty
-		detection_area.remove_if_empty()
-	# R finishes the step even with nothing selected
+		if is_instance_valid(detection_area) and not detection_area.persistent:
+			detection_area.remove_if_empty()
 	Tutorial.done("defend")
+
+func _selected_bees() -> Array[Entity]:
+	var bees: Array[Entity] = []
+	for entity: Entity in selected_entities:
+		if is_instance_valid(entity) and entity is Bee:
+			bees.append(entity)
+	return bees
 
 func _selection_signal() -> void:
 	click_state = "SELECT"
@@ -155,9 +168,8 @@ func _selection_signal() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	## Dragging
 	if event is InputEventMouseMotion:
-		var middle_held: bool = Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE)
-		var right_held: bool = Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
-		if not lock_on_selected and middle_held or right_held:
+		var pan_buttons: int = MOUSE_BUTTON_MASK_MIDDLE | MOUSE_BUTTON_MASK_RIGHT
+		if not lock_on_selected and event.relative != Vector2.ZERO and (event.button_mask & pan_buttons) != 0:
 			position -= event.relative * drag_speed / zoom.x
 			Tutorial.done("pan")
 	
@@ -169,15 +181,16 @@ func _unhandled_input(event: InputEvent) -> void:
 			apply_zoom(-zoom_step)
 		## Mouse Click
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			var mouse_pos: Vector2 = get_canvas_transform().affine_inverse() * event.position
 			if event.pressed:
 				left_down = true
-				left_press_px = get_global_mouse_position()
+				left_press_px = mouse_pos
 			else:
 				if not left_down:
 					return
 				left_down = false
 				if click_state == "SELECT":
-					scan_at_cursor()
+					scan_at_cursor(mouse_pos)
 					# Locks on to entities if holding ctrl
 					if Input.is_key_pressed(KEY_CTRL):
 						lock_on_selected = true
@@ -185,13 +198,14 @@ func _unhandled_input(event: InputEvent) -> void:
 						lock_on_selected = false
 				
 				elif click_state == "GUARD_AT":
-					# Click and dragging sets a circle that the bees will guard at
-					
+					var radius: float = left_press_px.distance_to(mouse_pos)
+					var bees: Array[Entity] = _selected_bees()
+					if bees.is_empty() or is_zero_approx(radius):
+						return
 					var detection_area : Detection_Area = detection_area_scene.instantiate()
 					get_tree().current_scene.add_child(detection_area)
-					
-					var radius : float = (left_press_px - get_global_mouse_position()).length()
-					detection_area.init_area(left_press_px, radius, selected_entities)
+					detection_area.init_area(left_press_px, radius, bees)
+					Tutorial.done("command")
 
 				elif click_state == "ATTACK":
 					pass
@@ -202,13 +216,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.pressed:
 			if event.keycode == KEY_E:
 				click_state = "SELECT"
-			# F and G don't emit the submenu signals
 			elif event.keycode == KEY_G:
-				click_state = "GUARD_AT"
-				Tutorial.done("command")
+				_defend_area_signal()
 			elif event.keycode == KEY_F:
-				click_state = "ATTACK"
-				Tutorial.done("command")
+				_attack_signal()
 			elif event.keycode== KEY_R: # RETURN
 				_defend_hive_signal()
 			elif event.keycode == KEY_H:
@@ -233,10 +244,6 @@ func _process(dt: float) -> void:
 	
 	process_cam_shake(dt)
 		
-	#Adjusts the position and scale of the click area to the camera and mouse
-	click_area.position = get_local_mouse_position()
-	click_area.scale = Vector2.ONE * clamp(0.01 , 1 / zoom.x, 10000)
-	
 	# Start with no movement; we add direction below based on keys held.
 	var move_dir : Vector2 = Vector2.ZERO
 	# In Godot 2D, -y is UP and +y is DOWN, -x is LEFT and +x is RIGHT.
@@ -263,7 +270,7 @@ func _process(dt: float) -> void:
 	if Input.is_key_pressed(KEY_SHIFT):
 		pan_speed_multiplier = 2
 	position += move_dir * pan_speed * pan_speed_multiplier * dt / zoom.x / Engine.time_scale
-	if move_dir != Vector2.ZERO:
+	if move_dir != Vector2.ZERO and not lock_on_selected:
 		Tutorial.done("pan")
 
 	## Selection
@@ -318,7 +325,7 @@ func _process(dt: float) -> void:
 
 func _draw() -> void:
 	
-	if click_state == "GUARD_AT" and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if click_state == "GUARD_AT" and left_down and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var radius : float = (left_press_px - get_local_mouse_position() - position).length()
 		draw_circle(left_press_px - position, radius, Color.WHITE, false, crosshairThickness/zoom.x, true)
 	
@@ -361,10 +368,6 @@ func _draw() -> void:
 
 
 ##User Interface Buttons taking the user to different menus
-func _on_tutorial_button_pressed() -> void:
-	#get_tree().change_scene_to_file("")
-	print("Point to Tutorial") #checks if button pressed
-
 func _on_settings_button_pressed() -> void:
 	Global.open_settings()
 

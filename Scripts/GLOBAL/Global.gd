@@ -129,6 +129,8 @@ var saved_wave: int = 1
 var saved_hive_health: float = -1.0
 
 func save_game() -> bool:
+	if Tutorial.active:
+		return false
 	var world: Node = get_tree().current_scene
 	if world == null:
 		return false
