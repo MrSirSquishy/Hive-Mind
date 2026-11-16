@@ -7,7 +7,7 @@ func _ready() -> void:
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_dt: float) -> void:
 	pass
 
 func _on_return_to_hive_button_pressed() -> void:

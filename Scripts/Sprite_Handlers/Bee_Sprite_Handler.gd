@@ -41,6 +41,7 @@ func _physics_process(dt : float) -> void:
 	wing_rotation += wing_velocity * dt
 	wing_velocity += -wing_rotation * dt * flap_spring_force
 	wing_velocity *= flap_inverse_dampening
+	wing_velocity = clamp(-20, wing_velocity, 20)
 	update_wing_rotation(wing_rotation)
 
 	# Random Flap animation
