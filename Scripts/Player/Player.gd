@@ -372,8 +372,10 @@ func _on_settings_button_pressed() -> void:
 	Global.open_settings()
 
 func _on_shop_button_pressed() -> void:
+	Signal_Bus.hide_shop_button.emit()
 	Global.open_overlay("res://Scenes/UI/shop_menu.tscn")
 	Signal_Bus.toast_requested.emit("Spend your honey in the shop!", false)
+
 
 #func _on_upgrade_button_pressed() -> void:
 #	get_tree().change_scene_to_file("res://Scenes/UI/upgrade_menu.tscn")

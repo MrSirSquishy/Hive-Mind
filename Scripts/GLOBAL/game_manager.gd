@@ -15,7 +15,7 @@ const ENEMY : PackedScene = preload("res://Scenes/Enemies/Stag_Beetle.tscn")
 #The approximate radius that bees will spawn from the hive
 @export var bee_spawn_radius : float = 500
 
-@export var waves_between_shops : int = 2
+@export var waves_between_shops : int = 5
 @export var max_bees : int = 4
 
 @onready var alive : int = 0
