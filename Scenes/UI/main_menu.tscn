@@ -1,12 +1,8 @@
 [gd_scene format=3 uid="uid://v7vnln14bhmp"]
 
 [ext_resource type="Script" uid="uid://l57fwusmjsso" path="res://Scripts/UI/Main_Menu.gd" id="1_o14dv"]
-[ext_resource type="Texture2D" uid="uid://bye53vepw8mcm" path="res://Assets/UI/basebackground.jpg" id="2_u7lva"]
+[ext_resource type="Texture2D" uid="uid://csn7p08y2q10x" path="res://Assets/UI/Hive-Mind_PurpleFlowersBackground.png" id="2_o14dv"]
 [ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="3_mrfpk"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wjnhd"]
-texture = ExtResource("2_u7lva")
-modulate_color = Color(0.5132329, 0.5132329, 0.5132329, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4wc0"]
 content_margin_left = 10.0
@@ -58,14 +54,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_o14dv")
 
-[node name="Panel" type="Panel" parent="." unique_id=489200455]
+[node name="Background" type="TextureRect" parent="." unique_id=1034167747]
+z_index = -100
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_wjnhd")
+offset_left = -20144.0
+offset_top = -11549.0
+offset_right = 19687.0
+offset_bottom = 12919.0
+grow_horizontal = 0
+grow_vertical = 0
+offset_transform_scale = Vector2(3, 3)
+mouse_filter = 2
+texture = ExtResource("2_o14dv")
+stretch_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1894682479]
 layout_mode = 1

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://5los4h5e508l" path="res://Scripts/UI/Game_over.gd" id="1_jqelu"]
 [ext_resource type="Texture2D" uid="uid://bye53vepw8mcm" path="res://Assets/UI/basebackground.jpg" id="2_w88jv"]
 [ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="3_ckxb7"]
+[ext_resource type="Texture2D" uid="uid://csn7p08y2q10x" path="res://Assets/UI/Hive-Mind_PurpleFlowersBackground.png" id="4_w88jv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16ygy"]
 texture = ExtResource("2_w88jv")
@@ -250,6 +251,25 @@ theme_override_font_sizes/font_size = 72
 text = "Highest Wave: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Background" type="TextureRect" parent="." unique_id=1068235014]
+z_index = -100
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20144.0
+offset_top = -11549.0
+offset_right = 19687.0
+offset_bottom = 12919.0
+grow_horizontal = 0
+grow_vertical = 0
+offset_transform_scale = Vector2(3, 3)
+mouse_filter = 2
+texture = ExtResource("4_w88jv")
+stretch_mode = 1
 
 [connection signal="pressed" from="HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/ExitToMenuButton" to="." method="_on_exit_to_menu_button_pressed"]

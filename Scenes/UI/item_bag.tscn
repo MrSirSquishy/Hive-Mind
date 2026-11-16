@@ -178,6 +178,24 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
+[node name="Hat5Button" type="Button" parent="Panel/VBoxContainer/Hats" unique_id=12933204]
+custom_minimum_size = Vector2(600, 600)
+custom_maximum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
+
 [node name="Armor" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=1388085360]
 layout_mode = 2
 size_flags_horizontal = 4
