@@ -3,7 +3,6 @@
 @export_enum("HEAD", "BODY", "EQUIPMENT") var upgrade_type : String = "BODY"
 
 enum Rarity {COMMON, UNCOMMON, RARE, LEGENDARY}
-
 @export var rarity : Rarity = Rarity.COMMON
 
 #Initializes the upgrade and it's components

@@ -42,4 +42,6 @@ signal defend_area_signal()
 signal defend_hive_signal()
 signal selection_signal()
 
+signal upgrade_signal(upgrade : Upgrade)
+
 signal wave_changed(new_count: int)

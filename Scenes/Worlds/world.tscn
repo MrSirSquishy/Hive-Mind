@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://rimc773e1bb7" path="res://Scripts/Detection_Area.gd" id="8_7glap"]
 [ext_resource type="PackedScene" uid="uid://deai2dvakqpab" path="res://Scenes/Bees/bee.tscn" id="8_vbdlg"]
 [ext_resource type="PackedScene" uid="uid://cxvvis1miubcl" path="res://Scenes/Upgrades/speedy_wings.tscn" id="9_k3jyg"]
-[ext_resource type="PackedScene" uid="uid://8oasxeglamcb" path="res://Scenes/Upgrades/big_upgrade.tscn" id="10_af1hx"]
+[ext_resource type="PackedScene" uid="uid://8oasxeglamcb" path="res://Scenes/Upgrades/unused_upgrades/big_upgrade.tscn" id="10_af1hx"]
 [ext_resource type="PackedScene" uid="uid://cvxa2l51320du" path="res://Scenes/Upgrades/green_upgrade.tscn" id="11_x7v1i"]
 [ext_resource type="PackedScene" uid="uid://88e8k4mytweh" path="res://Scenes/UI/toast_layer.tscn" id="12_toast"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/health_bar.tscn" id="health_bar"]

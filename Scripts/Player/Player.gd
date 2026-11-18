@@ -136,7 +136,10 @@ func _init() -> void:
 	Signal_Bus.defend_area_signal.connect(_defend_area_signal)
 	Signal_Bus.defend_hive_signal.connect(_defend_hive_signal)
 	Signal_Bus.selection_signal.connect(_selection_signal)
-	
+	Signal_Bus.upgrade_signal.connect(_upgrade_signal)
+
+func _upgrade_signal(upgrade : Upgrade) -> void:
+	click_state = "UPGRADE"
 	
 func _attack_signal() -> void:
 	click_state = "ATTACK"

@@ -3,15 +3,27 @@ extends Control
 class Upgrade_Button:
 	var button : Button
 	var label : Label
-	var upgrade_scene : PackedScene
+	var price_label: Label
+	var upgrade : Upgrade
+	var default_maximum : Vector2
 	
 	func _init(_button : Button) -> void:
 		button = _button
 		label = button.get_node("Label")
+		price_label = button.get_node("Price_Label")
+		button.pressed.connect(on_press)
 		
-	func set_upgrade(upgrade : PackedScene) -> void:
-		upgrade_scene = upgrade
+	func on_press() -> void:
+		if Honey_Manager.spend_honey(RARITY_PRICES[upgrade.rarity]):
+			Signal_Bus.upgrade_signal.emit(upgrade)
+			button.hide()
+	
+	func set_upgrade(upgrade_scene : PackedScene) -> void:
+		upgrade = upgrade_scene.instantiate()
 		label.text = upgrade_scene.resource_path.get_file().get_basename()
+		price_label.text = str(RARITY_PRICES[upgrade.rarity]) + " Honey"
+		button.show()
+		
 
 @onready var shop_item_buttons : Array[Upgrade_Button] = [
 	Upgrade_Button.new($MarginContainer/VBoxContainer/HBoxContainer/Upgrade1),
@@ -27,6 +39,12 @@ const RARITY_WEIGHTS : Array[int] = [
 	25, #UNCOMMON
 	12, #RARE
 	3   #LEGENDARY
+]
+const RARITY_PRICES : Array[int] = [
+	50,  #COMMON
+	80, #UNCOMMON
+	120,  #RARE
+	200   #LEGENDARY
 ]
 
 func load_upgrades(upgrade_scenes : Array[PackedScene], upgrade_rarities : Array[int]) -> void:
@@ -74,7 +92,8 @@ func pick_weighted_index(upgrade_rarities: Array[int]) -> int:
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
+	
+	Signal_Bus.close_sub_menu.emit()
 	rng.randomize()
 
 	var upgrade_scenes: Array[PackedScene] = []
