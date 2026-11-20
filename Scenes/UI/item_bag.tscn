@@ -121,6 +121,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
 [node name="WitchHat" type="Sprite2D" parent="Panel/VBoxContainer/Row1/WitchHatButton" unique_id=1540119802]
+modulate = Color(1, 1, 1, 0.60784316)
 position = Vector2(306.54547, 328.2727)
 scale = Vector2(2.059659, 1.9097222)
 texture = ExtResource("9_wwh7j")
@@ -144,6 +145,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
 [node name="NightGoggles" type="Sprite2D" parent="Panel/VBoxContainer/Row1/GogglesButton" unique_id=2147099744]
+modulate = Color(1, 1, 1, 0.60784316)
 position = Vector2(286.0909, 282.81818)
 scale = Vector2(2.0675504, 2.2332702)
 texture = ExtResource("3_ys6qx")
@@ -167,6 +169,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
 [node name="Helmet" type="Sprite2D" parent="Panel/VBoxContainer/Row1/HelmetButton" unique_id=9715763]
+modulate = Color(1, 1, 1, 0.60784316)
 position = Vector2(306.5454, 287.36365)
 scale = Vector2(2.2727273, 2.2727273)
 texture = ExtResource("7_ys6qx")
@@ -190,6 +193,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
 [node name="BluePotion" type="Sprite2D" parent="Panel/VBoxContainer/Row1/SpeedyPotionButton" unique_id=770630213]
+modulate = Color(1, 1, 1, 0.60784316)
 position = Vector2(286.09082, 289.63635)
 scale = Vector2(1.925505, 1.7755681)
 texture = ExtResource("5_wpg1v")
@@ -218,6 +222,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
 [node name="Cape" type="Sprite2D" parent="Panel/VBoxContainer/Row2/CapeButton" unique_id=1317666383]
+modulate = Color(1, 1, 1, 0.60784316)
 position = Vector2(298.59088, 281.00006)
 scale = Vector2(1.9491793, 1.8465909)
 texture = ExtResource("4_6juds")
@@ -241,6 +246,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
 [node name="BulletVest" type="Sprite2D" parent="Panel/VBoxContainer/Row2/BulletProofVestButton" unique_id=791914412]
+modulate = Color(1, 1, 1, 0.60784316)
 position = Vector2(302, 310.54547)
 scale = Vector2(2.2727273, 2.2727273)
 texture = ExtResource("8_6juds")
@@ -264,6 +270,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
 [node name="TheHiveShield" type="Sprite2D" parent="Panel/VBoxContainer/Row2/TheHiveShieldButton" unique_id=889083738]
+modulate = Color(1, 1, 1, 0.60784316)
 position = Vector2(295.18176, 290.09113)
 scale = Vector2(2.1583016, 2.043876)
 texture = ExtResource("6_5h1yr")
@@ -287,6 +294,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
 [node name="Mushroom" type="Sprite2D" parent="Panel/VBoxContainer/Row2/BigMushroomButton" unique_id=1608587332]
+modulate = Color(1, 1, 1, 0.60784316)
 position = Vector2(297.4546, 296.90912)
 scale = Vector2(1.9491794, 1.8544823)
 texture = ExtResource("5_wwh7j")
@@ -315,6 +323,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
 [node name="Staff" type="Sprite2D" parent="Panel/VBoxContainer/Row3/StaffButton" unique_id=2120934810]
+modulate = Color(1, 1, 1, 0.60784316)
 position = Vector2(311.09088, 315.54553)
 scale = Vector2(2.0833333, 1.9097222)
 texture = ExtResource("10_5h1yr")
@@ -338,6 +347,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
 [node name="BluePewPew" type="Sprite2D" parent="Panel/VBoxContainer/Row3/BlueGunButton" unique_id=1204347971]
+modulate = Color(1, 1, 1, 0.60784316)
 position = Vector2(322.4546, 286.00012)
 scale = Vector2(2.2727273, 2.2727273)
 texture = ExtResource("11_6krms")
@@ -361,6 +371,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
 [node name="SwordYellow" type="Sprite2D" parent="Panel/VBoxContainer/Row3/SwordButton" unique_id=2001373596]
+modulate = Color(1, 1, 1, 0.60784316)
 position = Vector2(295.18176, 290.5454)
 scale = Vector2(2.0833335, 1.9965276)
 texture = ExtResource("7_s6v5j")
@@ -384,6 +395,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
 [node name="GreenPotion" type="Sprite2D" parent="Panel/VBoxContainer/Row3/GreenPotionButton" unique_id=276798612]
+modulate = Color(1, 1, 1, 0.60784316)
 position = Vector2(295.18115, 297.36377)
 scale = Vector2(2.2174873, 2.193813)
 texture = ExtResource("13_dflo0")
