@@ -3,6 +3,7 @@
 [ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="1_gmt6d"]
 [ext_resource type="Texture2D" uid="uid://h245mjxo32ol" path="res://Assets/Bees/UpgradeItems/NightGoggles.svg" id="3_ys6qx"]
 [ext_resource type="Texture2D" uid="uid://r1ls3o8kexqi" path="res://Assets/Bees/UpgradeItems/Cape.svg" id="4_6juds"]
+[ext_resource type="Texture2D" uid="uid://bvcdjfn0snw1c" path="res://Assets/Bees/UpgradeItems/BluePotion.svg" id="5_wpg1v"]
 [ext_resource type="Texture2D" uid="uid://cvcscjmltb7l0" path="res://Assets/Bees/UpgradeItems/Mushroom.svg" id="5_wwh7j"]
 [ext_resource type="Texture2D" uid="uid://b64ppglnsbh2m" path="res://Assets/Bees/UpgradeItems/TheHiveShield.svg" id="6_5h1yr"]
 [ext_resource type="Texture2D" uid="uid://cut15kujeuaid" path="res://Assets/Bees/UpgradeItems/SwordYellow.svg" id="7_s6v5j"]
@@ -10,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://y2vxmsemeypa" path="res://Assets/Bees/UpgradeItems/BulletVest.svg" id="8_6juds"]
 [ext_resource type="Texture2D" uid="uid://cbjn3vo1tfgka" path="res://Assets/Bees/UpgradeItems/WitchHat.svg" id="9_wwh7j"]
 [ext_resource type="Texture2D" uid="uid://dk4hnb7t6eb3m" path="res://Assets/Bees/UpgradeItems/Staff.svg" id="10_5h1yr"]
+[ext_resource type="Texture2D" uid="uid://bre6ofyqgnfse" path="res://Assets/Bees/UpgradeItems/BluePewPew.svg" id="11_6krms"]
+[ext_resource type="Texture2D" uid="uid://bmxjkc17ksxnr" path="res://Assets/Bees/UpgradeItems/GreenPotion.svg" id="13_dflo0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ys6qx"]
 bg_color = Color(0.8156863, 0.6745098, 0.7529412, 0.39215687)
@@ -94,12 +97,12 @@ scale = Vector2(0.44, 0.44)
 theme_override_constants/separation = 45
 alignment = 1
 
-[node name="Hats" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=1202786962]
+[node name="Row1" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=1202786962]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 25
 
-[node name="Hat1Button" type="Button" parent="Panel/VBoxContainer/Hats" unique_id=489947562]
+[node name="WitchHatButton" type="Button" parent="Panel/VBoxContainer/Row1" unique_id=489947562]
 custom_minimum_size = Vector2(600, 600)
 custom_maximum_size = Vector2(600, 600)
 layout_mode = 2
@@ -117,7 +120,12 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
-[node name="Hat2Button" type="Button" parent="Panel/VBoxContainer/Hats" unique_id=381500175]
+[node name="WitchHat" type="Sprite2D" parent="Panel/VBoxContainer/Row1/WitchHatButton" unique_id=1540119802]
+position = Vector2(306.54547, 328.2727)
+scale = Vector2(2.059659, 1.9097222)
+texture = ExtResource("9_wwh7j")
+
+[node name="GogglesButton" type="Button" parent="Panel/VBoxContainer/Row1" unique_id=381500175]
 custom_minimum_size = Vector2(600, 600)
 custom_maximum_size = Vector2(600, 600)
 layout_mode = 2
@@ -135,30 +143,12 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
-[node name="Hat3Button" type="Button" parent="Panel/VBoxContainer/Hats" unique_id=342761915]
-custom_minimum_size = Vector2(600, 600)
-custom_maximum_size = Vector2(600, 600)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_gmt6d")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
-theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
-
-[node name="NightGoggles" type="Sprite2D" parent="Panel/VBoxContainer/Hats/Hat3Button" unique_id=2147099744]
-position = Vector2(-348, 344.1818)
+[node name="NightGoggles" type="Sprite2D" parent="Panel/VBoxContainer/Row1/GogglesButton" unique_id=2147099744]
+position = Vector2(286.0909, 282.81818)
 scale = Vector2(2.0675504, 2.2332702)
 texture = ExtResource("3_ys6qx")
 
-[node name="Hat4Button" type="Button" parent="Panel/VBoxContainer/Hats" unique_id=634915050]
+[node name="HelmetButton" type="Button" parent="Panel/VBoxContainer/Row1" unique_id=342761915]
 custom_minimum_size = Vector2(600, 600)
 custom_maximum_size = Vector2(600, 600)
 layout_mode = 2
@@ -176,194 +166,224 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
-[node name="Armor" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=1388085360]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 25
-
-[node name="Armor1Button" type="Button" parent="Panel/VBoxContainer/Armor" unique_id=208704117]
-custom_minimum_size = Vector2(600, 600)
-custom_maximum_size = Vector2(600, 600)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_gmt6d")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
-theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
-
-[node name="Armor2Button" type="Button" parent="Panel/VBoxContainer/Armor" unique_id=693291565]
-custom_minimum_size = Vector2(600, 600)
-custom_maximum_size = Vector2(600, 600)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_gmt6d")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
-theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
-
-[node name="Armor3Button" type="Button" parent="Panel/VBoxContainer/Armor" unique_id=1715351012]
-custom_minimum_size = Vector2(600, 600)
-custom_maximum_size = Vector2(600, 600)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_gmt6d")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
-theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
-
-[node name="Armor4Button" type="Button" parent="Panel/VBoxContainer/Armor" unique_id=1902759767]
-custom_minimum_size = Vector2(600, 600)
-custom_maximum_size = Vector2(600, 600)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_gmt6d")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
-theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
-
-[node name="Weapons" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=625824222]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 25
-
-[node name="Weapon1Button" type="Button" parent="Panel/VBoxContainer/Weapons" unique_id=27063719]
-custom_minimum_size = Vector2(600, 600)
-custom_maximum_size = Vector2(600, 600)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_gmt6d")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
-theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
-
-[node name="Weapon2Button" type="Button" parent="Panel/VBoxContainer/Weapons" unique_id=1993077068]
-custom_minimum_size = Vector2(600, 600)
-custom_maximum_size = Vector2(600, 600)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_gmt6d")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
-theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
-
-[node name="Weapon3Button" type="Button" parent="Panel/VBoxContainer/Weapons" unique_id=561583745]
-custom_minimum_size = Vector2(600, 600)
-custom_maximum_size = Vector2(600, 600)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_gmt6d")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
-theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
-
-[node name="Weapon4Button" type="Button" parent="Panel/VBoxContainer/Weapons" unique_id=1482128955]
-custom_minimum_size = Vector2(600, 600)
-custom_maximum_size = Vector2(600, 600)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_gmt6d")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
-theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
-
-[node name="Cape" type="Sprite2D" parent="Panel" unique_id=1317666383]
-position = Vector2(295.5, 528)
-scale = Vector2(0.8576389, 0.8125)
-texture = ExtResource("4_6juds")
-
-[node name="Mushroom" type="Sprite2D" parent="." unique_id=1608587332]
-position = Vector2(1120, 535)
-scale = Vector2(0.85763896, 0.8159722)
-texture = ExtResource("5_wwh7j")
-
-[node name="TheHiveShield" type="Sprite2D" parent="." unique_id=889083738]
-position = Vector2(844, 532.00006)
-scale = Vector2(0.94965273, 0.8993054)
-texture = ExtResource("6_5h1yr")
-
-[node name="SwordYellow" type="Sprite2D" parent="." unique_id=2001373596]
-position = Vector2(844, 815.99994)
-scale = Vector2(0.91666675, 0.87847215)
-texture = ExtResource("7_s6v5j")
-
-[node name="Helmet" type="Sprite2D" parent="." unique_id=9715763]
-position = Vector2(849, 258)
+[node name="Helmet" type="Sprite2D" parent="Panel/VBoxContainer/Row1/HelmetButton" unique_id=9715763]
+position = Vector2(306.5454, 287.36365)
+scale = Vector2(2.2727273, 2.2727273)
 texture = ExtResource("7_ys6qx")
 
-[node name="BulletVest" type="Sprite2D" parent="." unique_id=791914412]
-position = Vector2(572, 541)
+[node name="SpeedyPotionButton" type="Button" parent="Panel/VBoxContainer/Row1" unique_id=634915050]
+custom_minimum_size = Vector2(600, 600)
+custom_maximum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
+
+[node name="BluePotion" type="Sprite2D" parent="Panel/VBoxContainer/Row1/SpeedyPotionButton" unique_id=770630213]
+position = Vector2(286.09082, 289.63635)
+scale = Vector2(1.925505, 1.7755681)
+texture = ExtResource("5_wpg1v")
+
+[node name="Row2" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=1388085360]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 25
+
+[node name="CapeButton" type="Button" parent="Panel/VBoxContainer/Row2" unique_id=208704117]
+custom_minimum_size = Vector2(600, 600)
+custom_maximum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
+
+[node name="Cape" type="Sprite2D" parent="Panel/VBoxContainer/Row2/CapeButton" unique_id=1317666383]
+position = Vector2(298.59088, 281.00006)
+scale = Vector2(1.9491793, 1.8465909)
+texture = ExtResource("4_6juds")
+
+[node name="BulletProofVestButton" type="Button" parent="Panel/VBoxContainer/Row2" unique_id=693291565]
+custom_minimum_size = Vector2(600, 600)
+custom_maximum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
+
+[node name="BulletVest" type="Sprite2D" parent="Panel/VBoxContainer/Row2/BulletProofVestButton" unique_id=791914412]
+position = Vector2(302, 310.54547)
+scale = Vector2(2.2727273, 2.2727273)
 texture = ExtResource("8_6juds")
 
-[node name="WitchHat" type="Sprite2D" parent="." unique_id=1540119802]
-position = Vector2(299, 265)
-scale = Vector2(0.90625, 0.8402778)
-texture = ExtResource("9_wwh7j")
+[node name="TheHiveShieldButton" type="Button" parent="Panel/VBoxContainer/Row2" unique_id=1715351012]
+custom_minimum_size = Vector2(600, 600)
+custom_maximum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
-[node name="Staff" type="Sprite2D" parent="." unique_id=2120934810]
-position = Vector2(301, 827)
-scale = Vector2(0.9166667, 0.8402778)
+[node name="TheHiveShield" type="Sprite2D" parent="Panel/VBoxContainer/Row2/TheHiveShieldButton" unique_id=889083738]
+position = Vector2(295.18176, 290.09113)
+scale = Vector2(2.1583016, 2.043876)
+texture = ExtResource("6_5h1yr")
+
+[node name="BigMushroomButton" type="Button" parent="Panel/VBoxContainer/Row2" unique_id=1902759767]
+custom_minimum_size = Vector2(600, 600)
+custom_maximum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
+
+[node name="Mushroom" type="Sprite2D" parent="Panel/VBoxContainer/Row2/BigMushroomButton" unique_id=1608587332]
+position = Vector2(297.4546, 296.90912)
+scale = Vector2(1.9491794, 1.8544823)
+texture = ExtResource("5_wwh7j")
+
+[node name="Row3" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=625824222]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 25
+
+[node name="StaffButton" type="Button" parent="Panel/VBoxContainer/Row3" unique_id=27063719]
+custom_minimum_size = Vector2(600, 600)
+custom_maximum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
+
+[node name="Staff" type="Sprite2D" parent="Panel/VBoxContainer/Row3/StaffButton" unique_id=2120934810]
+position = Vector2(311.09088, 315.54553)
+scale = Vector2(2.0833333, 1.9097222)
 texture = ExtResource("10_5h1yr")
+
+[node name="BlueGunButton" type="Button" parent="Panel/VBoxContainer/Row3" unique_id=1993077068]
+custom_minimum_size = Vector2(600, 600)
+custom_maximum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
+
+[node name="BluePewPew" type="Sprite2D" parent="Panel/VBoxContainer/Row3/BlueGunButton" unique_id=1204347971]
+position = Vector2(322.4546, 286.00012)
+scale = Vector2(2.2727273, 2.2727273)
+texture = ExtResource("11_6krms")
+
+[node name="SwordButton" type="Button" parent="Panel/VBoxContainer/Row3" unique_id=561583745]
+custom_minimum_size = Vector2(600, 600)
+custom_maximum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
+
+[node name="SwordYellow" type="Sprite2D" parent="Panel/VBoxContainer/Row3/SwordButton" unique_id=2001373596]
+position = Vector2(295.18176, 290.5454)
+scale = Vector2(2.0833335, 1.9965276)
+texture = ExtResource("7_s6v5j")
+
+[node name="GreenPotionButton" type="Button" parent="Panel/VBoxContainer/Row3" unique_id=1482128955]
+custom_minimum_size = Vector2(600, 600)
+custom_maximum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gmt6d")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
+
+[node name="GreenPotion" type="Sprite2D" parent="Panel/VBoxContainer/Row3/GreenPotionButton" unique_id=276798612]
+position = Vector2(295.18115, 297.36377)
+scale = Vector2(2.2174873, 2.193813)
+texture = ExtResource("13_dflo0")
