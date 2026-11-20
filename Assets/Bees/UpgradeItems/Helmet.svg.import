@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csgr1curcvp68"
-path="res://.godot/imported/Hood.svg-429ba77eb83dbd12c75604e1f14953ba.ctex"
+uid="uid://l283y5iniwre"
+path="res://.godot/imported/Helmet.svg-dabf76588c24738d7061ce5eb378a872.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Bees/UpgradeItems/Hood.svg"
-dest_files=["res://.godot/imported/Hood.svg-429ba77eb83dbd12c75604e1f14953ba.ctex"]
+source_file="res://Assets/Bees/UpgradeItems/Helmet.svg"
+dest_files=["res://.godot/imported/Helmet.svg-dabf76588c24738d7061ce5eb378a872.ctex"]
 
 [params]
 

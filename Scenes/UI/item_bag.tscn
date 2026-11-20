@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://d1x2n7vlhqq06"]
 
 [ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="1_gmt6d"]
-[ext_resource type="Texture2D" uid="uid://csgr1curcvp68" path="res://Assets/Bees/UpgradeItems/Hood.svg" id="2_e184a"]
 [ext_resource type="Texture2D" uid="uid://h245mjxo32ol" path="res://Assets/Bees/UpgradeItems/NightGoggles.svg" id="3_ys6qx"]
 [ext_resource type="Texture2D" uid="uid://r1ls3o8kexqi" path="res://Assets/Bees/UpgradeItems/Cape.svg" id="4_6juds"]
 [ext_resource type="Texture2D" uid="uid://cvcscjmltb7l0" path="res://Assets/Bees/UpgradeItems/Mushroom.svg" id="5_wwh7j"]
 [ext_resource type="Texture2D" uid="uid://b64ppglnsbh2m" path="res://Assets/Bees/UpgradeItems/TheHiveShield.svg" id="6_5h1yr"]
 [ext_resource type="Texture2D" uid="uid://cut15kujeuaid" path="res://Assets/Bees/UpgradeItems/SwordYellow.svg" id="7_s6v5j"]
+[ext_resource type="Texture2D" uid="uid://l283y5iniwre" path="res://Assets/Bees/UpgradeItems/Helmet.svg" id="7_ys6qx"]
+[ext_resource type="Texture2D" uid="uid://y2vxmsemeypa" path="res://Assets/Bees/UpgradeItems/BulletVest.svg" id="8_6juds"]
+[ext_resource type="Texture2D" uid="uid://cbjn3vo1tfgka" path="res://Assets/Bees/UpgradeItems/WitchHat.svg" id="9_wwh7j"]
+[ext_resource type="Texture2D" uid="uid://dk4hnb7t6eb3m" path="res://Assets/Bees/UpgradeItems/Staff.svg" id="10_5h1yr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ys6qx"]
 bg_color = Color(0.8156863, 0.6745098, 0.7529412, 0.39215687)
@@ -114,11 +117,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
-[node name="Hood" type="Sprite2D" parent="Panel/VBoxContainer/Hats/Hat1Button" unique_id=299927187]
-position = Vector2(295.18182, 296.45453)
-scale = Vector2(2.588384, 2.5410357)
-texture = ExtResource("2_e184a")
-
 [node name="Hat2Button" type="Button" parent="Panel/VBoxContainer/Hats" unique_id=381500175]
 custom_minimum_size = Vector2(600, 600)
 custom_maximum_size = Vector2(600, 600)
@@ -156,29 +154,11 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
 
 [node name="NightGoggles" type="Sprite2D" parent="Panel/VBoxContainer/Hats/Hat3Button" unique_id=2147099744]
-position = Vector2(292.90906, 308.95453)
+position = Vector2(-348, 344.1818)
 scale = Vector2(2.0675504, 2.2332702)
 texture = ExtResource("3_ys6qx")
 
 [node name="Hat4Button" type="Button" parent="Panel/VBoxContainer/Hats" unique_id=634915050]
-custom_minimum_size = Vector2(600, 600)
-custom_maximum_size = Vector2(600, 600)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_gmt6d")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_6juds")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_wwh7j")
-theme_override_styles/hover = SubResource("StyleBoxFlat_5h1yr")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s6v5j")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wpg1v")
-
-[node name="Hat5Button" type="Button" parent="Panel/VBoxContainer/Hats" unique_id=12933204]
 custom_minimum_size = Vector2(600, 600)
 custom_maximum_size = Vector2(600, 600)
 layout_mode = 2
@@ -356,16 +336,34 @@ scale = Vector2(0.8576389, 0.8125)
 texture = ExtResource("4_6juds")
 
 [node name="Mushroom" type="Sprite2D" parent="." unique_id=1608587332]
-position = Vector2(1419, 517)
+position = Vector2(1120, 535)
 scale = Vector2(0.85763896, 0.8159722)
 texture = ExtResource("5_wwh7j")
 
 [node name="TheHiveShield" type="Sprite2D" parent="." unique_id=889083738]
-position = Vector2(1114, 539.00006)
+position = Vector2(844, 532.00006)
 scale = Vector2(0.94965273, 0.8993054)
 texture = ExtResource("6_5h1yr")
 
 [node name="SwordYellow" type="Sprite2D" parent="." unique_id=2001373596]
-position = Vector2(1111, 822)
+position = Vector2(844, 815.99994)
 scale = Vector2(0.91666675, 0.87847215)
 texture = ExtResource("7_s6v5j")
+
+[node name="Helmet" type="Sprite2D" parent="." unique_id=9715763]
+position = Vector2(849, 258)
+texture = ExtResource("7_ys6qx")
+
+[node name="BulletVest" type="Sprite2D" parent="." unique_id=791914412]
+position = Vector2(572, 541)
+texture = ExtResource("8_6juds")
+
+[node name="WitchHat" type="Sprite2D" parent="." unique_id=1540119802]
+position = Vector2(299, 265)
+scale = Vector2(0.90625, 0.8402778)
+texture = ExtResource("9_wwh7j")
+
+[node name="Staff" type="Sprite2D" parent="." unique_id=2120934810]
+position = Vector2(301, 827)
+scale = Vector2(0.9166667, 0.8402778)
+texture = ExtResource("10_5h1yr")
