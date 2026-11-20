@@ -37,11 +37,13 @@ func _ready() -> void:
 	if not hives.is_empty():
 		var hive: Hive = hives[0] as Hive
 		hive.died.connect(on_hive_destroyed)
-	if Global.continue_run:
-		Global.continue_run = false
-		wave_count = Global.saved_wave - 1
-		enemy_count = Global.saved_wave + 1
-	spawn_bees(max_bees)
+	if not Global.loaded_run.is_empty():
+		wave_count = int(Global.loaded_run["completed_wave"])
+		enemy_count += wave_count
+		spawn_bees(int(Global.loaded_run["bee_count"]))
+		Global.loaded_run.clear()
+	else:
+		spawn_bees(max_bees)
 	if Tutorial.active:
 		Tutorial.finished.connect(spawn_wave, CONNECT_ONE_SHOT)
 		Tutorial.show_current()
@@ -110,6 +112,10 @@ func on_enemy_died() -> void:
 		await Signal_Bus.close_shop
 
 		Signal_Bus.toast_requested.emit("Wave %d cleared! The shop is available." % wave_count, false)
+	
+	var hives: Array[Node] = get_tree().get_nodes_in_group("hive")
+	if not hives.is_empty():
+		Global.save_run(wave_count, bee_count, (hives[0] as Hive).health)
 	
 	is_wave_waiting = true
 	Signal_Bus.show_skip_wave_button.emit()

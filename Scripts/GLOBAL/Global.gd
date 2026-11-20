@@ -98,8 +98,6 @@ func close_overlay() -> void:
 	if not is_instance_valid(_overlay):
 		_overlay = null
 		return
-	if save_game():
-		Signal_Bus.toast_requested.emit("Hive saved.", false)
 	_overlay.queue_free()
 	_overlay = null
 	get_tree().paused = _overlay_was_paused
@@ -123,52 +121,51 @@ func _unhandled_input(event: InputEvent) -> void:
 	get_viewport().set_input_as_handled()
 	close_overlay()
 
-const SAVE_PATH: String = "user://hive_save.cfg"
-var continue_run: bool = false
-var saved_wave: int = 1
-var saved_hive_health: float = -1.0
+const RUN_SAVE_PATH: String = "user://hive_run.cfg"
+var loaded_run: Dictionary = {}
 
-func save_game() -> bool:
-	if Tutorial.active:
-		return false
-	var world: Node = get_tree().current_scene
-	if world == null:
-		return false
-	var wave_manager: Node = world.get_node_or_null("WaveManager")
-	var hives: Array[Node] = get_tree().get_nodes_in_group("hive")
-	if wave_manager == null or hives.is_empty():
-		return false
-	var hive: Hive = hives[0] as Hive
-	if hive == null or hive.is_destroyed or hive.health <= 0.0:
-		return false
+func has_saved_run() -> bool:
 	var config: ConfigFile = ConfigFile.new()
-	config.set_value("run", "wave", int(wave_manager.get("wave_count")))
+	return config.load(RUN_SAVE_PATH) == OK and int(config.get_value("run", "completed_wave", -1)) >= 1
+
+func load_run() -> bool:
+	var config: ConfigFile = ConfigFile.new()
+	if config.load(RUN_SAVE_PATH) != OK:
+		return false
+	var completed_wave: int = int(config.get_value("run", "completed_wave", -1))
+	if completed_wave < 1:
+		return false
+	loaded_run = {
+		"completed_wave": completed_wave,
+		"honey": maxi(0, int(config.get_value("run", "honey", 0))),
+		"bee_count": maxi(0, int(config.get_value("run", "bee_count", 0))),
+		"hive_health": float(config.get_value("run", "hive_health", 1.0)),
+		"hive_max_health_bonus": float(config.get_value("run", "hive_max_health_bonus", 0.0)),
+		"hive_defense_bonus": float(config.get_value("run", "hive_defense_bonus", 0.0))
+	}
+	reset_run(false)
+	Honey_Manager.honey = loaded_run["honey"]
+	hive_max_health_bonus = loaded_run["hive_max_health_bonus"]
+	hive_defense_bonus = loaded_run["hive_defense_bonus"]
+	return true
+
+func save_run(completed_wave: int, bee_count: int, hive_health: float) -> void:
+	var config: ConfigFile = ConfigFile.new()
+	config.set_value("run", "completed_wave", completed_wave)
 	config.set_value("run", "honey", Honey_Manager.honey)
-	config.set_value("run", "hive_health", hive.health)
+	config.set_value("run", "bee_count", bee_count)
+	config.set_value("run", "hive_health", hive_health)
 	config.set_value("run", "hive_max_health_bonus", hive_max_health_bonus)
 	config.set_value("run", "hive_defense_bonus", hive_defense_bonus)
-	var error: Error = config.save(SAVE_PATH)
+	var error: Error = config.save(RUN_SAVE_PATH)
 	if error != OK:
 		push_error("Could not save hive: %s" % error_string(error))
-		return false
-	return true
 
-func load_game() -> bool:
-	var config: ConfigFile = ConfigFile.new()
-	if config.load(SAVE_PATH) != OK:
-		return false
-	saved_wave = maxi(int(config.get_value("run", "wave", 1)), 1)
-	saved_hive_health = float(config.get_value("run", "hive_health", -1.0))
-	Honey_Manager.honey = int(config.get_value("run", "honey", 0))
-	hive_max_health_bonus = float(config.get_value("run", "hive_max_health_bonus", 0.0))
-	hive_defense_bonus = float(config.get_value("run", "hive_defense_bonus", 0.0))
-	continue_run = true
-	return true
-
-func reset_run() -> void:
-	# Clears this run in memory only. user://hive_save.cfg is left as it is.
-	continue_run = false
-	saved_hive_health = -1.0
+func reset_run(clear_save: bool = true) -> void:
 	Honey_Manager.honey = 0
 	hive_max_health_bonus = 0.0
 	hive_defense_bonus = 0.0
+	if clear_save:
+		loaded_run.clear()
+		if FileAccess.file_exists(RUN_SAVE_PATH):
+			DirAccess.remove_absolute(ProjectSettings.globalize_path(RUN_SAVE_PATH))

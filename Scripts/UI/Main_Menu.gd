@@ -1,6 +1,7 @@
 extends Control
 
 @onready var best_wave_label: Label = $BestWaveLabel
+@onready var load_hive_button: Button = $HBoxContainer/VBoxContainer/LoadHiveButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,6 +10,7 @@ func _ready() -> void:
 	Tutorial.stop()
 	
 	best_wave_label.text = "Highest Wave: %d" % Global.highest_wave
+	load_hive_button.disabled = not Global.has_saved_run()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,17 +27,21 @@ func _on_start_pressed() -> void:
 
 
 func _on_tutorial_button_pressed() -> void:
-	Tutorial.start()
+	var guide: AcceptDialog = AcceptDialog.new()
+	guide.title = "How to Play"
+	guide.dialog_text = "Protect your hive from each wave of bugs.\n\nSelect a bee with the left mouse button. Right-click and drag to move the camera; use WASD or the arrow keys to pan and the mouse wheel to zoom.\n\nPress G, then click or drag to choose a guard area. Press R to return selected bees to the hive, and H to center the camera.\n\nDefeat every enemy to begin the next wave. The hive is saved after each cleared wave; Load Hive resumes from that checkpoint."
+	guide.confirmed.connect(guide.queue_free)
+	guide.canceled.connect(guide.queue_free)
+	add_child(guide)
+	guide.popup_centered(Vector2i(900, 520))
 
 
 func _on_load_hive_button_pressed() -> void:
-	if not Global.load_game():
-		var button: Button = get_node_or_null("HBoxContainer/VBoxContainer/LoadHiveButton") as Button
-		if button != null:
-			button.text = "No Save"
-		return
-	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Scenes/Worlds/world.tscn")
+	if Global.load_run():
+		get_tree().paused = false
+		get_tree().change_scene_to_file("res://Scenes/Worlds/world.tscn")
+	else:
+		load_hive_button.disabled = true
 
 
 func _on_settings_button_pressed() -> void:
