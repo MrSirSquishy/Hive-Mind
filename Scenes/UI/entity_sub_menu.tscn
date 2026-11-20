@@ -59,44 +59,6 @@ shadow_offset = Vector2(0, 5)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lcbx5"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ny7u"]
-bg_color = Color(0.63462025, 0.58511096, 0.23065636, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-shadow_offset = Vector2(0, 4)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kus7j"]
-bg_color = Color(0.5882353, 0.47058824, 0.11372549, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-shadow_offset = Vector2(0, 4)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5sjxm"]
-bg_color = Color(0.6862745, 0.5529412, 0.14117648, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-shadow_offset = Vector2(0, 4)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gr1qe"]
-bg_color = Color(0.5882353, 0.47058824, 0.11372549, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-shadow_offset = Vector2(0, 4)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ayyi"]
-
 [node name="EntitySubMenu" type="Control" unique_id=448386306]
 layout_mode = 3
 anchors_preset = 11
@@ -260,8 +222,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
 text = "Make Selection"
 
-[node name="EntityUpgradeButton" type="Button" parent="VBoxContainer/VBoxContainer" unique_id=1371328236]
-visible = false
+[node name="UpgradeButton" type="Button" parent="VBoxContainer/VBoxContainer" unique_id=348691490]
 custom_minimum_size = Vector2(0, 185)
 layout_mode = 2
 size_flags_vertical = 3
@@ -272,11 +233,8 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_m5n5x")
 theme_override_font_sizes/font_size = 175
-theme_override_styles/normal = SubResource("StyleBoxFlat_1ny7u")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_kus7j")
-theme_override_styles/hover = SubResource("StyleBoxFlat_5sjxm")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_gr1qe")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_6ayyi")
-text = "Upgrade"
-
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/EntityUpgradeButton" to="." method="_on_entity_upgrade_button_pressed"]
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
+text = "Apply Upgrade"

@@ -14,15 +14,23 @@ class Upgrade_Button:
 		button.pressed.connect(on_press)
 		
 	func on_press() -> void:
-		if Honey_Manager.spend_honey(RARITY_PRICES[upgrade.rarity]):
+		if Honey_Manager.can_afford(RARITY_PRICES[upgrade.rarity]):
 			Signal_Bus.upgrade_signal.emit(upgrade)
-			button.hide()
+			Signal_Bus.upgrade_finished_signal.connect(upgrade_finished)
+		
+	func upgrade_finished(is_canceled : bool = false) -> void:
+		if is_canceled:
+			button.show()
+		Honey_Manager.spend_honey(RARITY_PRICES[upgrade.rarity])
+		button.hide()
 	
 	func set_upgrade(upgrade_scene : PackedScene) -> void:
 		upgrade = upgrade_scene.instantiate()
 		label.text = upgrade_scene.resource_path.get_file().get_basename()
 		price_label.text = str(RARITY_PRICES[upgrade.rarity]) + " Honey"
 		button.show()
+		if Signal_Bus.upgrade_finished_signal.is_connected(upgrade_finished):
+			Signal_Bus.upgrade_finished_signal.disconnect(upgrade_finished)
 		
 
 @onready var shop_item_buttons : Array[Upgrade_Button] = [
@@ -91,6 +99,8 @@ func pick_weighted_index(upgrade_rarities: Array[int]) -> int:
 	return -1
 
 func _ready() -> void:
+	Signal_Bus.upgrade_signal.connect(_upgrade_signal)
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	Signal_Bus.close_sub_menu.emit()
@@ -112,7 +122,8 @@ func _ready() -> void:
 		upgrade_scenes.remove_at(picked_index)
 		upgrade_rarities.remove_at(picked_index)
 
-	
+func _upgrade_signal(_upgrade : Upgrade) -> void:
+	hide()
 
 func _on_return_to_hive_button_pressed() -> void:
 	Signal_Bus.close_shop.emit()

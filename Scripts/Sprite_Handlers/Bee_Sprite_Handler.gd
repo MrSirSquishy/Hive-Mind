@@ -34,6 +34,8 @@ func update_wing_rotation(new_rotation : float = wing_rotation) -> Bee_Sprite_Ha
 ## Active Functions
 
 func _physics_process(dt : float) -> void:
+	if Global.freeze_activity:
+		return
 	super._physics_process(dt)
 
 	# Spring physics to bring the wings back to rest (this is the flap animation)

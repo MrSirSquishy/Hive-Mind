@@ -35,6 +35,7 @@ class_name Player extends Camera2D
 @onready var lock_on_selected : bool = false
 # What action to preform on click
 @onready var click_state : String = "SELECT"
+@onready var assigned_upgrade : Upgrade
 
 @onready var left_down: bool = false
 @onready var left_press_px: Vector2 = Vector2.ZERO
@@ -91,8 +92,12 @@ func scan_at_cursor(mouse_pos: Vector2) -> void:
 		selected_entities = [closest_body]
 		Tutorial.bees_selected(selected_entities)
 		
+		#If in Upgrade mode, it will pass the assigned upgrade to the sub menu
+		var apply_upgrade : Upgrade
+		if click_state == "UPGRADE":
+			apply_upgrade = assigned_upgrade
 		# Opens up menu for entity/entities
-		Signal_Bus.open_sub_menu.emit(selected_entities)	
+		Signal_Bus.open_sub_menu.emit(selected_entities, apply_upgrade)	
 	else:
 		selected_entities = []
 		#Closes sub menu
@@ -140,6 +145,7 @@ func _init() -> void:
 
 func _upgrade_signal(upgrade : Upgrade) -> void:
 	click_state = "UPGRADE"
+	assigned_upgrade = upgrade
 	
 func _attack_signal() -> void:
 	click_state = "ATTACK"
@@ -166,9 +172,14 @@ func _selected_bees() -> Array[Entity]:
 	return bees
 
 func _selection_signal() -> void:
+	if click_state == "UPGRADE": return
 	click_state = "SELECT"
 
 func _unhandled_input(event: InputEvent) -> void:
+	
+	if Global.freeze_activity and not click_state == "UPGRADE":
+		return
+	
 	## Dragging
 	if event is InputEventMouseMotion:
 		var pan_buttons: int = MOUSE_BUTTON_MASK_MIDDLE | MOUSE_BUTTON_MASK_RIGHT
@@ -192,7 +203,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				if not left_down:
 					return
 				left_down = false
-				if click_state == "SELECT":
+				if click_state == "SELECT" or click_state == "UPGRADE":
 					scan_at_cursor(mouse_pos)
 					# Locks on to entities if holding ctrl
 					if Input.is_key_pressed(KEY_CTRL):
@@ -212,7 +223,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 				elif click_state == "ATTACK":
 					pass
-				
+	
+	if Global.freeze_activity:
+		return
 	
 	if event is InputEventKey:
 		## Click State
@@ -245,37 +258,6 @@ func _ready() -> void:
 
 func _process(dt: float) -> void:
 	
-	process_cam_shake(dt)
-		
-	# Start with no movement; we add direction below based on keys held.
-	var move_dir : Vector2 = Vector2.ZERO
-	# In Godot 2D, -y is UP and +y is DOWN, -x is LEFT and +x is RIGHT.
-	# Input.is_key_pressed is true the whole time a key is held down.
-	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
-		move_dir.y -= 1.0
-	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
-		move_dir.y += 1.0
-	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
-		move_dir.x -= 1.0
-	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
-		move_dir.x += 1.0
-	# Pressing W+D gives length ~1.41, which would move faster diagonally.
-	# normalized() shrinks it back to length 1 so all directions match.
-	if move_dir.length() > 1.0:
-		move_dir = move_dir.normalized()
-
-	
-	## Cam Movement
-	# * pan_speed_multiplier moves it faster if holding shift
-	# /zoom.x keeps the speed relative to the cameras scale(zoomed out move faster)
-	# /Engine.time_scale ignores effects of time slowdown/speedup
-	var pan_speed_multiplier : float = 1
-	if Input.is_key_pressed(KEY_SHIFT):
-		pan_speed_multiplier = 2
-	position += move_dir * pan_speed * pan_speed_multiplier * dt / zoom.x / Engine.time_scale
-	if move_dir != Vector2.ZERO and not lock_on_selected:
-		Tutorial.done("pan")
-
 	## Selection
 	
 	# Scales and directs the display arrow
@@ -311,8 +293,43 @@ func _process(dt: float) -> void:
 			target_scale = 1
 
 	arrow_scale = lerp(arrow_scale, target_scale, min(dt*10, 1))
-
+	
 	queue_redraw()
+	
+	
+	if Global.freeze_activity and not click_state == "UPGRADE":
+		return
+	
+	process_cam_shake(dt)
+		
+	# Start with no movement; we add direction below based on keys held.
+	var move_dir : Vector2 = Vector2.ZERO
+	# In Godot 2D, -y is UP and +y is DOWN, -x is LEFT and +x is RIGHT.
+	# Input.is_key_pressed is true the whole time a key is held down.
+	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
+		move_dir.y -= 1.0
+	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
+		move_dir.y += 1.0
+	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
+		move_dir.x -= 1.0
+	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
+		move_dir.x += 1.0
+	# Pressing W+D gives length ~1.41, which would move faster diagonally.
+	# normalized() shrinks it back to length 1 so all directions match.
+	if move_dir.length() > 1.0:
+		move_dir = move_dir.normalized()
+
+	
+	## Cam Movement
+	# * pan_speed_multiplier moves it faster if holding shift
+	# /zoom.x keeps the speed relative to the cameras scale(zoomed out move faster)
+	# /Engine.time_scale ignores effects of time slowdown/speedup
+	var pan_speed_multiplier : float = 1
+	if Input.is_key_pressed(KEY_SHIFT):
+		pan_speed_multiplier = 2
+	position += move_dir * pan_speed * pan_speed_multiplier * dt / zoom.x / Engine.time_scale
+	if move_dir != Vector2.ZERO and not lock_on_selected:
+		Tutorial.done("pan")
 
 ## Draws certain visuals
 
