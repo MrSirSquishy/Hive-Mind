@@ -10,8 +10,11 @@ var vsync_enabled: bool = true
 
 var highest_wave: int = 0
 var _overlay: Node = null
-var _overlay_was_paused: bool = false
-var _overlay_previous_mouse_mode: Input.MouseMode = Input.MOUSE_MODE_HIDDEN
+#var _overlay_was_paused: bool = false
+#var _overlay_previous_mouse_mode: Input.MouseMode = Input.MOUSE_MODE_HIDDEN
+
+var activity_was_frozen : bool = false
+var freeze_activity : bool = false
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -77,22 +80,27 @@ func open_overlay(scene_path: String) -> void:
 	var host: Node = get_tree().current_scene
 	if host == null:
 		return
+	
 	var layer: Node = host.get_node_or_null("OverlayLayer")
 	if layer == null:
 		push_error("Current scene has no OverlayLayer to host %s" % scene_path)
 		return
+	
 	var packed_scene: PackedScene = load(scene_path) as PackedScene
 	if packed_scene == null:
 		push_error("Could not load overlay scene %s" % scene_path)
 		return
+	
 	close_overlay()
-	_overlay_was_paused = get_tree().paused
-	_overlay_previous_mouse_mode = Input.mouse_mode
+	activity_was_frozen = freeze_activity
+	freeze_activity = true
+	#_overlay_was_paused = get_tree().paused
+	#_overlay_previous_mouse_mode = Input.mouse_mode
 	_overlay = packed_scene.instantiate()
 	layer.add_child(_overlay)
-	get_tree().paused = true
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	_focus_first_button()
+	#get_tree().paused = true
+	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#_focus_first_button()
 
 func close_overlay() -> void:
 	if not is_instance_valid(_overlay):
@@ -100,8 +108,9 @@ func close_overlay() -> void:
 		return
 	_overlay.queue_free()
 	_overlay = null
-	get_tree().paused = _overlay_was_paused
-	Input.set_mouse_mode(_overlay_previous_mouse_mode)
+	freeze_activity = activity_was_frozen
+	#get_tree().paused = _overlay_was_paused
+	#Input.set_mouse_mode(_overlay_previous_mouse_mode)
 
 func _focus_first_button() -> void:
 	if not is_instance_valid(_overlay) or not _overlay.is_inside_tree() or _overlay.is_queued_for_deletion():

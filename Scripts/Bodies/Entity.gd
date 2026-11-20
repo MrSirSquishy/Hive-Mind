@@ -92,6 +92,9 @@ func _ready() -> void:
 
 func _physics_process(dt : float) -> void:
 	
+	if Global.freeze_activity:
+		return
+	
 	update_i_frames(dt)
 	
 	# Runs upgrades
