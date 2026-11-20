@@ -57,7 +57,7 @@ shadow_offset = Vector2(0, 5)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lcbx5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kf82r"]
-bg_color = Color(0.63462025, 0.58511096, 0.23065636, 1)
+bg_color = Color(1, 0.7058824, 0.27450982, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -165,7 +165,7 @@ theme_override_constants/separation = 45
 alignment = 2
 
 [node name="SettingsButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1618420250]
-custom_minimum_size = Vector2(550, 185)
+custom_minimum_size = Vector2(400, 100)
 custom_maximum_size = Vector2(550, 185)
 layout_mode = 2
 size_flags_vertical = 8
