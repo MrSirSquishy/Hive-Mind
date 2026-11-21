@@ -1,3 +1,3 @@
-# Hive-Mind Software Engineering project
+# Hive-Mind
  
-Hivemind is a game full of bugs and other creatures, designed for all ages and backgrounds to enjoy.
+Hivemind is a simple game full of bugs (both kinds) and other creatures, designed for all ages and backgrounds to enjoy.
