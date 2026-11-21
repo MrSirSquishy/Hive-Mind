@@ -20,6 +20,7 @@ func exit(entity : Entity) -> void:
 script = SubResource("GDScript_6np8h")
 sprite = NodePath("Sprite")
 icon = ExtResource("1_8gg8q")
+upgrade_type = "EQUIPMENT"
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=94475355]
 z_index = -1

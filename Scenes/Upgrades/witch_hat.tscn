@@ -22,6 +22,7 @@ func exit(entity : Entity) -> void:
 script = SubResource("GDScript_lj6bu")
 sprite = NodePath("Sprite")
 icon = ExtResource("1_lj6bu")
+upgrade_type = "HEAD"
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=840634008]
 position = Vector2(0, 25)

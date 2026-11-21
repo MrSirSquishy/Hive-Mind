@@ -172,6 +172,7 @@ theme_override_constants/separation = 60
 alignment = 1
 
 [node name="SettingsButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=1815943838]
+visible = false
 z_as_relative = false
 layout_mode = 2
 size_flags_vertical = 8
@@ -206,6 +207,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
 text = "Pause"
 
 [node name="CheatsButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=1948833965]
+visible = false
 z_as_relative = false
 layout_mode = 2
 size_flags_vertical = 8
