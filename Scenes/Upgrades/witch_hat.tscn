@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bqbyn1u5isoni"]
+
+[ext_resource type="Texture2D" uid="uid://cbjn3vo1tfgka" path="res://Assets/Bees/UpgradeItems/WitchHat.svg" id="1_lj6bu"]
+
+[sub_resource type="GDScript" id="GDScript_lj6bu"]
+script/source = "extends Upgrade
+
+@export var sprite : Sprite2D
+
+func init(entity : Entity) -> void:
+	sprite.reparent(entity.sprite_handler, false)
+	entity.speed *= 0.75
+
+func exit(entity : Entity) -> void:
+	sprite.reparent(self)
+	entity.speed /= 0.75
+"
+
+[node name="Witch Hat" type="Node2D" unique_id=73539943 node_paths=PackedStringArray("sprite")]
+script = SubResource("GDScript_lj6bu")
+sprite = NodePath("Sprite")
+icon = ExtResource("1_lj6bu")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=840634008]
+position = Vector2(0, 25)
+texture = ExtResource("1_lj6bu")
+flip_v = true

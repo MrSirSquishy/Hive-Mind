@@ -9,10 +9,6 @@
 [ext_resource type="Script" uid="uid://caviwso8kttjp" path="res://Scripts/GLOBAL/game_manager.gd" id="6_ohl8q"]
 [ext_resource type="PackedScene" uid="uid://04sl08o6em3y" path="res://Scenes/Upgrades/hive_upgrades/hive_lvl_2.tscn" id="7_1h6gp"]
 [ext_resource type="Script" uid="uid://rimc773e1bb7" path="res://Scripts/Detection_Area.gd" id="8_7glap"]
-[ext_resource type="PackedScene" uid="uid://deai2dvakqpab" path="res://Scenes/Bees/bee.tscn" id="8_vbdlg"]
-[ext_resource type="PackedScene" uid="uid://cxvvis1miubcl" path="res://Scenes/Upgrades/speedy_wings.tscn" id="9_k3jyg"]
-[ext_resource type="PackedScene" uid="uid://8oasxeglamcb" path="res://Scenes/Upgrades/unused_upgrades/big_upgrade.tscn" id="10_af1hx"]
-[ext_resource type="PackedScene" uid="uid://cvxa2l51320du" path="res://Scenes/Upgrades/green_upgrade.tscn" id="11_x7v1i"]
 [ext_resource type="PackedScene" uid="uid://88e8k4mytweh" path="res://Scenes/UI/toast_layer.tscn" id="12_toast"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/health_bar.tscn" id="health_bar"]
 
@@ -97,44 +93,6 @@ visible = false
 layer = 50
 
 [node name="ToastLayer" parent="." unique_id=1710021640 instance=ExtResource("12_toast")]
-
-[node name="Bee" parent="." unique_id=769899236 instance=ExtResource("8_vbdlg")]
-position = Vector2(-2314, -742)
-
-[node name="Big_Upgrade" parent="Bee" unique_id=2141293767 instance=ExtResource("10_af1hx")]
-
-[node name="Bee2" parent="." unique_id=309304910 instance=ExtResource("8_vbdlg")]
-position = Vector2(-2425, -251)
-
-[node name="Green_Upgrade" parent="Bee2" unique_id=766926428 instance=ExtResource("11_x7v1i")]
-
-[node name="Bee3" parent="." unique_id=1446996092 instance=ExtResource("8_vbdlg")]
-position = Vector2(-2324, 250)
-
-[node name="Speedy_Wings" parent="Bee3" unique_id=1335170296 instance=ExtResource("9_k3jyg")]
-
-[node name="Bee4" parent="." unique_id=1383802482 instance=ExtResource("8_vbdlg")]
-position = Vector2(-2324, 250)
-
-[node name="Speedy_Wings" parent="Bee4" unique_id=2104154499 instance=ExtResource("9_k3jyg")]
-
-[node name="Bee5" parent="." unique_id=137063053 instance=ExtResource("8_vbdlg")]
-position = Vector2(-2324, 250)
-
-[node name="Speedy_Wings" parent="Bee5" unique_id=986518750 instance=ExtResource("9_k3jyg")]
-
-[node name="Bee6" parent="." unique_id=907004705 instance=ExtResource("8_vbdlg")]
-position = Vector2(-2324, 250)
-
-[node name="Speedy_Wings" parent="Bee6" unique_id=1791296182 instance=ExtResource("9_k3jyg")]
-
-[node name="Super_Bee" parent="." unique_id=308053762 instance=ExtResource("8_vbdlg")]
-position = Vector2(-2324, 250)
-speed = 20000.0
-attack_damage = 15.0
-max_health = 100.0
-
-[node name="Speedy_Wings" parent="Super_Bee" unique_id=1549584670 instance=ExtResource("9_k3jyg")]
 
 [node name="Background_Music" type="AudioStreamPlayer2D" parent="." unique_id=2110977870]
 stream = SubResource("AudioStreamMP3_7glap")

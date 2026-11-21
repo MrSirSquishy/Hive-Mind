@@ -4,8 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://ijrgeo6pc3qb" path="res://icon.svg" id="2_hmcd0"]
 [ext_resource type="Texture2D" uid="uid://bre6ofyqgnfse" path="res://Assets/Bees/UpgradeItems/BluePewPew.svg" id="2_vfsba"]
 
-[node name="Gun" type="Node2D" unique_id=136030795]
+[node name="Gun" type="Node2D" unique_id=136030795 node_paths=PackedStringArray("gun_sprite")]
 script = ExtResource("1_707jt")
+gun_sprite = NodePath("gun_sprite")
 icon = ExtResource("2_vfsba")
 upgrade_type = "EQUIPMENT"
 

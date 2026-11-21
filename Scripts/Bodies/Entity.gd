@@ -10,9 +10,6 @@
 @export var angle_dif_before_moving : float = PI/2
 
 @export_group("AI")
-##When it has no other target position, it will go to the hive.
-##This defines the radius that would be considered near enough to the hive
-@export var default_hive_radius : float = 800
 ##How close it should be to the target_position to be considered reached
 @export var target_margin : float = 200
 ##How close it should be to the final target_position to begin slowing down
@@ -56,6 +53,8 @@ func apply_upgrade(upgrade : Upgrade) -> bool:
 	if upgrades[upgrade.upgrade_type]: return false
 	
 	upgrades[upgrade.upgrade_type] = upgrade
+	upgrade.reparent(self, false)
+	upgrade.transform = Transform2D.IDENTITY
 	upgrade.init(self)
 	return true
 

@@ -16,11 +16,12 @@ const ENEMY : PackedScene = preload("res://Scenes/Enemies/Stag_Beetle.tscn")
 @export var bee_spawn_radius : float = 500
 
 @export var waves_between_shops : int = 1
-@export var max_bees : int = 4
+@export var max_bees : int = 6
 
 @onready var alive : int = 0
 @onready var wave_count : int = 0
-@onready var enemy_count : int = 2
+@onready var wave_difficulty : float = 1
+@onready var wave_difficulty_add_value : float = 0.5
 @onready var bee_count : int = 0
 @onready var is_wave_waiting : bool = false
 
@@ -39,7 +40,7 @@ func _ready() -> void:
 		hive.died.connect(on_hive_destroyed)
 	if not Global.loaded_run.is_empty():
 		wave_count = int(Global.loaded_run["completed_wave"])
-		enemy_count += wave_count
+		wave_difficulty += wave_count
 		spawn_bees(int(Global.loaded_run["bee_count"]))
 		Global.loaded_run.clear()
 	else:
@@ -82,9 +83,9 @@ func spawn_wave() -> void:
 	wave_count += 1
 	Global.register_wave_reached(wave_count)
 	Signal_Bus.wave_changed.emit(wave_count)
-	enemy_count += 1
-	alive = enemy_count
-	for i : int in enemy_count:
+	wave_difficulty += wave_difficulty_add_value
+	alive = floor(wave_difficulty)
+	for i : int in alive:
 		var enemy : Enemy = ENEMY.instantiate()
 		enemy.target_positions = [bee_middle] # tell enemy where to go
 		#Random starting position

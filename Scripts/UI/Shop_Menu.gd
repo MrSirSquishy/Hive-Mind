@@ -23,8 +23,11 @@ class Upgrade_Button:
 	func upgrade_finished(is_canceled : bool = false) -> void:
 		if is_canceled:
 			button.show()
+			return
 		Honey_Manager.spend_honey(RARITY_PRICES[upgrade.rarity])
+		upgrade = null
 		button.hide()
+		
 	
 	func set_upgrade(upgrade_scene : PackedScene) -> void:
 		upgrade = upgrade_scene.instantiate()
