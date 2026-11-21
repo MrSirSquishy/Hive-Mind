@@ -63,7 +63,7 @@ func finish_selection() -> void:
 			await get_tree().physics_frame
 			player.selected_entities = selection
 			Tutorial.bees_selected(selection)
-			Signal_Bus.open_sub_menu.emit(selection)
+			Signal_Bus.open_sub_menu.emit(selection, null)
 
 func cancel_selection() -> void:
 	if not monitoring:

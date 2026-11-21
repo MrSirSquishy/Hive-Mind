@@ -15,8 +15,11 @@ class Upgrade_Button:
 		
 	func on_press() -> void:
 		if Honey_Manager.can_afford(RARITY_PRICES[upgrade.rarity]):
+			Signal_Bus.toast_requested.emit("Pick a bee to apply the upgrade to!", false)
 			Signal_Bus.upgrade_signal.emit(upgrade)
 			Signal_Bus.upgrade_finished_signal.connect(upgrade_finished)
+		else:
+			Signal_Bus.toast_requested.emit("Not enough honey!", false)
 		
 	func upgrade_finished(is_canceled : bool = false) -> void:
 		if is_canceled:
@@ -100,6 +103,7 @@ func pick_weighted_index(upgrade_rarities: Array[int]) -> int:
 
 func _ready() -> void:
 	Signal_Bus.upgrade_signal.connect(_upgrade_signal)
+	Signal_Bus.upgrade_finished_signal.connect(_upgrade_finished_signal)
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
@@ -124,6 +128,9 @@ func _ready() -> void:
 
 func _upgrade_signal(_upgrade : Upgrade) -> void:
 	hide()
+
+func _upgrade_finished_signal(_is_canceled : bool = false) -> void:
+	show()
 
 func _on_return_to_hive_button_pressed() -> void:
 	Signal_Bus.close_shop.emit()

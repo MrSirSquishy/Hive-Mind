@@ -13,6 +13,7 @@ extends Control
 	"SELECTION" = $VBoxContainer/VBoxContainer/SelectionButton
 }
 @onready var upgrade_button: Button = $VBoxContainer/VBoxContainer/UpgradeButton
+@onready var cancel_button: Button = $VBoxContainer/VBoxContainer/CancelButton
 
 var selected_entity: Node = null
 
@@ -71,9 +72,9 @@ func open_menu(entities : Array[Entity], upgrade : Upgrade) -> void:
 		for button : String in action_buttons:
 			action_buttons[button].visible = false
 		upgrade_button.show()
+		cancel_button.show()
 		
 		if selected_entity: #If the entity already has an upgrade of that type, it cannot be upgraded
-			print(selected_entity.upgrades, upgrade)
 			if selected_entity.upgrades[upgrade.upgrade_type] == null:
 				upgrade_button.disabled = false
 			else:
@@ -84,6 +85,7 @@ func open_menu(entities : Array[Entity], upgrade : Upgrade) -> void:
 		for button : String in action_buttons:
 			action_buttons[button].visible = show_button
 		upgrade_button.hide()
+		cancel_button.hide()
 		
 	show()
 
@@ -91,3 +93,11 @@ func close_menu() -> void:
 	Signal_Bus.selection_signal.emit()
 	hide()
 	
+
+func _on_upgrade_button_pressed() -> void:
+	close_menu()
+	Signal_Bus.upgrade_finished_signal.emit(false)
+
+func _on_cancel_button_pressed() -> void:
+	close_menu()
+	Signal_Bus.upgrade_finished_signal.emit(true)

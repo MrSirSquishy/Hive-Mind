@@ -142,6 +142,13 @@ func _init() -> void:
 	Signal_Bus.defend_hive_signal.connect(_defend_hive_signal)
 	Signal_Bus.selection_signal.connect(_selection_signal)
 	Signal_Bus.upgrade_signal.connect(_upgrade_signal)
+	Signal_Bus.upgrade_finished_signal.connect(_upgrade_finished)
+
+func _upgrade_finished(is_canceled : bool = false) -> void:
+	if not is_canceled:
+		selected_entities[0].apply_upgrade(assigned_upgrade)
+		click_state = "SELECT"
+		assigned_upgrade = null
 
 func _upgrade_signal(upgrade : Upgrade) -> void:
 	click_state = "UPGRADE"

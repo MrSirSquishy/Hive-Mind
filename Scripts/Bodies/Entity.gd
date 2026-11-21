@@ -52,6 +52,13 @@
 
 ## Functions
 
+func apply_upgrade(upgrade : Upgrade) -> bool:
+	if upgrades[upgrade.upgrade_type]: return false
+	
+	upgrades[upgrade.upgrade_type] = upgrade
+	upgrade.init(self)
+	return true
+
 func get_target_body_from_array(body_array : Array[Node2D], nearest_to_position : Vector2 = position) -> bool:
 	# Finds enemy bodies within it's awareness area, targets closest one
 	var new_target : Body = null

@@ -238,3 +238,23 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
 text = "Apply Upgrade"
+
+[node name="CancelButton" type="Button" parent="VBoxContainer/VBoxContainer" unique_id=997515360]
+custom_minimum_size = Vector2(0, 185)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_m5n5x")
+theme_override_font_sizes/font_size = 175
+theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
+text = "Cancel"
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
