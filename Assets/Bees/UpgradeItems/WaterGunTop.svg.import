@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bre6ofyqgnfse"
-path="res://.godot/imported/BluePewPew.svg-30ce5bde393e75785871d2b2702957bd.ctex"
+uid="uid://dcnyne58xfsqu"
+path="res://.godot/imported/WaterGunTop.svg-2c09e676c4b3fb43b0e6f7a02517c3b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Bees/UpgradeItems/BluePewPew.svg"
-dest_files=["res://.godot/imported/BluePewPew.svg-30ce5bde393e75785871d2b2702957bd.ctex"]
+source_file="res://Assets/Bees/UpgradeItems/WaterGunTop.svg"
+dest_files=["res://.godot/imported/WaterGunTop.svg-2c09e676c4b3fb43b0e6f7a02517c3b2.ctex"]
 
 [params]
 

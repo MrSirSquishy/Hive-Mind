@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://itn6mgracnid"
-path="res://.godot/imported/Explosion.svg-7ff91dc61f1ae911d51e0a04e585d73e.ctex"
+uid="uid://dypp2nijwhkml"
+path="res://.godot/imported/WaterGun.svg-f1facab70cfe40d50e37bb62de7ce1b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Bees/UpgradeItems/TopDownAssets/Explosion.svg"
-dest_files=["res://.godot/imported/Explosion.svg-7ff91dc61f1ae911d51e0a04e585d73e.ctex"]
+source_file="res://Assets/Bees/UpgradeItems/WaterGun.svg"
+dest_files=["res://.godot/imported/WaterGun.svg-f1facab70cfe40d50e37bb62de7ce1b2.ctex"]
 
 [params]
 

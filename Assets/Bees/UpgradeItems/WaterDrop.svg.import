@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://64idt3k4u5ed"
-path="res://.godot/imported/Bullet.svg-fea65e9219c636a6e8e157f7b93aac64.ctex"
+uid="uid://btjx3v7t7ftb4"
+path="res://.godot/imported/WaterDrop.svg-6cbb0bb68c16dfe08e06803ea6bd5de9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Bees/UpgradeItems/TopDownAssets/Bullet.svg"
-dest_files=["res://.godot/imported/Bullet.svg-fea65e9219c636a6e8e157f7b93aac64.ctex"]
+source_file="res://Assets/Bees/UpgradeItems/WaterDrop.svg"
+dest_files=["res://.godot/imported/WaterDrop.svg-6cbb0bb68c16dfe08e06803ea6bd5de9.ctex"]
 
 [params]
 
