@@ -10,10 +10,12 @@ script/source = "extends Upgrade
 func init(entity : Entity) -> void:
 	sprite.reparent(entity.sprite_handler, false)
 	entity.speed *= 0.75
+	entity.attack_damage *= 2
 
 func exit(entity : Entity) -> void:
 	sprite.reparent(self)
 	entity.speed /= 0.75
+	entity.attack_damage /= 2
 "
 
 [node name="Witch Hat" type="Node2D" unique_id=73539943 node_paths=PackedStringArray("sprite")]

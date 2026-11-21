@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bf2wsae2te7im"]
+
+[ext_resource type="Texture2D" uid="uid://cut15kujeuaid" path="res://Assets/Bees/UpgradeItems/SwordYellow.svg" id="1_8gg8q"]
+
+[sub_resource type="GDScript" id="GDScript_6np8h"]
+script/source = "extends Upgrade
+
+@export var sprite : Sprite2D
+
+func init(entity : Entity) -> void:
+	sprite.reparent(entity.sprite_handler, false)
+	entity.attack_damage *= 3
+
+func exit(entity : Entity) -> void:
+	sprite.reparent(self)
+	entity.attack_damage /= 3
+"
+
+[node name="Sword" type="Node2D" unique_id=1687058970 node_paths=PackedStringArray("sprite")]
+script = SubResource("GDScript_6np8h")
+sprite = NodePath("Sprite")
+icon = ExtResource("1_8gg8q")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=94475355]
+z_index = -1
+position = Vector2(108.00001, -117)
+rotation = 2.6179938
+texture = ExtResource("1_8gg8q")

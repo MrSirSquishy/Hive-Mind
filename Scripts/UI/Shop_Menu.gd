@@ -21,6 +21,7 @@ class Upgrade_Button:
 			Signal_Bus.toast_requested.emit("Not enough honey!", false)
 		
 	func upgrade_finished(is_canceled : bool = false) -> void:
+		Signal_Bus.upgrade_finished_signal.disconnect(upgrade_finished)
 		if is_canceled:
 			button.show()
 			return
@@ -36,8 +37,6 @@ class Upgrade_Button:
 		label.text = upgrade.name
 		price_label.text = str(RARITY_PRICES[upgrade.rarity]) + " Honey"
 		button.show()
-		if Signal_Bus.upgrade_finished_signal.is_connected(upgrade_finished):
-			Signal_Bus.upgrade_finished_signal.disconnect(upgrade_finished)
 		
 
 @onready var shop_item_buttons : Array[Upgrade_Button] = [

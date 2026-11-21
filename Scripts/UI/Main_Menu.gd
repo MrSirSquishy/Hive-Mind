@@ -22,8 +22,6 @@ func _on_start_pressed() -> void:
 	get_tree().paused = false
 	Global.reset_run()
 	get_tree().change_scene_to_file("res://Scenes/Worlds/world.tscn")
-	print("Start Pressed") #checks if button pressed
-
 
 
 func _on_tutorial_button_pressed() -> void:
@@ -50,4 +48,3 @@ func _on_settings_button_pressed() -> void:
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
-	print("Exit Pressed") #checks if button pressed
