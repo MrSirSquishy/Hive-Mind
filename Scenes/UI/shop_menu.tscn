@@ -99,12 +99,14 @@ theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_constants/icon_max_width = 256
 theme_override_fonts/font = ExtResource("2_15dw4")
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
+icon_alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Upgrade1" unique_id=1485016435]
 layout_mode = 1
@@ -140,7 +142,7 @@ text = "0 Honey"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Upgrade2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1496454462]
+[node name="Upgrade2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=643301918]
 custom_minimum_size = Vector2(185, 185)
 custom_maximum_size = Vector2(600, 600)
 layout_mode = 2
@@ -151,14 +153,16 @@ theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_constants/icon_max_width = 256
 theme_override_fonts/font = ExtResource("2_15dw4")
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
+icon_alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Upgrade2" unique_id=257404743]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Upgrade2" unique_id=542770272]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -176,7 +180,7 @@ text = "Upgrade"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Price_Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Upgrade2" unique_id=757603946]
+[node name="Price_Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Upgrade2" unique_id=808001932]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -192,7 +196,7 @@ text = "0 Honey"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Upgrade3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1807242401]
+[node name="Upgrade3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1519862223]
 custom_minimum_size = Vector2(185, 185)
 custom_maximum_size = Vector2(600, 600)
 layout_mode = 2
@@ -203,14 +207,16 @@ theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_constants/icon_max_width = 256
 theme_override_fonts/font = ExtResource("2_15dw4")
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
+icon_alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Upgrade3" unique_id=1663930681]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Upgrade3" unique_id=1918271375]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -228,7 +234,7 @@ text = "Upgrade"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Price_Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Upgrade3" unique_id=586124832]
+[node name="Price_Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Upgrade3" unique_id=1862341907]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -244,7 +250,7 @@ text = "0 Honey"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Upgrade4" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=2078255492]
+[node name="Upgrade4" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=712798993]
 custom_minimum_size = Vector2(185, 185)
 custom_maximum_size = Vector2(600, 600)
 layout_mode = 2
@@ -255,14 +261,16 @@ theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_constants/icon_max_width = 256
 theme_override_fonts/font = ExtResource("2_15dw4")
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
+icon_alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Upgrade4" unique_id=487328517]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Upgrade4" unique_id=779616612]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -280,7 +288,7 @@ text = "Upgrade"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Price_Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Upgrade4" unique_id=1924586069]
+[node name="Price_Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Upgrade4" unique_id=1976411096]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -311,6 +319,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_t4wc0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yw4re")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2d0jm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lcbx5")
-text = "Back to Game"
+text = "Continue"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnToHiveButton" to="." method="_on_return_to_hive_button_pressed"]

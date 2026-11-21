@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cvxa2l51320du"]
 
+[ext_resource type="Texture2D" uid="uid://bmxjkc17ksxnr" path="res://Assets/Bees/UpgradeItems/GreenPotion.svg" id="1_6h5ut"]
+
 [sub_resource type="GDScript" id="GDScript_x7v1i"]
 script/source = "extends Upgrade
 
@@ -21,6 +23,7 @@ func exit(entity : Entity) -> void:
 	entity.angle_dif_before_moving /= angle_dif_multiplier
 "
 
-[node name="Green_Upgrade" type="Node2D" unique_id=766926428]
+[node name="Green" type="Node2D" unique_id=766926428]
 script = SubResource("GDScript_x7v1i")
 modulate_override = Color(0.43137255, 1, 1, 1)
+icon = ExtResource("1_6h5ut")

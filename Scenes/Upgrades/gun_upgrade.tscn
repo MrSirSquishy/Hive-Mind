@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cwe4b524q357k" path="res://Scripts/Upgrades/Gun_Upgrade.gd" id="1_707jt"]
 [ext_resource type="Texture2D" uid="uid://ijrgeo6pc3qb" path="res://icon.svg" id="2_hmcd0"]
+[ext_resource type="Texture2D" uid="uid://bre6ofyqgnfse" path="res://Assets/Bees/UpgradeItems/BluePewPew.svg" id="2_vfsba"]
 
-[node name="Gun_Upgrade" type="Node2D" unique_id=136030795]
+[node name="Gun" type="Node2D" unique_id=136030795]
 script = ExtResource("1_707jt")
+icon = ExtResource("2_vfsba")
 upgrade_type = "EQUIPMENT"
 
 [node name="gun_sprite" type="Sprite2D" parent="." unique_id=884035686]

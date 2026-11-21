@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cxvvis1miubcl"]
 
 [ext_resource type="Script" uid="uid://cownc8l7fs3yx" path="res://Scripts/Upgrades/Speedy_Wings.gd" id="1_iwofx"]
+[ext_resource type="Texture2D" uid="uid://bvcdjfn0snw1c" path="res://Assets/Bees/UpgradeItems/BluePotion.svg" id="2_bn56m"]
 
-[node name="Speedy_Wings" type="Node2D" unique_id=1335170296]
+[node name="Speedy Wings" type="Node2D" unique_id=1335170296]
 script = ExtResource("1_iwofx")
+icon = ExtResource("2_bn56m")

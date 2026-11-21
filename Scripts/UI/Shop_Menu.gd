@@ -5,7 +5,6 @@ class Upgrade_Button:
 	var label : Label
 	var price_label: Label
 	var upgrade : Upgrade
-	var default_maximum : Vector2
 	
 	func _init(_button : Button) -> void:
 		button = _button
@@ -29,7 +28,9 @@ class Upgrade_Button:
 	
 	func set_upgrade(upgrade_scene : PackedScene) -> void:
 		upgrade = upgrade_scene.instantiate()
-		label.text = upgrade_scene.resource_path.get_file().get_basename()
+		if upgrade.icon:
+			button.icon = upgrade.icon
+		label.text = upgrade.name
 		price_label.text = str(RARITY_PRICES[upgrade.rarity]) + " Honey"
 		button.show()
 		if Signal_Bus.upgrade_finished_signal.is_connected(upgrade_finished):
