@@ -14,8 +14,10 @@ const NEEDS: PackedStringArray = ["pan", "zoom", "select", "command", "defend"]
 
 var active: bool = false
 var step: int = 0
+var preserve_saved_run: bool = false
 
 func start() -> void:
+	preserve_saved_run = Global.has_saved_run()
 	Global.reset_run()
 	get_tree().paused = false
 	Engine.time_scale = 1.0
@@ -27,6 +29,7 @@ func start() -> void:
 func stop() -> void:
 	active = false
 	step = 0
+	preserve_saved_run = false
 
 func show_current() -> void:
 	if active:

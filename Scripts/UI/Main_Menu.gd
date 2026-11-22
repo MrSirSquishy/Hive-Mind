@@ -25,13 +25,7 @@ func _on_start_pressed() -> void:
 
 
 func _on_tutorial_button_pressed() -> void:
-	var guide: AcceptDialog = AcceptDialog.new()
-	guide.title = "How to Play"
-	guide.dialog_text = "Protect your hive from each wave of bugs.\n\nSelect a bee with the left mouse button. Right-click and drag to move the camera; use WASD or the arrow keys to pan and the mouse wheel to zoom.\n\nPress G, then click or drag to choose a guard area. Press R to return selected bees to the hive, and H to center the camera.\n\nDefeat every enemy to begin the next wave. The hive is saved after each cleared wave; Load Hive resumes from that checkpoint."
-	guide.confirmed.connect(guide.queue_free)
-	guide.canceled.connect(guide.queue_free)
-	add_child(guide)
-	guide.popup_centered(Vector2i(900, 520))
+	Tutorial.start()
 
 
 func _on_load_hive_button_pressed() -> void:

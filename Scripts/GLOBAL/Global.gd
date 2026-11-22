@@ -191,6 +191,8 @@ func load_run() -> bool:
 	return true
 
 func save_run(completed_wave: int, bee_count: int, hive_health: float) -> void:
+	if Tutorial.preserve_saved_run:
+		return
 	var config: ConfigFile = ConfigFile.new()
 	config.set_value("run", "completed_wave", completed_wave)
 	config.set_value("run", "honey", Honey_Manager.honey)
@@ -208,5 +210,5 @@ func reset_run(clear_save: bool = true) -> void:
 	hive_defense_bonus = 0.0
 	if clear_save:
 		loaded_run.clear()
-		if FileAccess.file_exists(RUN_SAVE_PATH):
+		if not Tutorial.preserve_saved_run and FileAccess.file_exists(RUN_SAVE_PATH):
 			DirAccess.remove_absolute(ProjectSettings.globalize_path(RUN_SAVE_PATH))
