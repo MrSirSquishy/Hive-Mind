@@ -27,3 +27,5 @@ func exit(entity : Entity) -> void:
 script = SubResource("GDScript_x7v1i")
 modulate_override = Color(0.43137255, 1, 1, 1)
 icon = ExtResource("1_6h5ut")
+display_name = "Drag Racer"
+description = "Blazing straight-line speed, but terrible handling."

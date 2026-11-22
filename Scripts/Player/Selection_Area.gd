@@ -104,16 +104,20 @@ func _process(_dt : float) -> void:
 			polygon.append(mouse_pos)
 
 		collision_polygon.set_polygon(polygon)
-	
+
 	queue_redraw()
 
 func _draw() -> void:
-	if polygon.size() == 0: return
-	#Closes loop
+	if polygon.size() < 2:
+		return
 	var polyline : PackedVector2Array = polygon.duplicate()
 	polyline.append(polyline[0])
-	#Draws
-	draw_polyline(polyline, Color.WHITE, 16.0, true)
+	var colors := PackedColorArray()
+	var hue_offset: float = Time.get_ticks_msec() * 0.00025
+	for index in range(polyline.size()):
+		var hue: float = fposmod(hue_offset + float(index) / polygon.size(), 1.0)
+		colors.append(Color.from_hsv(hue, 0.85, 1.0))
+	draw_polyline_colors(polyline, colors, 16.0, true)
 		
 	
 func _unhandled_input(event: InputEvent) -> void:

@@ -1,6 +1,8 @@
 @abstract class_name Upgrade extends Node2D
 
 @export var icon : Texture2D
+@export var display_name: String = ""
+@export_multiline var description: String = ""
 @export_enum("HEAD", "BODY", "EQUIPMENT") var upgrade_type : String = "BODY"
 
 enum Rarity {COMMON, UNCOMMON, RARE, LEGENDARY}

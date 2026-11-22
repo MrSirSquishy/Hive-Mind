@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://0onwaiep0v5n" path="res://Assets/Hive/HiveLVL1.svg" id="4_xg358"]
 [ext_resource type="PackedScene" uid="uid://bsku2web0nrvv" path="res://Scenes/UI/entity_sub_menu.tscn" id="5_ohl8q"]
 [ext_resource type="PackedScene" uid="uid://cs3g61ya5mbjf" path="res://Scenes/UI/upgrade_menu.tscn" id="6_8q0pn"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/hive_upgrade_menu.tscn" id="hive_upgrade_menu"]
 [ext_resource type="Script" uid="uid://caviwso8kttjp" path="res://Scripts/GLOBAL/game_manager.gd" id="6_ohl8q"]
 [ext_resource type="PackedScene" uid="uid://04sl08o6em3y" path="res://Scenes/Upgrades/hive_upgrades/hive_lvl_2.tscn" id="7_1h6gp"]
 [ext_resource type="Script" uid="uid://rimc773e1bb7" path="res://Scripts/Detection_Area.gd" id="8_7glap"]
@@ -87,6 +88,9 @@ shape = SubResource("CircleShape2D_1fhm7")
 visible = false
 
 [node name="UpgradeMenu" parent="UI" unique_id=1719785594 instance=ExtResource("6_8q0pn")]
+visible = false
+
+[node name="HiveUpgradeMenu" parent="UI" instance=ExtResource("hive_upgrade_menu")]
 visible = false
 
 [node name="OverlayLayer" type="CanvasLayer" parent="." unique_id=394841889]

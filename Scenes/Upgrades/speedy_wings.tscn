@@ -6,3 +6,5 @@
 [node name="Speedy Wings" type="Node2D" unique_id=1335170296]
 script = ExtResource("1_iwofx")
 icon = ExtResource("2_bn56m")
+display_name = "Tokyo Drift"
+description = "Twice the speed, with a flashy extra pair of wings."

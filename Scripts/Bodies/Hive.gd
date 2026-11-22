@@ -4,6 +4,8 @@ signal damaged(amount: float)
 
 ## percent of damage blocked, can be used for future upgrades 
 @export_range(0.0, 0.8, 0.1) var damage_reduction: float = 0.0
+const MAX_REGEN_RATE: float = 2.0
+var regeneration_rate: float = 0.0
 var is_destroyed: bool = false
 
 @onready var upgrades : Array[Hive_Upgrade] = []
@@ -35,6 +37,8 @@ func _attach_hive_detection_area(entity : Entity) -> void:
 
 func _physics_process(dt: float) -> void:
 	update_i_frames(dt)
+	if not Global.freeze_activity and not is_destroyed and regeneration_rate > 0.0 and health < max_health:
+		heal(regeneration_rate * dt)
 
 
 func damage(damage_amount: float, source_identifier: String = "", i_frames: float = 0.0) -> bool:
@@ -93,3 +97,7 @@ func upgrade_defense(amount: float) -> void:
 		0.0,
 		0.8
 	)
+
+func upgrade_regeneration(amount: float) -> void:
+	if amount > 0.0:
+		regeneration_rate = clampf(regeneration_rate + amount, 0.0, MAX_REGEN_RATE)

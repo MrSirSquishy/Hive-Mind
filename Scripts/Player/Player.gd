@@ -77,19 +77,30 @@ func scan_at_cursor(mouse_pos: Vector2) -> void:
 	var hits: Array[Dictionary] = get_world_2d().direct_space_state.intersect_shape(query)
 	
 	#Gets the closest body to the cursor within the selection if there are more than one
-	var closest_body : PhysicsBody2D = null
+	var closest_body : Body = null
 	var closest_distance : float = -1
 	for hit: Dictionary in hits:
 		var body: Object = hit["collider"]
-		if body is Entity:
+		if body is Body:
 			var distance: float = body.global_position.distance_squared_to(mouse_pos)
 			if closest_body == null or distance < closest_distance:
 				closest_body = body
 				closest_distance = distance
 	
 	#Updates selected entity, will be null if no bodies were within click range
-	if closest_body != null:
-		selected_entities = [closest_body]
+	if closest_body is Hive:
+		if click_state == "UPGRADE":
+			Signal_Bus.toast_requested.emit("Choose a bee for this upgrade.", false)
+		else:
+			selected_entities.clear()
+			Signal_Bus.close_sub_menu.emit()
+			Signal_Bus.open_upgrade_menu.emit(closest_body)
+		return
+	if closest_body is Entity:
+		if click_state == "UPGRADE" and not (closest_body is Bee):
+			Signal_Bus.toast_requested.emit("Choose a bee for this upgrade.", false)
+			return
+		selected_entities = [closest_body as Entity]
 		Tutorial.bees_selected(selected_entities)
 		
 		#If in Upgrade mode, it will pass the assigned upgrade to the sub menu
@@ -144,16 +155,24 @@ func _init() -> void:
 	Signal_Bus.upgrade_signal.connect(_upgrade_signal)
 	Signal_Bus.upgrade_finished_signal.connect(_upgrade_finished)
 
-func _upgrade_finished(is_canceled : bool = false) -> void:
-	if not is_canceled:
-		selected_entities[0].apply_upgrade(assigned_upgrade)
+func _upgrade_finished(is_canceled: bool = false) -> void:
+	if is_canceled:
 		click_state = "SELECT"
 		assigned_upgrade = null
+		return
+	var applied: bool = false
+	if is_instance_valid(assigned_upgrade) and not selected_entities.is_empty():
+		var target: Entity = selected_entities[0]
+		if is_instance_valid(target) and target is Bee and not target.is_queued_for_deletion():
+			applied = target.apply_upgrade(assigned_upgrade)
+	Signal_Bus.upgrade_application_result.emit(applied)
+	click_state = "SELECT"
+	assigned_upgrade = null
 
-func _upgrade_signal(upgrade : Upgrade) -> void:
+func _upgrade_signal(upgrade: Upgrade) -> void:
 	click_state = "UPGRADE"
 	assigned_upgrade = upgrade
-	
+
 func _attack_signal() -> void:
 	click_state = "ATTACK"
 	
@@ -261,6 +280,7 @@ func _ready() -> void:
 	position_smoothing_speed = 8.0
 	
 	Signal_Bus.trigger_cam_shake.connect(_trigger_cam_shake)
+	Signal_Bus.game_over.connect($CanvasLayer/MarginContainer/HBoxContainer/PauseButton.hide)
 
 
 func _process(dt: float) -> void:

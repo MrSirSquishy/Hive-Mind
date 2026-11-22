@@ -49,12 +49,19 @@
 
 ## Functions
 
+func can_apply_upgrade(upgrade: Upgrade) -> bool:
+	return self is Bee and is_instance_valid(upgrade) and upgrades.has(upgrade.upgrade_type) and upgrades[upgrade.upgrade_type] == null
+
 func apply_upgrade(upgrade : Upgrade) -> bool:
-	if upgrades[upgrade.upgrade_type]: return false
-	
-	upgrades[upgrade.upgrade_type] = upgrade
-	upgrade.reparent(self, false)
+	if not can_apply_upgrade(upgrade):
+		return false
+
+	if upgrade.get_parent() == null:
+		add_child(upgrade)
+	elif upgrade.get_parent() != self:
+		upgrade.reparent(self, false)
 	upgrade.transform = Transform2D.IDENTITY
+	upgrades[upgrade.upgrade_type] = upgrade
 	upgrade.init(self)
 	return true
 

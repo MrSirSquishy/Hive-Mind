@@ -1,0 +1,102 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="FontFile" uid="uid://iljw5bdydlb2" path="res://Assets/UI/SunnyspellsRegular-MV9ze.otf" id="1"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/sidebar_dismiss_button.tscn" id="2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_panel"]
+bg_color = Color(0.935, 0.867, 0.742, 0.98)
+border_color = Color(0.56, 0.37, 0.22, 1)
+border_width_left = 3
+corner_radius_top_left = 19
+corner_radius_bottom_left = 19
+
+[node name="UpgradeSidebar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchor_left = 0.68
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_right = 0.0
+offset_top = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBox_panel")
+
+[node name="Content" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 18
+
+[node name="Column" type="VBoxContainer" parent="Panel/Content"]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="Header" type="HBoxContainer" parent="Panel/Content/Column"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="EntityName" type="Label" parent="Panel/Content/Column/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+theme_override_colors/font_color = Color(0.21, 0.13, 0.11, 1)
+theme_override_fonts/font = ExtResource("1")
+theme_override_font_sizes/font_size = 48
+text = "Bee"
+
+[node name="HoneyLabel" type="Label" parent="Panel/Content/Column/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.42, 0.27, 0.1, 1)
+theme_override_font_sizes/font_size = 25
+text = "0 honey"
+
+[node name="Summary" type="Label" parent="Panel/Content/Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.35, 0.23, 0.18, 1)
+theme_override_font_sizes/font_size = 23
+text = "Select an upgrade"
+autowrap_mode = 3
+
+[node name="Separator" type="HSeparator" parent="Panel/Content/Column"]
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="Panel/Content/Column"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Rows" type="VBoxContainer" parent="Panel/Content/Column/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 11
+
+[node name="EquipmentSummary" type="Label" parent="Panel/Content/Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.31, 0.2, 0.15, 1)
+theme_override_font_sizes/font_size = 21
+autowrap_mode = 3
+text = "Equipment: None"
+
+[node name="Feedback" type="Label" parent="Panel/Content/Column"]
+layout_mode = 2
+visible = false
+theme_override_colors/font_color = Color(0.2, 0.35, 0.18, 1)
+theme_override_font_sizes/font_size = 21
+text = "Upgrade purchased"
+
+[node name="DismissButton" parent="Panel" instance=ExtResource("2")]

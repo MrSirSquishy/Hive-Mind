@@ -32,7 +32,7 @@ signal show_shop_button()
 signal hide_shop_button()
 signal close_shop()
 
-signal open_upgrade_menu(target : Entity)
+signal open_upgrade_menu(target : Body)
 signal open_upgrade_menu_array(target: Array[Entity])
 signal close_upgrade_menu() 
 
@@ -43,5 +43,6 @@ signal selection_signal()
 
 signal upgrade_signal(upgrade : Upgrade)
 signal upgrade_finished_signal(is_canceled : bool)
+signal upgrade_application_result(success: bool)
 
 signal wave_changed(new_count: int)

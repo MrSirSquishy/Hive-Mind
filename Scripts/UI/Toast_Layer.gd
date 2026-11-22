@@ -39,4 +39,3 @@ func show_toast(message: String, sticky: bool) -> void:
 	)
 
 	active_tween.tween_callback(toast_panel.hide)
-

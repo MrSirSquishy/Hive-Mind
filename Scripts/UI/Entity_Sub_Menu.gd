@@ -1,5 +1,7 @@
 extends Control
 
+const SidebarDismissButton = preload("res://Scripts/UI/Sidebar_Dismiss_Button.gd")
+
 @onready var entity_name : Label = $VBoxContainer/EntityName
 
 @onready var entity_info : Dictionary = {
@@ -14,6 +16,7 @@ extends Control
 }
 @onready var upgrade_button: Button = $VBoxContainer/VBoxContainer/UpgradeButton
 @onready var cancel_button: Button = $VBoxContainer/VBoxContainer/CancelButton
+@onready var dismiss_button: SidebarDismissButton = $DismissButton
 
 var selected_entity: Node = null
 
@@ -25,15 +28,12 @@ func _on_entity_upgrade_button_pressed() -> void:
 # Directly tell the upgrade menu to open for this bee
 	Signal_Bus.open_upgrade_menu.emit(selected_entity)
 	hide()
-
-#closes the submenu
-func _on_entity_bee_menu_button_pressed() -> void:
-	close_menu()
-	
+	Global.call_deferred("update_world_cursor")
 
 ## Signals
 
 func _ready() -> void:
+	dismiss_button.dismissed.connect(close_menu)
 	Signal_Bus.open_sub_menu.connect(open_menu)
 	Signal_Bus.close_sub_menu.connect(close_menu)
 	#Connects button signals to Signal Bus
@@ -48,7 +48,11 @@ func open_menu(entities : Array[Entity], upgrade : Upgrade) -> void:
 	entity_name.hide()
 	if entities.size() == 0:
 		return
-	elif entities.size() == 1:
+	dismiss_button.reset_slide()
+	dismiss_button.visible = upgrade == null
+	if upgrade == null:
+		Signal_Bus.close_upgrade_menu.emit()
+	if entities.size() == 1:
 		selected_entity = entities[0]
 		if selected_entity is Bee: #Updates the entity name text
 			entity_name.text = selected_entity.bee_name
@@ -74,11 +78,13 @@ func open_menu(entities : Array[Entity], upgrade : Upgrade) -> void:
 		upgrade_button.show()
 		cancel_button.show()
 		
-		if selected_entity: #If the entity already has an upgrade of that type, it cannot be upgraded
-			if selected_entity.upgrades[upgrade.upgrade_type] == null:
-				upgrade_button.disabled = false
-			else:
-				upgrade_button.disabled = true
+		upgrade_button.disabled = not (
+			entities.size() == 1
+			and is_instance_valid(selected_entity)
+			and selected_entity is Bee
+			and selected_entity.can_apply_upgrade(upgrade)
+		)
+		upgrade_button.tooltip_text = "Choose a bee to equip this upgrade." if not (selected_entity is Bee) else ""
 	
 	else: #Shows or hides action buttons if the selection is bees or not
 		var show_button : bool = entities[0] is Bee
@@ -88,11 +94,14 @@ func open_menu(entities : Array[Entity], upgrade : Upgrade) -> void:
 		cancel_button.hide()
 		
 	show()
+	Global.call_deferred("update_world_cursor")
 
 func close_menu() -> void:
 	Signal_Bus.selection_signal.emit()
 	hide()
-	
+	dismiss_button.reset_slide()
+	Global.call_deferred("update_world_cursor")
+
 
 func _on_upgrade_button_pressed() -> void:
 	close_menu()
